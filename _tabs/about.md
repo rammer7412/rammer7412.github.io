@@ -14,7 +14,7 @@ order: 4
 Welcome to Rammar's studio!
 This is a blog where I share lecture materials that organize Computer Science & Engineering knowledge easily and kindly to you.
 My blog aims to explain even difficult and complex topics in a manner that anyone can understand.
-At the end of each post, you can solve the practice problems about the post to help you can review and check what you've leared.
+At the end of each post, you can solve the practice problems about the post to help you can review and check what you've learned through my post.
 I hope my blog will be helpful to your studies. Thank you for visiting!
 
 ### 라머의 공간
