@@ -124,3 +124,28 @@
 
   {% include metadata-hook.html %}
 </head>
+
+<!-- MathJax Configuration -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [
+        ['$', '$'],
+        ['\\(', '\\)']
+      ],
+      displayMath: [
+        ['$$', '$$'],
+        ['\\[', '\\]']
+      ],
+      processEscapes: true
+    },
+    options: {
+      renderActions: {
+        addMenu: [] // disables right-click context menu for speed
+      }
+    }
+  };
+</script>
+
+<!-- MathJax Library (v3) -->
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
