@@ -5,7 +5,7 @@ description: >-
 author: rammer
 date: 2025-06-25 04:15:00 +0900
 permalink: /posts/KU_microbit_lecture/
-categories: [Physical computing]
+categories: [피지컬컴퓨팅]
 tags: [Microbit,Scratch,KoreaUniversity,Lecture]
 use_math: true
 toc: true
