@@ -118,6 +118,7 @@ comments:
   utterances:
     repo: rammer7412/rammer7412.github.io
     issue_term: pathname # < url | pathname | title | ...>
+    label: 💬 comment
   # Giscus options › https://giscus.app
   giscus:
     repo: # <gh-username>/<repo>
