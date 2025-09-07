@@ -116,7 +116,7 @@ comments:
     shortname: # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
   # utterances settings › https://utteranc.es/
   utterances:
-    repo: rammer7412/blog-comments
+    repo: rammer7412/rammer7412.github.io
     issue_term: pathname # < url | pathname | title | ...>
   # Giscus options › https://giscus.app
   giscus:
