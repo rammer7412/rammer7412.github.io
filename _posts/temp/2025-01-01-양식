@@ -1,0 +1,203 @@
+---
+title: "[Probabilistics] 확률 이론(6강) - 대표적인 확률 분포 - 1 (discrete)"
+description: >-
+  대표적인 이산 확률 분포의 종류와 식을 이해하고, 이를 활용할 수 있습니다.
+author: rammer
+date: 2025-06-29 00:32:00 +0900
+permalink: /posts/prob_6/
+categories: [확률 이론]
+tags: [Probability,Mathematics]
+use_math: true
+toc: true
+pin: false
+media_subpath: '/posts/20250629'
+
+---
+  * 수식이 제대로 보이지 않는다면, 새로고침(F5)을 해주시기 바랍니다.  
+  
+  
+ 대표적인 확률 분포들을 common families of distributions이라고 합니다. 이번 포스팅에서는 그 중 discrete distributions를 다루겠습니다.
+
+
+## **Discrete Uniform distribution**
+$X \sim \mathrm{Unif}({a, a+1, \dots, b}), \quad a, b \in \mathbb{Z}, a \leq b$<br><br>
+Discrete Uniform 분포는 서로 다른 $n = b - a + 1$개의 정수 값 중에서 모두 같은 확률로 선택되는 이산 확률 분포입니다.
+즉, $X$는 $a$부터 $b$까지의 정수 중 하나를 균등하게 가질 때 다음 분포를 따릅니다.<br>
+$P(X = x) = \dfrac{1}{b - a + 1}, \quad x \in {a, a+1, \dots, b}$<br>
+
+### Expectation & Variance
+$\mathbb{E}(X) = \dfrac{a + b}{2}$<br>
+$Var(X) = \dfrac{(b - a + 1)^2 - 1}{12}$<br>
+
+
+<br>여기서는 $\mathbb{E}(X)$가 $\dfrac{a + b}{2}$임을 증명해보겠습니다.<br>
+proof:  
+$$
+\begin{align*}
+\mathbb{E}(X)
+  &= \sum_{x = a}^{b} x \cdot P(X = x) \\
+  &= \sum_{x = a}^{b} x \cdot \frac{1}{b - a + 1} \\
+  &= \frac{1}{b - a + 1} \sum_{x = a}^{b} x \\
+  &= \frac{1}{b - a + 1} \cdot \frac{(b - a + 1)(a + b)}{2} \\
+  &= \frac{a + b}{2}
+\end{align*}
+$$
+
+## **Bernoulli distribution**
+$X \sim \mathrm{Bernoulli}(p), \quad 0 \leq p \leq 1$<br><br>
+Bernoulli 분포는 확률 변수 $X$가 0 또는 1을 가질 수 있으며, $X=1$일 확률이 $p$일 때 다음 분포를 따릅니다.<br>
+$P(X = x) = p^x (1 - p)^{1 - x}, \quad x \in \{0, 1\}$<br>
+
+### Expectation&Variance
+$\mathbb{E}(X)=p$<br>
+$Var(X)=p(1-p)$<br>
+
+## **Binomial distribution**
+$X \sim \mathrm{Bin}(n, p), \quad n \in \mathbb{N}, 0 \leq p \leq 1$<br><br>
+Binomial 분포는 총 $n$번의 독립적인 Bernoulli 시행에서 성공한 횟수를 나타내는 이산 확률 분포입니다.
+각 시행의 성공 확률이 $p$일 때, $X$는 다음과 같은 분포를 따릅니다.<br>
+$P(X = k) = \binom{n}{k} p^k (1 - p)^{n - k}, \quad k = 0, 1, \dots, n$<br>
+
+### Expectation & Variance
+$\mathbb{E}(X) = np$<br>
+$Var(X) = np(1 - p)$<br>
+
+<br>여기서는 $\mathbb{E}(X)$가 $np$임을 증명해보겠습니다.<br>
+proof:  
+$$
+\begin{align*}
+\mathbb{E}[X] &= \sum_{x=0}^{n} x \cdot P(X = x) \\
+              &= \sum_{x=0}^{n} x \cdot \binom{n}{x} p^x (1 - p)^{n - x} \\
+              &= \sum_{x=1}^{n} x \cdot \binom{n}{x} p^x (1 - p)^{n - x} \\
+              &= \sum_{x=1}^{n} n \cdot \binom{n - 1}{x - 1} p^x (1 - p)^{n - x} \\
+              &= n p \sum_{x=1}^{n} \binom{n - 1}{x - 1} p^{x - 1} (1 - p)^{n - x} \\
+              &= n p \sum_{y=0}^{n - 1} \binom{n - 1}{y} p^y (1 - p)^{(n - 1) - y} \quad (\text{set } y = x - 1) \\
+              &= n p \cdot (p + (1 - p))^{n - 1} \\
+              &= n p \cdot 1^{n - 1} \\
+              &= n p
+\end{align*}
+$$
+<br><br>
+$Var(X)$ 증명도 이와 유사한 방법으로 할 수 있습니다.<br>
+
+## **Hypergeometric distribution**  
+$X \sim \mathrm{Hypergeometric}(N, M, K), \quad N \in \mathbb{N}, \quad M \leq N, \quad K \leq N$<br><br>  
+Hypergeometric 분포는 **전체 모집단 $N$개 중에서 성공 항목이 $M$개일 때,  
+복원 없이 $K$개를 뽑았을 때의 성공한 항목 수 $X$**를 모델링하는 이산 확률 분포입니다.<br>  
+즉, 모집단에서 무작위로 $K$개를 복원 없이 추출했을 때, 성공 항목(예: 흰 공)의 개수를 나타냅니다.<br>  
+
+$$
+P(X = x) = \dfrac{\dbinom{M}{x} \dbinom{N - M}{K - x}}{\dbinom{N}{K}}, \quad \max(0, K - (N - M)) \leq x \leq \min(K, M)
+$$
+
+### Expectation & Variance
+
+$
+\mathbb{E}(X) = \frac{KM}{N}
+$
+
+$$
+\mathrm{Var}(X) = \frac{KM}{N} \left(1 - \frac{M}{N} \right) \frac{N - K}{N - 1}
+$$
+
+
+## **Geometric distribution**
+$X \sim \mathrm{Geometric}(p), \quad 0 < p \leq 1$, $\quad x=1,2,3,...$<br><br>
+Geometric 분포는 처음으로 성공하기까지의 시행 횟수를 나타내는 이산 확률 분포입니다. 여기서 중요한 점은 $x$는 $0$이 될 수 없습니다! 최소한 1번은 던져야 성공을 판단할 수 있기 때문입니다.<br>
+각 시행이 서로 독립이며 성공 확률이 $p$일 때, $X$는 다음 분포를 따릅니다.<br><br>
+$$
+P(X = k) = (1 - p)^{k - 1} p, \quad k \in \mathbb{N}
+$$
+
+<br>또는 $q=1-p$일 때 다음과 같이 쓰기도 합니다.<br><br>
+$$
+P(X = k) = pq^{k - 1}, \quad k \in \mathbb{N}
+$$
+
+<br>※ 여기서 $X = k$는 $k$번째 시행에서 처음 성공했음을 의미합니다.
+
+### Expectation & Variance
+$\mathbb{E}(X) = \dfrac{1}{p}$<br>
+$Var(X) = \dfrac{1 - p}{p^2}$<br>
+
+<br> $\mathbb{E}(X) = \dfrac{1}{p}$임을 증명해보겠습니다.<br>
+proof:  
+$g(q)=\sum_{x=0}^{\infty }q^x=\frac{1}{1-q}$라고 두겠습니다. $f(q)$를 q에 대해 미분하면, $\frac{d}{dq}g(q)=\sum_{x=0}^{\infty }xq^{x-1}$입니다. <br>또한 위에서 $g(q)=\frac{1}{1-q}$라고 두었으므로 이 식에서 $q$에 대해 미분하면, $\frac{d}{dq}g(q)=\frac{1}{(1-q)^{2}}$입니다.<br>
+따라서 $\sum_{x=0}^{\infty }xq^{x-1}=\frac{1}{(1-q)^{2}}$임을 만족합니다.<br>
+또한 geometric 분포에서 $x=0$일 때 확률은 0이기 때문에 $\sum_{x=0}^{\infty }xq^{x-1}=\sum_{x=1}^{\infty }xq^{x-1}$입니다.<br>
+따라서 $\sum_{x=1}^{\infty }xq^{x-1}=\frac{1}{(1-q)^{2}}=\frac{1}{p^{2}}$입니다.<br>
+$$
+\begin{align*}
+\mathbb{E}(X) 
+  &= \sum_{x=1}^{\infty} x p q^{x-1} \\
+  &= p \sum_{x=1}^{\infty} x q^{x-1} \\
+  &= p \cdot \frac{1}{(1 - q)^2} \\
+  &= p \cdot \frac{1}{p^2} \quad \text{(since } 1 - q = p\text{)} \\
+  &= \frac{1}{p}
+\end{align*}
+$$
+<br>
+
+## **Negative Binomial distribution**
+$X \sim \mathrm{NB}(r, p), \quad r \in \mathbb{N}, 0 < p \leq 1$<br><br>
+Negative Binomial 분포는 $r$번째 성공이 나올 때까지 시행한 횟수를 나타내는 이산 확률 분포입니다.
+각 시행은 독립이고, 성공 확률이 $p$일 때 $X$는 다음 분포를 따릅니다.<br>
+$P(X = k) = \binom{k - 1}{r - 1} p^r (1 - p)^{k - r}, \quad k = r, r + 1, r + 2, \dots$<br>
+
+※ 여기서 $X = k$는 $k$번째 시행에서 $r$번째 성공이 발생했다는 의미입니다.
+
+### Expectation & Variance
+$\mathbb{E}(X) = \dfrac{r}{p}$<br>
+$Var(X) = \dfrac{r(1 - p)}{p^2}$<br>
+
+Negative Binomial distribution은 2가지의 notation이 있습니다. 하나는 위에서 설명드린 방법이고, 나머지는 실패 횟수를 확률 변수로 둔 분포입니다.<br>
+Negative Binomial 분포 $X\sim NB(r,p)$는 r번 째 성공이 나올 때까지의 전체 시행 횟수를 나타냅니다. 이때, 실패 횟수를 $Y=X-r$라 할 수 있습니다. 그러면 또 $y$에 대한 확률 질량 함수를 얻을 수 있겠죠? 연습 문제에서 $Y$에 대한 pmf를 직접 구하고, 기댓값을 계산해보시길 바랍니다.
+
+## **Poisson distribution**
+$X \sim \mathrm{Poisson}(\lambda), \quad \lambda > 0$<br><br>
+Poisson 분포는 일정 시간 또는 공간 내에서 특정 사건이 발생한 횟수를 모델링하는 이산 확률 분포입니다.
+단위 시간당 평균 발생 횟수가 $\lambda$일 때, $X$는 다음 분포를 따릅니다.<br>
+$P(X = k) = \dfrac{\lambda^k e^{-\lambda}}{k!}, \quad k = 0, 1, 2, \dots$<br>
+
+### Expectation & Variance
+$\mathbb{E}(X) = \lambda$<br>
+$Var(X) = \lambda$<br>
+
+<br> $\mathbb{E}(X) = \lambda$임을 증명해보겠습니다.<br>
+
+$$
+\begin{align*}
+\mathbb{E}(X)
+  &= \sum_{x=0}^{\infty} x \cdot P(X = x) \\
+  &= \sum_{x=0}^{\infty} x \cdot \frac{e^{-\lambda} \lambda^x}{x!} \\
+  &= e^{-\lambda} \sum_{x=1}^{\infty} x \cdot \frac{\lambda^x}{x!} \\
+  &= e^{-\lambda} \sum_{x=1}^{\infty} \frac{\lambda \cdot \lambda^{x-1}}{(x - 1)!} \\
+  &= \lambda \cdot e^{-\lambda} \sum_{x=1}^{\infty} \frac{\lambda^{x-1}}{(x - 1)!} \\
+  &= \lambda \cdot \frac{e^{-\lambda}}{e^{-\lambda}} \cdot \sum_{x=1}^{\infty} \frac{\lambda^{x-1}}{(x - 1)!} \\
+  &= \lambda \cdot \sum_{x=1}^{\infty} \frac{e^{-\lambda} \lambda^{x-1}}{(x - 1)!} \\
+  &= \lambda \cdot \sum_{y=0}^{\infty} \frac{e^{-\lambda} \lambda^{y}}{y!} \quad (y = x - 1) \\
+  &= \lambda \cdot \sum_{y=0}^{\infty} P(X = y) \\
+  &= \lambda \cdot 1 \\
+  &= \lambda
+\end{align*}
+$$
+
+
+## **Conclusion**
+이번 포스팅에서는 common families of distributions 중, discrete한 확률 분포들에 대해 다루었습니다. 위에서 설명드린 확률 분포는 모두 자주 쓰이고, 중요한 확률 분포이므로 꼭 기억해두시길 바랍니다. 또한 제가 위의 확률 분포가 왜 pmf가 될 수 있는지를 증명하지 않았는데요, 직접 증명하셔서 pmf 조건을 만족하는 식인지 확인해보시길 바랍니다.<br>
+또한 위 분포들의 기댓값과 분산도 알려드렸는데요, 증명을 하지 않는 것들은 연습 문제를 통해 직접 증명해보시길 바랍니다. 이번 글은 여기서 마치겠습니다.<br>
+## **Practice** 
+Q1. $X\sim Poisson(\lambda)$일 때, $Var(X)$를 구하시오.<br>
+Q2. geometric distribution의 식이 pmf 조건을 만족함을 보이시오.<br>
+Q3. Negative Binomial 분포 $X\sim NB(r,p)$는 r번 째 성공이 나올 때까지의 전체 시행 횟수를 나타냅니다. 이때, 실패 횟수를 $Y=X-r$라 할 때, $Y$의 분포를 구하시오.<br>
+Q4. Q3.에서 구한 확률 변수 $Y\sim NB(r,p)$의 기댓값 $\mathbb{E}(Y)$를 구하시오.
+
+### Answer 
+추후 업로드 예정
+
+
+
+
+
+
+
