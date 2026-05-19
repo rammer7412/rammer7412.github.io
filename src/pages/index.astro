@@ -16,7 +16,7 @@ const posts = await Promise.all(Object.entries(modules).map(async ([path, load])
 }));
 posts.sort((a, b) => +new Date(b.frontmatter.date) - +new Date(a.frontmatter.date));
 ---
-<BaseLayout title="K.dev" description="배운 것, 부순 것, 디버깅한 것, 끝내 이해한 것을 기록합니다.">
+<BaseLayout title="rammer-lab" description="배운 것, 부순 것, 디버깅한 것, 끝내 이해한 것을 기록합니다.">
   <Hero />
   <CategoryGrid />
   <RecentLog posts={posts} />
