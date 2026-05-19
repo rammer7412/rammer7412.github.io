@@ -20,7 +20,10 @@ const nav = [
       {nav.map(([label, href]) => <a href={withBase(href)}>{label}</a>)}
     </nav>
     <div class="header-actions">
-      <button class="kbd-button" type="button" data-command-open><span>Search</span></button>
+      <button class="kbd-button" type="button" data-command-open aria-label="Open search">
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <span>Search</span>
+      </button>
       <a class="ghost-button" href={site.github} target="_blank" rel="noreferrer">GitHub</a>
     </div>
   </div>
