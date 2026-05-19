@@ -690,3 +690,10 @@ button, input {
   .recent-tags { text-align: left; }
   .hero { padding-top: 42px; }
 }
+
+.nav-icon {
+  width: 16px;
+  height: 16px;
+  color: currentColor;
+  opacity: 0.85;
+}

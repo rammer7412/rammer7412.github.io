@@ -21,10 +21,24 @@ const nav = [
     </nav>
     <div class="header-actions">
       <button class="kbd-button" type="button" data-command-open aria-label="Open search">
-        <span class="search-icon" aria-hidden="true">⌕</span>
-        <span>Search</span>
+        <span class="nav-icon" aria-hidden="true">⌕</span>
+        <span>Search<span>
       </button>
-      <a class="ghost-button" href={site.github} target="_blank" rel="noreferrer">GitHub</a>
+      
+      <a class="ghost-button" href={site.github} target="_blank" rel="noreferrer">
+        <svg
+          class="nav-icon"
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+        >
+          <path
+            d="M12 2C6.477 2 2 6.589 2 12.253c0 4.536 2.865 8.38 6.839 9.739.5.094.683-.222.683-.494 0-.244-.009-.89-.014-1.747-2.782.62-3.369-1.375-3.369-1.375-.455-1.185-1.11-1.5-1.11-1.5-.908-.637.069-.624.069-.624 1.004.073 1.532 1.057 1.532 1.057.892 1.567 2.341 1.115 2.91.853.091-.662.35-1.115.636-1.371-2.221-.259-4.555-1.139-4.555-5.066 0-1.119.39-2.034 1.03-2.751-.103-.26-.446-1.303.098-2.715 0 0 .84-.276 2.75 1.05A9.386 9.386 0 0 1 12 6.963c.85.004 1.705.118 2.504.346 1.909-1.326 2.747-1.05 2.747-1.05.546 1.412.203 2.455.1 2.715.641.717 1.028 1.632 1.028 2.751 0 3.937-2.337 4.804-4.566 5.058.359.317.679.944.679 1.902 0 1.373-.013 2.481-.013 2.818 0 .274.18.593.688.493C19.138 20.63 22 16.787 22 12.253 22 6.589 17.523 2 12 2Z"
+          />
+        </svg>
+        <span>GitHub</span>
+      </a>
+
     </div>
   </div>
 </header>
