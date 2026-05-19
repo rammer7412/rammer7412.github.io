@@ -1,0 +1,25 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Hero from '@/components/Hero.astro';
+import CategoryGrid from '@/components/CategoryGrid.astro';
+import RecentLog from '@/components/RecentLog.astro';
+import KnowledgeMap from '@/components/KnowledgeMap.astro';
+import MistakeArchive from '@/components/MistakeArchive.astro';
+
+const modules = import.meta.glob('../content/posts/*.md');
+const posts = await Promise.all(Object.entries(modules).map(async ([path, load]) => {
+  const mod: any = await load();
+  return {
+    slug: path.split('/').pop()?.replace('.md', '') ?? '',
+    frontmatter: mod.frontmatter
+  };
+}));
+posts.sort((a, b) => +new Date(b.frontmatter.date) - +new Date(a.frontmatter.date));
+---
+<BaseLayout title="K.dev" description="배운 것, 부순 것, 디버깅한 것, 끝내 이해한 것을 기록합니다.">
+  <Hero />
+  <CategoryGrid />
+  <RecentLog posts={posts} />
+  <KnowledgeMap />
+  <MistakeArchive />
+</BaseLayout>

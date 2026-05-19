@@ -1,0 +1,25 @@
+---
+import { categories } from '@/data/site';
+import { withBase } from '@/utils/paths';
+---
+<section class="section">
+  <div class="container">
+    <div class="section-title">
+      <div>
+        <span class="badge">Explore</span>
+        <h2>내 지식의 입구</h2>
+        <p>전공 노트, 실험 기록, 문제 풀이를 주제별로 모아둡니다. 카드 위에 마우스를 올리면 각 주제의 코드 조각이 살짝 보입니다.</p>
+      </div>
+    </div>
+    <div class="card-grid">
+      {categories.map((category) => (
+        <a class="category-card" href={withBase(category.href)}>
+          <span class="category-label">{category.label}</span>
+          <h3>{category.title}</h3>
+          <p>{category.description}</p>
+          <span class="hover-code">{category.code}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

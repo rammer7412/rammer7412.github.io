@@ -1,0 +1,38 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { withBase } from '@/utils/paths';
+
+const modules = import.meta.glob('../../content/posts/*.md');
+const posts = await Promise.all(Object.entries(modules).map(async ([path, load]) => {
+  const mod: any = await load();
+  return {
+    slug: path.split('/').pop()?.replace('.md', '') ?? '',
+    frontmatter: mod.frontmatter
+  };
+}));
+const problems = posts
+  .filter((post) => post.frontmatter.type === 'problem')
+  .sort((a, b) => +new Date(b.frontmatter.date) - +new Date(a.frontmatter.date));
+---
+<BaseLayout title="Problems" description="문제 풀이 기록">
+  <section class="page-head">
+    <div class="container">
+      <span class="badge">~/problems</span>
+      <h1>문제 풀이</h1>
+      <p>알고리즘, C언어, 수학 문제를 어떤 생각으로 풀었는지 기록합니다. 정답보다 사고 과정을 중심으로 남깁니다.</p>
+    </div>
+  </section>
+  <section class="container post-list">
+    {problems.map((post) => (
+      <a class="post-card" href={withBase(`/posts/${post.slug}/`)}>
+        <div class="post-meta">
+          <span>{post.frontmatter.date}</span>
+          <span>[{post.frontmatter.category}]</span>
+          {(post.frontmatter.tags ?? []).slice(0, 4).map((tag: string) => <span>#{tag}</span>)}
+        </div>
+        <h3>{post.frontmatter.title}</h3>
+        <p>{post.frontmatter.description}</p>
+      </a>
+    ))}
+  </section>
+</BaseLayout>

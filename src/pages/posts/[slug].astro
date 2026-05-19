@@ -1,0 +1,47 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { withBase } from '@/utils/paths';
+
+export async function getStaticPaths() {
+  const modules = import.meta.glob('../../content/posts/*.md');
+  const paths = await Promise.all(Object.entries(modules).map(async ([path, load]) => {
+    const mod: any = await load();
+    return {
+      params: { slug: path.split('/').pop()?.replace('.md', '') },
+      props: { post: mod }
+    };
+  }));
+  return paths;
+}
+
+const { post } = Astro.props as any;
+const { frontmatter } = post;
+const Content = post.default;
+---
+<BaseLayout title={frontmatter.title} description={frontmatter.description}>
+  <article class="article">
+    <div class="container article-shell">
+      <main class="article-main glass">
+        <a class="ghost-button" href={withBase('/notes/')}>← 목록으로</a>
+        <div style="height:22px"></div>
+        <div class="post-meta">
+          <span>{frontmatter.date}</span>
+          <span>[{frontmatter.category}]</span>
+          {(frontmatter.tags ?? []).map((tag: string) => <span>#{tag}</span>)}
+        </div>
+        <h1>{frontmatter.title}</h1>
+        <p class="description">{frontmatter.description}</p>
+        <div class="article-content">
+          <Content />
+        </div>
+      </main>
+      <aside class="side-panel">
+        <strong>Note Info</strong>
+        <p>Category: {frontmatter.category}</p>
+        <p>Type: {frontmatter.type}</p>
+        <p>Tags: {(frontmatter.tags ?? []).join(', ')}</p>
+        <p style="margin-top:20px">읽으면서 수정하고 싶은 부분은 Markdown 파일에서 바로 고치면 됩니다.</p>
+      </aside>
+    </div>
+  </article>
+</BaseLayout>

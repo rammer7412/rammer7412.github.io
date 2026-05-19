@@ -1,0 +1,24 @@
+---
+import { mistakeCards } from '@/data/site';
+import { withBase } from '@/utils/paths';
+---
+<section class="section" id="things-i-broke">
+  <div class="container">
+    <div class="section-title">
+      <div>
+        <span class="badge">Things I Broke</span>
+        <h2>삽질 로그</h2>
+        <p>틀린 과정까지 남겨두면, 나중에 같은 문제를 만났을 때 가장 빠른 해결책이 됩니다.</p>
+      </div>
+    </div>
+    <div class="card-grid">
+      {mistakeCards.map((item) => (
+        <a class="mistake-card" href={withBase(item.href)}>
+          <span class="category-label">{item.category}</span>
+          <h3>{item.title}</h3>
+          <p>{item.lesson}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

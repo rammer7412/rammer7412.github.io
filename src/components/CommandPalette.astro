@@ -1,0 +1,67 @@
+---
+import { withBase } from '@/utils/paths';
+
+const commands = [
+  { title: '전공 노트 보기', subtitle: 'OS, Security, C, Math', href: '/notes/' },
+  { title: '문제 풀이 보기', subtitle: 'BOJ, algorithms, 풀이 기록', href: '/problems/' },
+  { title: '실험 기록 보기', subtitle: 'xv6, Docker, deployment labs', href: '/labs/' },
+  { title: '프로젝트 보기', subtitle: 'Mini Judge, app, portfolio', href: '/projects/' },
+  { title: '삽질 로그 보기', subtitle: 'Things I Broke', href: '/labs/#things-i-broke' },
+  { title: 'About', subtitle: '블로그와 운영자 소개', href: '/about/' }
+];
+---
+
+<div class="command-backdrop" data-command-backdrop aria-hidden="true">
+  <div class="command-modal" role="dialog" aria-modal="true" aria-label="Command palette">
+    <input class="command-input" data-command-input placeholder="Search notes, problems, labs..." />
+    <div class="command-list" data-command-list>
+      {commands.map((item) => (
+        <a class="command-item" href={withBase(item.href)} data-command-item data-title={`${item.title} ${item.subtitle}`.toLowerCase()}>
+          <strong>{item.title}</strong><br />
+          <span>{item.subtitle}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  const backdrop = document.querySelector('[data-command-backdrop]');
+  const input = document.querySelector('[data-command-input]');
+  const openButtons = document.querySelectorAll('[data-command-open]');
+  const items = Array.from(document.querySelectorAll('[data-command-item]'));
+
+  const open = () => {
+    backdrop?.setAttribute('data-open', 'true');
+    backdrop?.setAttribute('aria-hidden', 'false');
+    setTimeout(() => input?.focus(), 0);
+  };
+
+  const close = () => {
+    backdrop?.setAttribute('data-open', 'false');
+    backdrop?.setAttribute('aria-hidden', 'true');
+    if (input) input.value = '';
+    items.forEach((item) => item.style.display = 'block');
+  };
+
+  openButtons.forEach((btn) => btn.addEventListener('click', open));
+  backdrop?.addEventListener('click', (event) => {
+    if (event.target === backdrop) close();
+  });
+
+  window.addEventListener('keydown', (event) => {
+    if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
+      event.preventDefault();
+      open();
+    }
+    if (event.key === 'Escape') close();
+  });
+
+  input?.addEventListener('input', () => {
+    const q = input.value.trim().toLowerCase();
+    items.forEach((item) => {
+      const target = item.getAttribute('data-title') || '';
+      item.style.display = target.includes(q) ? 'block' : 'none';
+    });
+  });
+</script>

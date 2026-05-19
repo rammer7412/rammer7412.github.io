@@ -1,0 +1,27 @@
+---
+import { site } from '@/data/site';
+import { withBase } from '@/utils/paths';
+const nav = [
+  ['~/notes', '/notes/'],
+  ['~/problems', '/problems/'],
+  ['~/labs', '/labs/'],
+  ['~/projects', '/projects/'],
+  ['~/about', '/about/']
+];
+---
+
+<header class="header">
+  <div class="container header-inner">
+    <a class="logo" href={withBase('/')} aria-label="Home">
+      <span class="logo-mark">$</span>
+      <span>{site.title}</span>
+    </a>
+    <nav class="nav" aria-label="Main navigation">
+      {nav.map(([label, href]) => <a href={withBase(href)}>{label}</a>)}
+    </nav>
+    <div class="header-actions">
+      <button class="kbd-button" type="button" data-command-open><span>Ctrl</span><span>K</span></button>
+      <a class="ghost-button" href={site.github} target="_blank" rel="noreferrer">GitHub</a>
+    </div>
+  </div>
+</header>

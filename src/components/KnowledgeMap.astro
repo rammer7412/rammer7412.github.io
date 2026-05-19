@@ -1,0 +1,27 @@
+---
+import { knowledgeMap } from '@/data/site';
+import { withBase } from '@/utils/paths';
+---
+<section class="section">
+  <div class="container">
+    <div class="section-title">
+      <div>
+        <span class="badge">Knowledge Map</span>
+        <h2>전공 지식 연결 지도</h2>
+        <p>처음에는 트리 형태로 가볍게 시작하고, 나중에 진짜 노드 그래프로 확장할 수 있습니다.</p>
+      </div>
+    </div>
+    <div class="knowledge-wrap">
+      {knowledgeMap.map((tree) => (
+        <div class="knowledge-tree">
+          <h3>~/ {tree.root}</h3>
+          <ul>
+            {tree.children.map((child) => (
+              <li><a href={withBase(child.href)}>{child.name}</a></li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
