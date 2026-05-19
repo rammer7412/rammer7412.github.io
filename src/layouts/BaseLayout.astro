@@ -10,7 +10,13 @@ interface Props {
   description?: string;
 }
 
-const { title = site.title, description = site.description } = Astro.props;
+const {
+  title = site.title,
+  description = site.description,
+  image = '/og-image.png',
+  type = 'website',
+} = Astro.props;
+
 const pageTitle = title === site.title ? site.title : `${site.title}`;
 ---
 
