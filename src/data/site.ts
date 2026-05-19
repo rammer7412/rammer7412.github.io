@@ -1,7 +1,7 @@
 export const site = {
-  title: 'K.dev',
+  title: 'Rammer CS Lab',
   description: '배운 것, 부순 것, 디버깅한 것, 끝내 이해한 것을 기록합니다.',
-  author: 'K',
+  author: 'rammer',
   github: 'https://github.com/rammer7412',
   email: 'coderammer7412@gmail.com'
 };
