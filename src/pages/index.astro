@@ -1,23 +1,138 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import Hero from '@/components/Hero.astro';
-import PerspectiveSection from '@/components/PerspectiveSection.astro';
-import CategoryGrid from '@/components/CategoryGrid.astro';
-import FeaturedPosts from '@/components/FeaturedPosts.astro';
-import RecentLog from '@/components/RecentLog.astro';
-import KnowledgeMap from '@/components/KnowledgeMap.astro';
-import MistakeArchive from '@/components/MistakeArchive.astro';
-import { getAllPosts } from '@/utils/posts';
-import { site } from '@/data/site';
+import { getCollection } from 'astro:content';
+import { domainMeta, formatMeta, currentStudy, site } from '@/data/site';
+import { getAllPosts, normalizeDomain, normalizeFormat } from '@/utils/posts';
+import { withBase } from '@/utils/paths';
 
-const posts = getAllPosts();
+const allPosts = getAllPosts();
+const writingPosts = allPosts.filter((post) => {
+  const domain = normalizeDomain(post.frontmatter);
+  const format = normalizeFormat(post.frontmatter);
+  return domain !== 'project' && format !== 'project';
+});
+const latestPosts = writingPosts.slice(0, 5);
+const projectCount = allPosts.filter((post) => {
+  const domain = normalizeDomain(post.frontmatter);
+  const format = normalizeFormat(post.frontmatter);
+  return domain === 'project' || format === 'project';
+}).length;
+const journalCount = (await getCollection('journal')).filter((item) => !item.data.draft).length;
+
+const overviewItems = [
+  {
+    title: 'Writing',
+    description: '기술·개인정보보호·리서치 기록',
+    count: `${writingPosts.length} posts`,
+    href: '/writing/'
+  },
+  {
+    title: 'Projects',
+    description: '직접 진행한 작업과 개발 기록',
+    count: projectCount > 0 ? `${projectCount} projects` : 'No public projects',
+    href: '/projects/'
+  },
+  {
+    title: 'Journal',
+    description: '여행·독서·일상의 개인 기록',
+    count: journalCount > 0 ? `${journalCount} entries` : 'No public entries',
+    href: '/journal/'
+  },
+  {
+    title: 'About',
+    description: '관심 분야와 경험, Rammer Lab 소개',
+    count: 'Profile & CV',
+    href: '/about/'
+  }
+];
 ---
 <BaseLayout title={site.title} description={site.description}>
-  <Hero />
-  <PerspectiveSection />
-  <FeaturedPosts posts={posts} />
-  <CategoryGrid />
-  <RecentLog posts={posts} />
-  <KnowledgeMap />
-  <MistakeArchive />
+  <section class="home-latest">
+    <div class="container">
+      <div class="home-section-head">
+        <div>
+          <span class="eyebrow">LATEST WRITING</span>
+          <h1>최근 작성한 글</h1>
+        </div>
+        <a class="text-link" href={withBase('/writing/')}>모든 글 보기 <span>→</span></a>
+      </div>
+
+      <div class="home-writing-list">
+        {latestPosts.map((post) => {
+          const domain = normalizeDomain(post.frontmatter);
+          const format = normalizeFormat(post.frontmatter);
+          return (
+            <a class="home-writing-row" href={withBase(`/posts/${post.slug}/`)}>
+              <time datetime={post.frontmatter.date}>{post.frontmatter.date}</time>
+              <div>
+                <div class="post-kicker">
+                  <span>{domainMeta[domain]?.short ?? post.frontmatter.category}</span>
+                  <span>{formatMeta[format] ?? format}</span>
+                </div>
+                <h2>{post.frontmatter.title}</h2>
+                <p>{post.frontmatter.description}</p>
+              </div>
+              <span class="home-row-arrow" aria-hidden="true">↗</span>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <section class="home-intro">
+    <div class="container home-intro-grid">
+      <div>
+        <span class="eyebrow">ABOUT RAMMER LAB</span>
+        <h2>기술과 개인정보보호를 함께 공부하고 기록합니다.</h2>
+      </div>
+      <div class="home-intro-copy">
+        <p>시스템 보안, 디지털포렌식, 프라이버시, 개발과 리서치에서 배운 내용을 정리하는 개인 아카이브입니다.</p>
+        <div class="home-intro-links">
+          <a href={withBase('/writing/')}>Writing 살펴보기 <span>→</span></a>
+          <a href={withBase('/about/')}>About me <span>→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-overview">
+    <div class="container">
+      <div class="home-overview-grid">
+        {overviewItems.map((item) => (
+          <a class="home-overview-card" href={withBase(item.href)}>
+            <div>
+              <h2>{item.title}</h2>
+              <span aria-hidden="true">↗</span>
+            </div>
+            <p>{item.description}</p>
+            <small>{item.count}</small>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="home-currently">
+    <div class="container">
+      <div class="home-currently-head">
+        <span class="eyebrow">CURRENTLY</span>
+        <p>최근 집중하고 있는 주제와 공개 상태</p>
+      </div>
+      <div class="home-currently-grid">
+        <div class="home-current-item home-current-study">
+          <span>Studying</span>
+          <p>{currentStudy.slice(0, 3).join(' · ')}</p>
+        </div>
+        <div class="home-current-item">
+          <span>Projects</span>
+          <p>{projectCount > 0 ? `${projectCount}개의 프로젝트 기록 공개 중` : 'No public projects yet'}</p>
+        </div>
+        <div class="home-current-item">
+          <span>Journal</span>
+          <p>{journalCount > 0 ? `${journalCount}개의 개인 기록 공개 중` : 'No public entries yet'}</p>
+        </div>
+      </div>
+    </div>
+  </section>
 </BaseLayout>

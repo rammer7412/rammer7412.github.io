@@ -49,3 +49,7 @@
 
 - Projects는 실제 프로젝트 글이 없을 때 빈 상태로 표시됩니다.
 - Journal은 개인 기록 전용 컬렉션이며 3열 이미지 카드와 모달 상세 보기를 지원합니다.
+
+## Minimal home update
+
+메인 화면은 `Latest Writing`을 최상단에 배치하고, 짧은 소개, Writing/Projects/Journal/About 안내, Currently 순서로 단순화했습니다. 기존의 대형 Hero, 대표 글, 주제 지도, 반복 안내 섹션은 홈에서 제거했습니다.
