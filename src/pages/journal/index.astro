@@ -1,0 +1,160 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+import { withBase } from '@/utils/paths';
+
+const items = (await getCollection('journal'))
+  .filter((item) => !item.data.draft)
+  .sort((a, b) => +new Date(b.data.date) - +new Date(a.data.date));
+
+const renderedItems = await Promise.all(
+  items.map(async (item) => ({ item, ...(await render(item)) }))
+);
+
+const dateFormatter = new Intl.DateTimeFormat('ko-KR', {
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit'
+});
+---
+<BaseLayout title="Journal" description="여행, 독서, 문화생활과 일상의 개인적인 기록을 모아 둔 공간입니다.">
+  <section class="page-hero journal-page-hero">
+    <div class="container page-hero-grid">
+      <div>
+        <span class="eyebrow">TRAVEL · BOOKS · DAILY LIFE</span>
+        <h1>Journal</h1>
+      </div>
+      <p>기술과 리서치 바깥에서 경험한 여행, 읽은 책, 문화생활과 개인적인 생각을 사진 중심의 짧은 기록으로 남깁니다.</p>
+    </div>
+  </section>
+
+  <section class="section journal-section">
+    <div class="container">
+      {renderedItems.length === 0 ? (
+        <div class="empty-state standalone journal-empty-state">
+          <span>PERSONAL NOTES WILL LIVE HERE</span>
+          <h2>아직 공개된 Journal 글이 없습니다.</h2>
+          <p>여행, 독서와 일상의 기록이 추가되면 한 줄에 세 개의 이미지 카드로 표시되고, 카드를 누르면 현재 화면 위의 작은 창에서 글을 읽을 수 있습니다.</p>
+        </div>
+      ) : (
+        <div class="journal-grid">
+          {renderedItems.map(({ item }) => (
+            <a
+              class="journal-card"
+              href={withBase(`/journal/${item.id}/`)}
+              data-journal-open={item.id}
+              aria-label={`${item.data.title} 열기`}
+            >
+              <img
+                src={withBase(item.data.image ?? '/journal-placeholder.svg')}
+                alt={item.data.imageAlt ?? ''}
+                loading="lazy"
+              />
+              <span class="journal-card-shade" aria-hidden="true"></span>
+              <span class="journal-card-category">{item.data.category}</span>
+              <span class="journal-card-copy">
+                <strong>{item.data.title}</strong>
+                <time datetime={item.data.date}>{dateFormatter.format(new Date(item.data.date))}</time>
+              </span>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  {renderedItems.map(({ item, Content }, index) => {
+    const previous = renderedItems[(index - 1 + renderedItems.length) % renderedItems.length]?.item;
+    const next = renderedItems[(index + 1) % renderedItems.length]?.item;
+    return (
+      <dialog
+        class="journal-dialog"
+        id={`journal-dialog-${item.id}`}
+        data-journal-dialog={item.id}
+        data-journal-url={withBase(`/journal/${item.id}/`)}
+      >
+        <article class="journal-modal-shell">
+          <button class="journal-modal-close" type="button" data-journal-close aria-label="Journal 글 닫기">×</button>
+          <div class="journal-modal-cover">
+            <img src={withBase(item.data.image ?? '/journal-placeholder.svg')} alt={item.data.imageAlt ?? ''} />
+          </div>
+          <div class="journal-modal-content">
+            <div class="journal-modal-meta">
+              <span>{item.data.category}</span>
+              <time datetime={item.data.date}>{dateFormatter.format(new Date(item.data.date))}</time>
+              {item.data.location && <span>{item.data.location}</span>}
+            </div>
+            <h2>{item.data.title}</h2>
+            <p class="journal-modal-description">{item.data.description}</p>
+            <div class="article-content journal-prose"><Content /></div>
+            {renderedItems.length > 1 && (
+              <nav class="journal-modal-nav" aria-label="Journal 글 이동">
+                <a href={withBase(`/journal/${previous.id}/`)} data-journal-open={previous.id}>← 이전 기록</a>
+                <a href={withBase(`/journal/${next.id}/`)} data-journal-open={next.id}>다음 기록 →</a>
+              </nav>
+            )}
+          </div>
+        </article>
+      </dialog>
+    );
+  })}
+
+  <script is:inline>
+    const journalDialogs = Array.from(document.querySelectorAll('[data-journal-dialog]'));
+    const journalOpeners = Array.from(document.querySelectorAll('[data-journal-open]'));
+    const journalListUrl = window.location.pathname + window.location.search + window.location.hash;
+
+    const closeAllJournalDialogs = () => {
+      journalDialogs.forEach((dialog) => {
+        if (dialog.open) dialog.close();
+      });
+      document.body.classList.remove('journal-modal-open');
+    };
+
+    const openJournalDialog = (slug) => {
+      const dialog = document.querySelector(`[data-journal-dialog="${CSS.escape(slug)}"]`);
+      if (!dialog) return false;
+      closeAllJournalDialogs();
+      dialog.showModal();
+      document.body.classList.add('journal-modal-open');
+      dialog.querySelector('[data-journal-close]')?.focus();
+      return true;
+    };
+
+    const syncJournalDialogWithUrl = () => {
+      const currentPath = window.location.pathname;
+      const matched = journalDialogs.find((dialog) => {
+        const target = new URL(dialog.dataset.journalUrl, window.location.origin);
+        return target.pathname === currentPath;
+      });
+      if (matched) openJournalDialog(matched.dataset.journalDialog);
+      else closeAllJournalDialogs();
+    };
+
+    journalOpeners.forEach((opener) => {
+      opener.addEventListener('click', (event) => {
+        if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        const slug = opener.dataset.journalOpen;
+        if (!slug || !openJournalDialog(slug)) return;
+        event.preventDefault();
+        history.pushState({ journal: slug }, '', opener.href);
+      });
+    });
+
+    journalDialogs.forEach((dialog) => {
+      dialog.querySelector('[data-journal-close]')?.addEventListener('click', () => history.back());
+      dialog.addEventListener('click', (event) => {
+        if (event.target === dialog) history.back();
+      });
+      dialog.addEventListener('cancel', (event) => {
+        event.preventDefault();
+        history.back();
+      });
+    });
+
+    window.addEventListener('popstate', syncJournalDialogWithUrl);
+    window.addEventListener('pageshow', () => {
+      if (window.location.pathname === new URL(journalListUrl, window.location.origin).pathname) closeAllJournalDialogs();
+    });
+  </script>
+</BaseLayout>

@@ -1,0 +1,43 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+import { withBase } from '@/utils/paths';
+
+export async function getStaticPaths() {
+  const items = (await getCollection('journal')).filter((item) => !item.data.draft);
+  return items.map((item) => ({ params: { slug: item.id }, props: { item } }));
+}
+
+const { item } = Astro.props;
+const { Content } = await render(item);
+const formattedDate = new Intl.DateTimeFormat('ko-KR', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+}).format(new Date(item.data.date));
+---
+<BaseLayout
+  title={item.data.title}
+  description={item.data.description}
+  image={item.data.image ?? '/journal-placeholder.svg'}
+  type="article"
+>
+  <article class="journal-detail-page">
+    <header class="journal-detail-header">
+      <div class="container journal-detail-heading">
+        <a class="article-back" href={withBase('/journal/')}>← Journal</a>
+        <div class="journal-modal-meta">
+          <span>{item.data.category}</span>
+          <time datetime={item.data.date}>{formattedDate}</time>
+          {item.data.location && <span>{item.data.location}</span>}
+        </div>
+        <h1>{item.data.title}</h1>
+        <p>{item.data.description}</p>
+      </div>
+    </header>
+    <div class="container journal-detail-container">
+      <img class="journal-detail-cover" src={withBase(item.data.image ?? '/journal-placeholder.svg')} alt={item.data.imageAlt ?? ''} />
+      <div class="article-content journal-prose journal-detail-prose"><Content /></div>
+    </div>
+  </article>
+</BaseLayout>

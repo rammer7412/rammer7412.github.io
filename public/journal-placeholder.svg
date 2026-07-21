@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Rammer Lab Journal placeholder</title>
+  <desc id="desc">차분한 색상의 Journal 기본 대표 이미지</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#173c5b"/>
+      <stop offset="0.55" stop-color="#177a72"/>
+      <stop offset="1" stop-color="#dfeaf1"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="75%" cy="15%" r="70%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".48"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="1200" fill="url(#bg)"/>
+  <rect width="1200" height="1200" fill="url(#glow)"/>
+  <path d="M120 920C310 710 440 720 610 865s320 125 470-20v355H120Z" fill="#10263a" fill-opacity=".42"/>
+  <circle cx="890" cy="310" r="175" fill="#fff" fill-opacity=".16"/>
+  <text x="105" y="155" fill="#fff" fill-opacity=".75" font-family="Arial, sans-serif" font-size="34" letter-spacing="12">RAMMER LAB</text>
+  <text x="105" y="1080" fill="#fff" font-family="Georgia, serif" font-size="128">Journal</text>
+</svg>

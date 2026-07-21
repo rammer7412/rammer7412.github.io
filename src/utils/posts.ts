@@ -11,6 +11,7 @@ export interface PostFrontmatter {
   featured?: boolean;
   draft?: boolean;
   image?: string;
+  status?: 'planned' | 'in-progress' | 'completed' | 'paused';
 }
 
 export interface PostSummary {

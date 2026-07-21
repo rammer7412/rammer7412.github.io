@@ -11,6 +11,7 @@
 - 암호·수학
 - 논문·보고서·기업 사례 분석
 - 프로젝트 기록
+- 여행·독서·일상 Journal
 
 ## Requirements
 
@@ -78,6 +79,7 @@ tags: ["privacy", "security"]
 domain: "privacy-engineering"
 format: "study-note"
 featured: false
+status: "planned" # 프로젝트 글에서 선택 사항
 draft: false
 ```
 
@@ -103,6 +105,8 @@ draft: false
 - `opinion`
 
 논문 리뷰, 기업 사례 분석, 프로젝트 글의 시작 양식은 `src/content/templates`에 있습니다. 템플릿을 `src/content/posts`로 복사한 뒤 `draft: false`로 변경하면 공개됩니다.
+
+프로젝트 글은 `domain: "project"`, `format: "project"`로 작성합니다. 공개된 프로젝트 글이 없을 때 `/projects/`는 빈 상태로 표시되고, 프로젝트 글이 추가되면 카드가 자동 생성되어 일반 블로그 상세 화면으로 연결됩니다. 프로젝트 진행 상태는 `planned`, `in-progress`, `completed`, `paused` 중 하나를 선택할 수 있습니다.
 
 ### LaTeX 수식 작성
 
@@ -136,6 +140,25 @@ def power(base, exponent):
 ````
 
 밝은 모드에서는 GitHub Light, 어두운 모드에서는 GitHub Dark 계열 토큰 색상이 자동으로 사용됩니다. 글마다 별도의 테마 설정을 추가할 필요가 없습니다.
+
+## Writing a Journal entry
+
+개인적인 기록은 `src/content/journal`에 Markdown 파일로 추가합니다. 기술 글과 별도의 콘텐츠 컬렉션으로 관리됩니다.
+
+```yaml
+title: "Journal 글 제목"
+description: "카드와 검색에 표시할 요약"
+date: "2026-07-21"
+category: "Travel"
+image: "/images/journal/example.jpg"
+imageAlt: "대표 이미지 설명"
+location: "선택 사항"
+draft: false
+```
+
+`category`는 `Travel`, `Books`, `Daily`, `Culture`, `Thoughts`, `Other` 중 하나를 사용합니다. 작성 예시는 `src/content/journal/example.md`, 복사용 템플릿은 `src/content/templates/journal.md`에 있습니다.
+
+Journal 목록은 데스크톱에서 3열, 태블릿에서 2열, 모바일에서 1열 이미지 카드로 표시됩니다. 목록에서 카드를 누르면 모달 창으로 열리고, `/journal/파일명/` 주소로 직접 접근하면 독립된 상세 페이지가 열립니다.
 
 ## Main configuration
 

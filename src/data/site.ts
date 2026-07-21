@@ -11,7 +11,8 @@ export const site = {
 export const navigation = [
   { label: 'About', href: '/about/' },
   { label: 'Writing', href: '/writing/' },
-  { label: 'Projects', href: '/projects/' }
+  { label: 'Projects', href: '/projects/' },
+  { label: 'Journal', href: '/journal/' }
 ];
 
 export const domainMeta: Record<string, { label: string; short: string; href: string }> = {

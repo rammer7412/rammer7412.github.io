@@ -7,6 +7,7 @@ tags: ["project"]
 domain: "project"
 format: "project"
 featured: false
+status: "planned"
 draft: true
 ---
 

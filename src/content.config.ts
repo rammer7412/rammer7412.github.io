@@ -32,8 +32,23 @@ const posts = defineCollection({
     type: z.string().optional(),
     featured: z.boolean().default(false),
     draft: z.boolean().default(false),
-    image: z.string().optional()
+    image: z.string().optional(),
+    status: z.enum(['planned', 'in-progress', 'completed', 'paused']).optional()
   })
 });
 
-export const collections = { posts };
+const journal = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/journal' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    date: z.string(),
+    category: z.enum(['Travel', 'Books', 'Daily', 'Culture', 'Thoughts', 'Other']),
+    image: z.string().optional(),
+    imageAlt: z.string().optional(),
+    location: z.string().optional(),
+    draft: z.boolean().default(false)
+  })
+});
+
+export const collections = { posts, journal };
