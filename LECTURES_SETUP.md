@@ -1,47 +1,81 @@
-# Lectures 관리 방법
+# Lectures 추가 방법
 
-## 현재 연결된 PDF
+Lectures는 다음 3단계 구조로 구성됩니다.
 
-- 강의: `Basic Python Lecture 1`
-- R2 객체: `lectures/basic-python/BasicPython_lecture_1.pdf`
-- 사이트 경로: `/lectures/basic-python-01/`
+```text
+/lectures/                              강의 과정 목록
+/lectures/basic-python/                 과정별 강의자료 목록
+/lectures/basic-python/basic-python-01/ PDF 뷰어
+```
 
-## 다음 강의자료 추가
+실제 PDF는 Cloudflare R2에 저장하고, GitHub 저장소에는 과정 및 자료의 작은 Markdown 정보만 둡니다.
 
-1. Cloudflare R2의 과목 폴더에 PDF를 업로드합니다.
-2. `src/content/lectures/`에 Markdown 파일을 추가합니다.
-3. 아래 frontmatter에서 제목, 차시, PDF URL만 바꿉니다.
+## 1. 새로운 강의 과정 추가
+
+`src/content/courses/`에 과정 파일을 만듭니다.
+
+예: `src/content/courses/basic-python.md`
 
 ```yaml
 ---
-title: "Basic Python Lecture 2"
-description: "두 번째 강의자료 설명"
-date: "2026-07-28"
-course: "Basic Python"
-lectureNumber: 2
-pdfUrl: "https://pub-abc6036fee00411eae15969b5cc3ed3b.r2.dev/lectures/basic-python/BasicPython_lecture_2.pdf"
+title: "Basic Python"
+description: "Python의 기초 문법과 프로그래밍 개념을 다루는 강의자료 모음입니다."
 theme: "python"
-fileName: "BasicPython_lecture_2.pdf"
-fileSize: "1.2 MB"
-topics:
-  - "Python"
+order: 1
 draft: false
 ---
 ```
 
 사용 가능한 `theme` 값:
 
-- `python`
-- `security`
-- `forensics`
-- `privacy`
-- `default`
+```text
+python
+security
+forensics
+privacy
+default
+```
 
-별도의 표지 이미지는 필요하지 않습니다. 사이트가 과목명, 차시, 제목을 사용해 자동 표지를 만듭니다.
+`order`가 작은 과정부터 Lectures 첫 화면에 표시됩니다.
 
-## R2 CORS 정책
+## 2. 과정에 강의자료 추가
 
-PDF.js가 GitHub Pages에서 R2 PDF를 읽으려면 버킷의 CORS 정책에 다음 내용을 등록합니다.
+`src/content/lectures/`에 강의자료 파일을 만듭니다.
+
+예: `src/content/lectures/basic-python-02.md`
+
+```yaml
+---
+title: "Basic Python Lecture 2"
+description: "두 번째 강의자료에 대한 간단한 설명입니다."
+date: "2026-07-28"
+course: "Basic Python"
+courseSlug: "basic-python"
+lectureNumber: 2
+pdfUrl: "https://pub-xxxxxxxx.r2.dev/lectures/basic-python/BasicPython_lecture_2.pdf"
+theme: "python"
+fileName: "BasicPython_lecture_2.pdf"
+topics:
+  - "Python"
+  - "Programming Basics"
+draft: false
+---
+
+이 자료에 대한 추가 안내를 작성합니다.
+```
+
+`courseSlug`는 `src/content/courses/`에 만든 파일명과 같아야 합니다.
+
+```text
+과정 파일: src/content/courses/basic-python.md
+courseSlug: basic-python
+```
+
+강의자료가 추가되면 해당 과정 페이지에 차시 순으로 자동 정렬되며, 데스크톱에서는 한 줄에 3개씩 표시됩니다.
+
+## 3. R2 CORS 정책
+
+GitHub Pages와 로컬 Astro 개발 서버에서 PDF.js가 PDF를 읽으려면 R2 버킷에 다음 CORS 정책을 적용합니다.
 
 ```json
 [
@@ -68,4 +102,18 @@ PDF.js가 GitHub Pages에서 R2 PDF를 읽으려면 버킷의 CORS 정책에 다
 ]
 ```
 
-R2 대시보드의 버킷 `Settings` → `CORS Policy`에서 등록할 수 있습니다.
+## 4. 공개 전 확인
+
+```powershell
+npm ci
+npm run build
+npm run dev
+```
+
+확인할 주소:
+
+```text
+http://localhost:4321/lectures/
+http://localhost:4321/lectures/basic-python/
+http://localhost:4321/lectures/basic-python/basic-python-01/
+```

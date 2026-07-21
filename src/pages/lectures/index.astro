@@ -3,29 +3,32 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { withBase } from '@/utils/paths';
 
-const lectures = (await getCollection('lectures'))
-  .filter((lecture) => !lecture.data.draft)
-  .sort((a, b) => {
-    const courseCompare = a.data.course.localeCompare(b.data.course, 'ko');
-    if (courseCompare !== 0) return courseCompare;
-    return a.data.lectureNumber - b.data.lectureNumber;
-  });
+const courses = (await getCollection('courses'))
+  .filter((course) => !course.data.draft)
+  .sort((a, b) => a.data.order - b.data.order || a.data.title.localeCompare(b.data.title, 'ko'));
 
-const dateFormatter = new Intl.DateTimeFormat('ko-KR', {
-  year: 'numeric',
-  month: '2-digit',
-  day: '2-digit'
+const lectures = (await getCollection('lectures')).filter((lecture) => !lecture.data.draft);
+
+const courseCards = courses.map((course) => {
+  const materials = lectures
+    .filter((lecture) => lecture.data.courseSlug === course.id)
+    .sort((a, b) => a.data.lectureNumber - b.data.lectureNumber);
+
+  return {
+    course,
+    materialCount: materials.length
+  };
 });
 ---
 
-<BaseLayout title="Lectures" description="직접 진행한 강의의 PDF 자료를 과목과 차시별로 열람하고 내려받을 수 있습니다.">
+<BaseLayout title="Lectures" description="직접 진행한 강의를 과정별로 살펴보고, 각 과정의 PDF 강의자료를 열람할 수 있습니다.">
   <section class="page-hero lecture-page-hero">
     <div class="container page-hero-grid">
       <div>
         <span class="eyebrow">COURSES · MATERIALS · PDF</span>
         <h1>Lectures</h1>
       </div>
-      <p>직접 진행한 강의의 자료를 모아 둔 공간입니다. 강의 카드를 누르면 PDF 페이지를 순서대로 내려보며 읽거나 원본 파일을 내려받을 수 있습니다.</p>
+      <p>직접 진행한 강의를 과정별로 정리한 공간입니다. 강의 과정을 선택하면 차시별 자료를 살펴보고 PDF 페이지를 순서대로 내려보며 읽을 수 있습니다.</p>
     </div>
   </section>
 
@@ -33,46 +36,45 @@ const dateFormatter = new Intl.DateTimeFormat('ko-KR', {
     <div class="container">
       <div class="lecture-section-heading">
         <div>
-          <span class="eyebrow">LECTURE ARCHIVE</span>
-          <h2>강의자료</h2>
+          <span class="eyebrow">COURSE ARCHIVE</span>
+          <h2>강의 과정</h2>
         </div>
-        <p>{lectures.length} material{lectures.length === 1 ? '' : 's'}</p>
+        <p>{courseCards.length} course{courseCards.length === 1 ? '' : 's'}</p>
       </div>
 
-      {lectures.length === 0 ? (
+      {courseCards.length === 0 ? (
         <div class="empty-state standalone lecture-empty-state">
-          <span>NO PUBLIC LECTURES YET</span>
-          <h2>아직 공개된 강의자료가 없습니다.</h2>
-          <p>강의자료를 추가하면 과목명과 차시 정보를 바탕으로 자동 표지가 생성되고, 한 줄에 세 개의 카드로 표시됩니다.</p>
+          <span>NO PUBLIC COURSES YET</span>
+          <h2>아직 공개된 강의 과정이 없습니다.</h2>
+          <p>강의 과정을 추가하면 과정 정보로 자동 표지가 생성되고 카드 형태로 표시됩니다.</p>
         </div>
       ) : (
-        <div class="lecture-grid">
-          {lectures.map((lecture) => (
-            <a class="lecture-card" href={withBase(`/lectures/${lecture.id}/`)}>
-              <div class:list={['lecture-cover', `lecture-theme-${lecture.data.theme}`]}>
+        <div class="lecture-grid course-grid">
+          {courseCards.map(({ course, materialCount }) => (
+            <a class="lecture-card course-card" href={withBase(`/lectures/${course.id}/`)}>
+              <div class:list={['lecture-cover', 'course-cover', `lecture-theme-${course.data.theme}`]}>
                 <div class="lecture-cover-topline">
-                  <span>RAMMER LAB · LECTURES</span>
-                  <strong>{String(lecture.data.lectureNumber).padStart(2, '0')}</strong>
+                  <span>RAMMER LAB · COURSE</span>
+                  <strong>{String(materialCount).padStart(2, '0')}</strong>
                 </div>
                 <div class="lecture-cover-main">
-                  <span>{lecture.data.course}</span>
-                  <h2>{lecture.data.title}</h2>
+                  <span>LECTURE ARCHIVE</span>
+                  <h2>{course.data.title}</h2>
                 </div>
                 <div class="lecture-cover-bottomline">
-                  <span>{new Date(lecture.data.date).getFullYear()}</span>
-                  <span>PDF MATERIAL</span>
+                  <span>{materialCount} MATERIAL{materialCount === 1 ? '' : 'S'}</span>
+                  <span>OPEN COURSE</span>
                 </div>
               </div>
-              <div class="lecture-card-body">
+              <div class="lecture-card-body course-card-body">
                 <div class="lecture-card-meta">
-                  <span>LECTURE {String(lecture.data.lectureNumber).padStart(2, '0')}</span>
-                  <time datetime={lecture.data.date}>{dateFormatter.format(new Date(lecture.data.date))}</time>
+                  <span>COURSE</span>
+                  <span>{materialCount} material{materialCount === 1 ? '' : 's'}</span>
                 </div>
-                <h3>{lecture.data.title}</h3>
-                <p>{lecture.data.description}</p>
-                <div class="lecture-card-footer">
-                  <span>{lecture.data.fileSize ?? 'PDF'}</span>
-                  <strong>자료 보기 →</strong>
+                <h3>{course.data.title}</h3>
+                <p>{course.data.description}</p>
+                <div class="lecture-card-footer course-card-footer">
+                  <strong>강의 들어가기 →</strong>
                 </div>
               </div>
             </a>

@@ -1,0 +1,17 @@
+---
+import { withBase } from '@/utils/paths';
+const target = withBase('/lectures/basic-python/basic-python-01/');
+---
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href={new URL(target, Astro.site)} />
+    <title>강의자료 주소 이동</title>
+  </head>
+  <body>
+    <p><a href={target}>새 강의자료 주소로 이동합니다.</a></p>
+  </body>
+</html>

@@ -1,0 +1,94 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { withBase } from '@/utils/paths';
+
+export async function getStaticPaths() {
+  const courses = (await getCollection('courses')).filter((course) => !course.data.draft);
+  const lectures = (await getCollection('lectures')).filter((lecture) => !lecture.data.draft);
+
+  return courses.map((course) => ({
+    params: { course: course.id },
+    props: {
+      course,
+      lectures: lectures
+        .filter((lecture) => lecture.data.courseSlug === course.id)
+        .sort((a, b) => a.data.lectureNumber - b.data.lectureNumber)
+    }
+  }));
+}
+
+const { course, lectures } = Astro.props;
+const dateFormatter = new Intl.DateTimeFormat('ko-KR', {
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit'
+});
+---
+
+<BaseLayout title={course.data.title} description={course.data.description}>
+  <section class="page-hero lecture-page-hero course-page-hero">
+    <div class="container">
+      <a class="article-back" href={withBase('/lectures/')}>← Lectures</a>
+      <div class="page-hero-grid course-page-hero-grid">
+        <div>
+          <span class="eyebrow">COURSE · {lectures.length} MATERIAL{lectures.length === 1 ? '' : 'S'}</span>
+          <h1>{course.data.title}</h1>
+        </div>
+        <p>{course.data.description}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section lecture-section course-material-section">
+    <div class="container">
+      <div class="lecture-section-heading">
+        <div>
+          <span class="eyebrow">COURSE MATERIALS</span>
+          <h2>강의자료</h2>
+        </div>
+        <p>{lectures.length} material{lectures.length === 1 ? '' : 's'}</p>
+      </div>
+
+      {lectures.length === 0 ? (
+        <div class="empty-state standalone lecture-empty-state">
+          <span>NO PUBLIC MATERIALS YET</span>
+          <h2>아직 공개된 강의자료가 없습니다.</h2>
+          <p>이 과정의 강의자료가 추가되면 한 줄에 세 개씩 표시됩니다.</p>
+        </div>
+      ) : (
+        <div class="lecture-grid">
+          {lectures.map((lecture) => (
+            <a class="lecture-card" href={withBase(`/lectures/${course.id}/${lecture.id}/`)}>
+              <div class:list={['lecture-cover', `lecture-theme-${lecture.data.theme}`]}>
+                <div class="lecture-cover-topline">
+                  <span>RAMMER LAB · LECTURES</span>
+                  <strong>{String(lecture.data.lectureNumber).padStart(2, '0')}</strong>
+                </div>
+                <div class="lecture-cover-main">
+                  <span>{lecture.data.course}</span>
+                  <h2>{lecture.data.title}</h2>
+                </div>
+                <div class="lecture-cover-bottomline">
+                  <span>{new Date(lecture.data.date).getFullYear()}</span>
+                  <span>LECTURE MATERIAL</span>
+                </div>
+              </div>
+              <div class="lecture-card-body">
+                <div class="lecture-card-meta">
+                  <span>LECTURE {String(lecture.data.lectureNumber).padStart(2, '0')}</span>
+                  <time datetime={lecture.data.date}>{dateFormatter.format(new Date(lecture.data.date))}</time>
+                </div>
+                <h3>{lecture.data.title}</h3>
+                <p>{lecture.data.description}</p>
+                <div class="lecture-card-footer material-card-footer">
+                  <strong>강의자료 보기 →</strong>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>

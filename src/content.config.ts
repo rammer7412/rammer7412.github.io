@@ -52,6 +52,17 @@ const journal = defineCollection({
 });
 
 
+const courses = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/courses' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    theme: z.enum(['python', 'security', 'forensics', 'privacy', 'default']).default('default'),
+    order: z.number().int().nonnegative().default(0),
+    draft: z.boolean().default(false)
+  })
+});
+
 const lectures = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/lectures' }),
   schema: z.object({
@@ -59,14 +70,14 @@ const lectures = defineCollection({
     description: z.string(),
     date: z.string(),
     course: z.string(),
+    courseSlug: z.string(),
     lectureNumber: z.number().int().positive(),
     pdfUrl: z.string().url(),
     theme: z.enum(['python', 'security', 'forensics', 'privacy', 'default']).default('default'),
     fileName: z.string().optional(),
-    fileSize: z.string().optional(),
     topics: z.array(z.string()).default([]),
     draft: z.boolean().default(false)
   })
 });
 
-export const collections = { posts, journal, lectures };
+export const collections = { posts, journal, courses, lectures };

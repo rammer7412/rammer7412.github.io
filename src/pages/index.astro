@@ -19,6 +19,7 @@ const projectCount = allPosts.filter((post) => {
 }).length;
 const journalCount = (await getCollection('journal')).filter((item) => !item.data.draft).length;
 const lectureCount = (await getCollection('lectures')).filter((item) => !item.data.draft).length;
+const courseCount = (await getCollection('courses')).filter((item) => !item.data.draft).length;
 
 const overviewItems = [
   {
@@ -36,7 +37,7 @@ const overviewItems = [
   {
     title: 'Lectures',
     description: '직접 진행한 강의와 PDF 자료',
-    count: lectureCount > 0 ? `${lectureCount} materials` : 'No public materials',
+    count: courseCount > 0 ? `${courseCount} course${courseCount === 1 ? '' : 's'}` : 'No public courses',
     href: '/lectures/'
   },
   {
@@ -137,7 +138,7 @@ const overviewItems = [
         </div>
         <div class="home-current-item">
           <span>Lectures</span>
-          <p>{lectureCount > 0 ? `${lectureCount}개의 강의자료 공개 중` : 'No public materials yet'}</p>
+          <p>{courseCount > 0 ? `${courseCount}개 강의 과정 · ${lectureCount}개 자료 공개 중` : 'No public courses yet'}</p>
         </div>
         <div class="home-current-item">
           <span>Journal</span>

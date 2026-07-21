@@ -9,6 +9,9 @@ const posts = getAllPosts();
 const journalEntries = (await getCollection('journal'))
   .filter((item) => !item.data.draft)
   .sort((a, b) => +new Date(b.data.date) - +new Date(a.data.date));
+const courseEntries = (await getCollection('courses'))
+  .filter((item) => !item.data.draft)
+  .sort((a, b) => a.data.order - b.data.order || a.data.title.localeCompare(b.data.title, 'ko'));
 const lectureEntries = (await getCollection('lectures'))
   .filter((item) => !item.data.draft)
   .sort((a, b) => +new Date(b.data.date) - +new Date(a.data.date));
@@ -25,10 +28,17 @@ const journalCommands = journalEntries.map((item) => ({
   search: `${item.data.title} ${item.data.description} ${item.data.category} ${item.data.location ?? ''}`
 }));
 
+const courseCommands = courseEntries.map((item) => ({
+  title: item.data.title,
+  subtitle: 'Lecture course',
+  href: `/lectures/${item.id}/`,
+  search: `${item.data.title} ${item.data.description}`
+}));
+
 const lectureCommands = lectureEntries.map((item) => ({
   title: item.data.title,
   subtitle: `${item.data.course} · Lecture ${String(item.data.lectureNumber).padStart(2, '0')}`,
-  href: `/lectures/${item.id}/`,
+  href: `/lectures/${item.data.courseSlug}/${item.id}/`,
   search: `${item.data.title} ${item.data.description} ${item.data.course} ${(item.data.topics ?? []).join(' ')}`
 }));
 
@@ -67,7 +77,12 @@ const postCommands = posts.map((post) => {
           <span><strong>{item.title}</strong><small>{item.subtitle}</small></span><span>→</span>
         </a>
       ))}
-      {lectureCommands.length > 0 && <p class="command-group-label">Lectures</p>}
+      {(courseCommands.length > 0 || lectureCommands.length > 0) && <p class="command-group-label">Lectures</p>}
+      {courseCommands.map((item) => (
+        <a class="command-item" href={withBase(item.href)} data-command-item data-title={`${item.search} ${item.subtitle}`.toLowerCase()}>
+          <span><strong>{item.title}</strong><small>{item.subtitle}</small></span><span>→</span>
+        </a>
+      ))}
       {lectureCommands.map((item) => (
         <a class="command-item" href={withBase(item.href)} data-command-item data-title={`${item.search} ${item.subtitle}`.toLowerCase()}>
           <span><strong>{item.title}</strong><small>{item.subtitle}</small></span><span>→</span>

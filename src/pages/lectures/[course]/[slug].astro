@@ -1,0 +1,109 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PdfViewer from '@/components/PdfViewer.astro';
+import { getCollection, render } from 'astro:content';
+import { withBase } from '@/utils/paths';
+
+export async function getStaticPaths() {
+  const lectures = (await getCollection('lectures'))
+    .filter((lecture) => !lecture.data.draft)
+    .sort((a, b) => a.data.courseSlug.localeCompare(b.data.courseSlug) || a.data.lectureNumber - b.data.lectureNumber);
+  const courses = (await getCollection('courses')).filter((course) => !course.data.draft);
+
+  return lectures.map((lecture) => {
+    const courseLectures = lectures.filter((item) => item.data.courseSlug === lecture.data.courseSlug);
+    const index = courseLectures.findIndex((item) => item.id === lecture.id);
+    const course = courses.find((item) => item.id === lecture.data.courseSlug);
+
+    return {
+      params: { course: lecture.data.courseSlug, slug: lecture.id },
+      props: {
+        lecture,
+        course,
+        previous: courseLectures[index - 1] ?? null,
+        next: courseLectures[index + 1] ?? null
+      }
+    };
+  });
+}
+
+const { lecture, course, previous, next } = Astro.props;
+const { Content } = await render(lecture);
+const formattedDate = new Intl.DateTimeFormat('ko-KR', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+}).format(new Date(lecture.data.date));
+const fileName = lecture.data.fileName ?? `${lecture.id}.pdf`;
+const courseTitle = course?.data.title ?? lecture.data.course;
+---
+
+<BaseLayout title={lecture.data.title} description={lecture.data.description} type="article">
+  <article class="lecture-detail-page">
+    <header class="lecture-detail-header">
+      <div class="container lecture-detail-heading">
+        <a class="article-back" href={withBase(`/lectures/${lecture.data.courseSlug}/`)}>← {courseTitle}</a>
+        <div class="lecture-detail-grid">
+          <div>
+            <div class="lecture-detail-kicker">
+              <span>{lecture.data.course}</span>
+              <span>LECTURE {String(lecture.data.lectureNumber).padStart(2, '0')}</span>
+            </div>
+            <h1>{lecture.data.title}</h1>
+            <p>{lecture.data.description}</p>
+          </div>
+          <dl class="lecture-detail-info">
+            <div>
+              <dt>Published</dt>
+              <dd>{formattedDate}</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="lecture-detail-actions">
+          <a href={lecture.data.pdfUrl} target="_blank" rel="noreferrer">원본 PDF 열기 ↗</a>
+          <a href="#lecture-viewer">뷰어로 이동 ↓</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="lecture-viewer-section" id="lecture-viewer">
+      <div class="container lecture-viewer-container">
+        <div class="lecture-viewer-intro">
+          <div>
+            <span class="eyebrow">SCROLLABLE PDF VIEWER</span>
+            <h2>강의자료 보기</h2>
+          </div>
+          <p>페이지가 세로로 이어집니다. 화면 너비에 맞추거나 확대·축소한 뒤 아래로 스크롤해 읽을 수 있습니다.</p>
+        </div>
+        <PdfViewer pdfUrl={lecture.data.pdfUrl} fileName={fileName} title={lecture.data.title} />
+      </div>
+    </section>
+
+    <section class="lecture-notes-section">
+      <div class="container lecture-notes-grid">
+        <div>
+          <span class="eyebrow">LECTURE NOTE</span>
+          <h2>자료 안내</h2>
+        </div>
+        <div class="article-content lecture-note-content"><Content /></div>
+      </div>
+    </section>
+
+    {(previous || next) && (
+      <nav class="container lecture-pagination" aria-label="강의자료 이동">
+        {previous ? (
+          <a href={withBase(`/lectures/${lecture.data.courseSlug}/${previous.id}/`)}>
+            <span>← PREVIOUS</span>
+            <strong>{previous.data.title}</strong>
+          </a>
+        ) : <span></span>}
+        {next ? (
+          <a href={withBase(`/lectures/${lecture.data.courseSlug}/${next.id}/`)}>
+            <span>NEXT →</span>
+            <strong>{next.data.title}</strong>
+          </a>
+        ) : <span></span>}
+      </nav>
+    )}
+  </article>
+</BaseLayout>

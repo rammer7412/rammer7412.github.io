@@ -3771,3 +3771,45 @@ body.journal-modal-open {
     border-left: 1px solid var(--border-strong);
   }
 }
+
+/* Course-first Lectures archive */
+.course-grid .course-card-body > p {
+  min-height: 92px;
+}
+
+.course-cover {
+  min-height: 310px;
+}
+
+.course-cover .lecture-cover-main h2 {
+  max-width: 320px;
+  font-size: clamp(36px, 4vw, 52px);
+}
+
+.course-card-footer,
+.material-card-footer {
+  justify-content: flex-end;
+}
+
+.course-page-hero .article-back {
+  display: inline-flex;
+  margin-bottom: 38px;
+}
+
+.course-page-hero-grid {
+  align-items: end;
+}
+
+.course-material-section {
+  min-height: 520px;
+}
+
+@media (max-width: 680px) {
+  .course-cover {
+    min-height: 285px;
+  }
+
+  .course-grid .course-card-body > p {
+    min-height: auto;
+  }
+}

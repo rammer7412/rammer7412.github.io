@@ -53,3 +53,10 @@
 ## Minimal home update
 
 메인 화면은 `Latest Writing`을 최상단에 배치하고, 짧은 소개, Writing/Projects/Journal/About 안내, Currently 순서로 단순화했습니다. 기존의 대형 Hero, 대표 글, 주제 지도, 반복 안내 섹션은 홈에서 제거했습니다.
+
+## Lectures course hierarchy
+
+- `/lectures/` now shows one automatically generated card per course.
+- Selecting a course opens a three-column material archive.
+- Selecting a material opens the existing PDF.js continuous-scroll viewer.
+- Format and file-size metadata are intentionally not displayed.
