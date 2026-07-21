@@ -31,8 +31,15 @@ jobs:
           cache-dependency-path: package-lock.json
           registry-url: https://registry.npmjs.org
 
+      - name: Verify package lock registry
+        run: |
+          if grep -Eq "internal\.api\.openai\.org|applied-caas-gateway" package-lock.json; then
+            echo "package-lock.json contains an inaccessible internal registry URL."
+            exit 1
+          fi
+
       - name: Install dependencies
-        run: npm ci --no-audit --no-fund
+        run: npm ci --no-audit --no-fund --registry=https://registry.npmjs.org
 
       - name: Build
         run: npm run build
