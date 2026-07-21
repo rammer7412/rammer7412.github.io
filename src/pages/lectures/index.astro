@@ -1,0 +1,84 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { withBase } from '@/utils/paths';
+
+const lectures = (await getCollection('lectures'))
+  .filter((lecture) => !lecture.data.draft)
+  .sort((a, b) => {
+    const courseCompare = a.data.course.localeCompare(b.data.course, 'ko');
+    if (courseCompare !== 0) return courseCompare;
+    return a.data.lectureNumber - b.data.lectureNumber;
+  });
+
+const dateFormatter = new Intl.DateTimeFormat('ko-KR', {
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit'
+});
+---
+
+<BaseLayout title="Lectures" description="직접 진행한 강의의 PDF 자료를 과목과 차시별로 열람하고 내려받을 수 있습니다.">
+  <section class="page-hero lecture-page-hero">
+    <div class="container page-hero-grid">
+      <div>
+        <span class="eyebrow">COURSES · MATERIALS · PDF</span>
+        <h1>Lectures</h1>
+      </div>
+      <p>직접 진행한 강의의 자료를 모아 둔 공간입니다. 강의 카드를 누르면 PDF 페이지를 순서대로 내려보며 읽거나 원본 파일을 내려받을 수 있습니다.</p>
+    </div>
+  </section>
+
+  <section class="section lecture-section">
+    <div class="container">
+      <div class="lecture-section-heading">
+        <div>
+          <span class="eyebrow">LECTURE ARCHIVE</span>
+          <h2>강의자료</h2>
+        </div>
+        <p>{lectures.length} material{lectures.length === 1 ? '' : 's'}</p>
+      </div>
+
+      {lectures.length === 0 ? (
+        <div class="empty-state standalone lecture-empty-state">
+          <span>NO PUBLIC LECTURES YET</span>
+          <h2>아직 공개된 강의자료가 없습니다.</h2>
+          <p>강의자료를 추가하면 과목명과 차시 정보를 바탕으로 자동 표지가 생성되고, 한 줄에 세 개의 카드로 표시됩니다.</p>
+        </div>
+      ) : (
+        <div class="lecture-grid">
+          {lectures.map((lecture) => (
+            <a class="lecture-card" href={withBase(`/lectures/${lecture.id}/`)}>
+              <div class:list={['lecture-cover', `lecture-theme-${lecture.data.theme}`]}>
+                <div class="lecture-cover-topline">
+                  <span>RAMMER LAB · LECTURES</span>
+                  <strong>{String(lecture.data.lectureNumber).padStart(2, '0')}</strong>
+                </div>
+                <div class="lecture-cover-main">
+                  <span>{lecture.data.course}</span>
+                  <h2>{lecture.data.title}</h2>
+                </div>
+                <div class="lecture-cover-bottomline">
+                  <span>{new Date(lecture.data.date).getFullYear()}</span>
+                  <span>PDF MATERIAL</span>
+                </div>
+              </div>
+              <div class="lecture-card-body">
+                <div class="lecture-card-meta">
+                  <span>LECTURE {String(lecture.data.lectureNumber).padStart(2, '0')}</span>
+                  <time datetime={lecture.data.date}>{dateFormatter.format(new Date(lecture.data.date))}</time>
+                </div>
+                <h3>{lecture.data.title}</h3>
+                <p>{lecture.data.description}</p>
+                <div class="lecture-card-footer">
+                  <span>{lecture.data.fileSize ?? 'PDF'}</span>
+                  <strong>자료 보기 →</strong>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>

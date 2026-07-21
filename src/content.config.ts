@@ -51,4 +51,22 @@ const journal = defineCollection({
   })
 });
 
-export const collections = { posts, journal };
+
+const lectures = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/lectures' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    date: z.string(),
+    course: z.string(),
+    lectureNumber: z.number().int().positive(),
+    pdfUrl: z.string().url(),
+    theme: z.enum(['python', 'security', 'forensics', 'privacy', 'default']).default('default'),
+    fileName: z.string().optional(),
+    fileSize: z.string().optional(),
+    topics: z.array(z.string()).default([]),
+    draft: z.boolean().default(false)
+  })
+});
+
+export const collections = { posts, journal, lectures };

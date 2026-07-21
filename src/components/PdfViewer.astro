@@ -1,0 +1,272 @@
+---
+interface Props {
+  pdfUrl: string;
+  fileName: string;
+  title: string;
+}
+
+const { pdfUrl, fileName, title } = Astro.props;
+---
+
+<section
+  class="pdf-viewer"
+  data-pdf-viewer
+  data-pdf-url={pdfUrl}
+  data-pdf-filename={fileName}
+  aria-label={`${title} PDF 뷰어`}
+>
+  <div class="pdf-toolbar" aria-label="PDF 도구 모음">
+    <div class="pdf-toolbar-group pdf-page-status" aria-live="polite">
+      <span>PAGE</span>
+      <strong data-pdf-current>–</strong>
+      <span>/</span>
+      <span data-pdf-total>–</span>
+    </div>
+
+    <div class="pdf-toolbar-group pdf-zoom-controls">
+      <button type="button" data-pdf-zoom-out aria-label="축소">−</button>
+      <button type="button" data-pdf-fit>너비 맞춤</button>
+      <button type="button" data-pdf-zoom-in aria-label="확대">＋</button>
+    </div>
+
+    <div class="pdf-toolbar-group pdf-toolbar-actions">
+      <button type="button" data-pdf-fullscreen>전체 화면</button>
+      <button type="button" data-pdf-download>PDF 다운로드</button>
+    </div>
+  </div>
+
+  <div class="pdf-loading" data-pdf-loading>
+    <span class="pdf-loading-dot" aria-hidden="true"></span>
+    <p>강의자료를 불러오는 중입니다.</p>
+  </div>
+
+  <div class="pdf-pages" data-pdf-pages></div>
+
+  <div class="pdf-error" data-pdf-error hidden>
+    <span>PDF VIEWER ERROR</span>
+    <h2>강의자료를 불러오지 못했습니다.</h2>
+    <p>네트워크 상태 또는 PDF 저장소의 CORS 설정을 확인한 뒤 다시 시도해 주세요.</p>
+    <div>
+      <button type="button" data-pdf-retry>다시 시도</button>
+      <a href={pdfUrl} target="_blank" rel="noreferrer">원본 PDF 열기 ↗</a>
+    </div>
+  </div>
+
+  <noscript>
+    <p class="pdf-noscript">PDF 뷰어를 사용하려면 JavaScript가 필요합니다. <a href={pdfUrl}>원본 PDF 열기</a></p>
+  </noscript>
+</section>
+
+<script>
+  import * as pdfjsLib from 'pdfjs-dist';
+  import workerUrl from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
+
+  pdfjsLib.GlobalWorkerOptions.workerSrc = workerUrl;
+
+  const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
+
+  document.querySelectorAll<HTMLElement>('[data-pdf-viewer]').forEach((root) => {
+    const pdfUrl = root.dataset.pdfUrl;
+    const fileName = root.dataset.pdfFilename || 'lecture.pdf';
+    const pagesElement = root.querySelector<HTMLElement>('[data-pdf-pages]');
+    const loadingElement = root.querySelector<HTMLElement>('[data-pdf-loading]');
+    const errorElement = root.querySelector<HTMLElement>('[data-pdf-error]');
+    const currentElement = root.querySelector<HTMLElement>('[data-pdf-current]');
+    const totalElement = root.querySelector<HTMLElement>('[data-pdf-total]');
+    const zoomInButton = root.querySelector<HTMLButtonElement>('[data-pdf-zoom-in]');
+    const zoomOutButton = root.querySelector<HTMLButtonElement>('[data-pdf-zoom-out]');
+    const fitButton = root.querySelector<HTMLButtonElement>('[data-pdf-fit]');
+    const retryButton = root.querySelector<HTMLButtonElement>('[data-pdf-retry]');
+    const fullscreenButton = root.querySelector<HTMLButtonElement>('[data-pdf-fullscreen]');
+    const downloadButton = root.querySelector<HTMLButtonElement>('[data-pdf-download]');
+
+    if (!pdfUrl || !pagesElement) return;
+
+    let pdfDocument: any = null;
+    let zoom = 1;
+    let resizeTimer = 0;
+    let renderGeneration = 0;
+    let renderTasks: any[] = [];
+    let pageObserver: IntersectionObserver | null = null;
+
+    const setControlsDisabled = (disabled: boolean) => {
+      [zoomInButton, zoomOutButton, fitButton, fullscreenButton, downloadButton].forEach((button) => {
+        if (button) button.disabled = disabled;
+      });
+    };
+
+    const cancelRenderTasks = () => {
+      renderTasks.forEach((task) => {
+        try {
+          task.cancel();
+        } catch {
+          // 이미 끝난 렌더링 작업은 그대로 둡니다.
+        }
+      });
+      renderTasks = [];
+    };
+
+    const updateCurrentPageObserver = () => {
+      pageObserver?.disconnect();
+      pageObserver = new IntersectionObserver(
+        (entries) => {
+          const visible = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+          if (visible && currentElement) {
+            currentElement.textContent = (visible.target as HTMLElement).dataset.pageNumber || '1';
+          }
+        },
+        { root: null, rootMargin: '-20% 0px -55% 0px', threshold: [0.05, 0.25, 0.5, 0.75] }
+      );
+      pagesElement.querySelectorAll('[data-pdf-page]').forEach((page) => pageObserver?.observe(page));
+    };
+
+    const renderPages = async () => {
+      if (!pdfDocument) return;
+      const generation = ++renderGeneration;
+      cancelRenderTasks();
+      pagesElement.classList.add('is-rendering');
+
+      const pageWidth = Math.max(280, pagesElement.clientWidth - (window.innerWidth <= 680 ? 24 : 64));
+      const outputScale = Math.min(window.devicePixelRatio || 1, 2);
+
+      for (let pageNumber = 1; pageNumber <= pdfDocument.numPages; pageNumber += 1) {
+        if (generation !== renderGeneration) return;
+
+        const page = await pdfDocument.getPage(pageNumber);
+        const unscaledViewport = page.getViewport({ scale: 1 });
+        const fitScale = pageWidth / unscaledViewport.width;
+        const viewport = page.getViewport({ scale: fitScale * zoom });
+
+        let pageShell = pagesElement.querySelector<HTMLElement>(`[data-pdf-page="${pageNumber}"]`);
+        if (!pageShell) {
+          pageShell = document.createElement('article');
+          pageShell.className = 'pdf-page-shell';
+          pageShell.dataset.pdfPage = String(pageNumber);
+          pageShell.dataset.pageNumber = String(pageNumber);
+          pageShell.innerHTML = `
+            <div class="pdf-page-label"><span>PAGE</span><strong>${String(pageNumber).padStart(2, '0')}</strong></div>
+            <div class="pdf-canvas-wrap"><canvas aria-label="PDF ${pageNumber}페이지"></canvas></div>
+          `;
+          pagesElement.appendChild(pageShell);
+        }
+
+        const canvas = pageShell.querySelector<HTMLCanvasElement>('canvas');
+        const canvasWrap = pageShell.querySelector<HTMLElement>('.pdf-canvas-wrap');
+        if (!canvas || !canvasWrap) continue;
+
+        canvas.width = Math.floor(viewport.width * outputScale);
+        canvas.height = Math.floor(viewport.height * outputScale);
+        canvas.style.width = `${Math.floor(viewport.width)}px`;
+        canvas.style.height = `${Math.floor(viewport.height)}px`;
+        canvasWrap.style.setProperty('--pdf-page-width', `${Math.floor(viewport.width)}px`);
+
+        const context = canvas.getContext('2d', { alpha: false });
+        if (!context) continue;
+
+        const renderTask = page.render({
+          canvasContext: context,
+          viewport,
+          transform: outputScale === 1 ? undefined : [outputScale, 0, 0, outputScale, 0, 0]
+        });
+        renderTasks.push(renderTask);
+
+        try {
+          await renderTask.promise;
+        } catch (error: any) {
+          if (error?.name !== 'RenderingCancelledException') throw error;
+        } finally {
+          renderTasks = renderTasks.filter((task) => task !== renderTask);
+        }
+      }
+
+      if (generation === renderGeneration) {
+        pagesElement.classList.remove('is-rendering');
+        updateCurrentPageObserver();
+      }
+    };
+
+    const loadPdf = async () => {
+      setControlsDisabled(true);
+      errorElement?.setAttribute('hidden', '');
+      loadingElement?.removeAttribute('hidden');
+      pagesElement.replaceChildren();
+      if (currentElement) currentElement.textContent = '–';
+      if (totalElement) totalElement.textContent = '–';
+
+      try {
+        const loadingTask = pdfjsLib.getDocument({ url: pdfUrl });
+        pdfDocument = await loadingTask.promise;
+        if (totalElement) totalElement.textContent = String(pdfDocument.numPages);
+        loadingElement?.setAttribute('hidden', '');
+        setControlsDisabled(false);
+        await renderPages();
+      } catch (error) {
+        console.error('PDF.js load error:', error);
+        loadingElement?.setAttribute('hidden', '');
+        pagesElement.replaceChildren();
+        errorElement?.removeAttribute('hidden');
+        setControlsDisabled(false);
+      }
+    };
+
+    zoomInButton?.addEventListener('click', () => {
+      zoom = clamp(Number((zoom + 0.15).toFixed(2)), 0.65, 1.9);
+      void renderPages();
+    });
+
+    zoomOutButton?.addEventListener('click', () => {
+      zoom = clamp(Number((zoom - 0.15).toFixed(2)), 0.65, 1.9);
+      void renderPages();
+    });
+
+    fitButton?.addEventListener('click', () => {
+      zoom = 1;
+      void renderPages();
+    });
+
+    retryButton?.addEventListener('click', () => void loadPdf());
+
+    fullscreenButton?.addEventListener('click', async () => {
+      try {
+        if (document.fullscreenElement) await document.exitFullscreen();
+        else await root.requestFullscreen();
+      } catch (error) {
+        console.error('Fullscreen error:', error);
+      }
+    });
+
+    downloadButton?.addEventListener('click', async () => {
+      const originalLabel = downloadButton.textContent;
+      downloadButton.disabled = true;
+      downloadButton.textContent = '준비 중…';
+      try {
+        const response = await fetch(pdfUrl);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const blob = await response.blob();
+        const objectUrl = URL.createObjectURL(blob);
+        const anchor = document.createElement('a');
+        anchor.href = objectUrl;
+        anchor.download = fileName;
+        document.body.appendChild(anchor);
+        anchor.click();
+        anchor.remove();
+        setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
+      } catch (error) {
+        console.error('PDF download error:', error);
+        window.open(pdfUrl, '_blank', 'noopener,noreferrer');
+      } finally {
+        downloadButton.disabled = false;
+        downloadButton.textContent = originalLabel;
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(() => void renderPages(), 180);
+    });
+
+    void loadPdf();
+  });
+</script>

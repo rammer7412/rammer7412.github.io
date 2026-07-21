@@ -9,6 +9,9 @@ const posts = getAllPosts();
 const journalEntries = (await getCollection('journal'))
   .filter((item) => !item.data.draft)
   .sort((a, b) => +new Date(b.data.date) - +new Date(a.data.date));
+const lectureEntries = (await getCollection('lectures'))
+  .filter((item) => !item.data.draft)
+  .sort((a, b) => +new Date(b.data.date) - +new Date(a.data.date));
 const pageCommands = [
   ...navigation.map((item) => ({ title: item.label, subtitle: '페이지', href: item.href })),
   { title: 'Privacy Notice', subtitle: '쿠키 및 외부 서비스 안내', href: '/site-privacy/' },
@@ -20,6 +23,13 @@ const journalCommands = journalEntries.map((item) => ({
   subtitle: `Journal · ${item.data.category}`,
   href: `/journal/${item.id}/`,
   search: `${item.data.title} ${item.data.description} ${item.data.category} ${item.data.location ?? ''}`
+}));
+
+const lectureCommands = lectureEntries.map((item) => ({
+  title: item.data.title,
+  subtitle: `${item.data.course} · Lecture ${String(item.data.lectureNumber).padStart(2, '0')}`,
+  href: `/lectures/${item.id}/`,
+  search: `${item.data.title} ${item.data.description} ${item.data.course} ${(item.data.topics ?? []).join(' ')}`
 }));
 
 const postCommands = posts.map((post) => {
@@ -53,6 +63,12 @@ const postCommands = posts.map((post) => {
       ))}
       <p class="command-group-label">Posts</p>
       {postCommands.map((item) => (
+        <a class="command-item" href={withBase(item.href)} data-command-item data-title={`${item.search} ${item.subtitle}`.toLowerCase()}>
+          <span><strong>{item.title}</strong><small>{item.subtitle}</small></span><span>→</span>
+        </a>
+      ))}
+      {lectureCommands.length > 0 && <p class="command-group-label">Lectures</p>}
+      {lectureCommands.map((item) => (
         <a class="command-item" href={withBase(item.href)} data-command-item data-title={`${item.search} ${item.subtitle}`.toLowerCase()}>
           <span><strong>{item.title}</strong><small>{item.subtitle}</small></span><span>→</span>
         </a>

@@ -12,6 +12,7 @@ export const navigation = [
   { label: 'About', href: '/about/' },
   { label: 'Writing', href: '/writing/' },
   { label: 'Projects', href: '/projects/' },
+  { label: 'Lectures', href: '/lectures/' },
   { label: 'Journal', href: '/journal/' }
 ];
 

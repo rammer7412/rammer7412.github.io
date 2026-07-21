@@ -186,3 +186,8 @@ adsenseClient: 'ca-pub-8463924430150624'
 - `.env*`
 - Windows의 `Thumbs.db`, `Desktop.ini`
 - IDE 및 로그 파일
+
+
+## Lectures
+
+강의자료 추가와 Cloudflare R2 연결 방법은 [`LECTURES_SETUP.md`](./LECTURES_SETUP.md)를 참고하세요.
