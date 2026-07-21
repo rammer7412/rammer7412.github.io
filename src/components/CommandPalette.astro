@@ -1,26 +1,52 @@
 ---
+import { navigation, site } from '@/data/site';
+import { getAllPosts, normalizeDomain, normalizeFormat } from '@/utils/posts';
+import { domainMeta, formatMeta } from '@/data/site';
 import { withBase } from '@/utils/paths';
 
-const commands = [
-  { title: '전공 노트 보기', subtitle: 'OS, Security, C, Math', href: '/notes/' },
-  { title: '문제 풀이 보기', subtitle: 'BOJ, algorithms, 풀이 기록', href: '/problems/' },
-  { title: '실험 기록 보기', subtitle: 'xv6, Docker, deployment labs', href: '/labs/' },
-  { title: '프로젝트 보기', subtitle: 'Mini Judge, app, portfolio', href: '/projects/' },
-  { title: '삽질 로그 보기', subtitle: 'Things I Broke', href: '/labs/#things-i-broke' },
-  { title: 'About', subtitle: '블로그와 운영자 소개', href: '/about/' }
+const posts = getAllPosts();
+const pageCommands = [
+  ...navigation.map((item) => ({ title: item.label, subtitle: '페이지', href: item.href })),
+  { title: '사이트 개인정보 안내', subtitle: '쿠키 및 외부 서비스 안내', href: '/site-privacy/' },
+  { title: 'GitHub', subtitle: site.github, href: site.github, external: true }
 ];
+
+const postCommands = posts.map((post) => {
+  const domain = normalizeDomain(post.frontmatter);
+  const format = normalizeFormat(post.frontmatter);
+  return {
+    title: post.frontmatter.title,
+    subtitle: `${domainMeta[domain]?.label ?? post.frontmatter.category} · ${formatMeta[format] ?? format}`,
+    href: `/posts/${post.slug}/`,
+    search: `${post.frontmatter.title} ${post.frontmatter.description} ${post.frontmatter.category} ${(post.frontmatter.tags ?? []).join(' ')}`
+  };
+});
 ---
 
 <div class="command-backdrop" data-command-backdrop aria-hidden="true">
-  <div class="command-modal" role="dialog" aria-modal="true" aria-label="Command palette">
-    <input class="command-input" data-command-input placeholder="Search notes, problems, labs..." />
+  <div class="command-modal" role="dialog" aria-modal="true" aria-label="사이트 검색">
+    <div class="command-input-wrap">
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <circle cx="11" cy="11" r="7" />
+        <path d="m20 20-3.6-3.6" />
+      </svg>
+      <input class="command-input" data-command-input placeholder="글 제목, 설명, 태그 검색..." />
+      <kbd>ESC</kbd>
+    </div>
     <div class="command-list" data-command-list>
-      {commands.map((item) => (
-        <a class="command-item" href={withBase(item.href)} data-command-item data-title={`${item.title} ${item.subtitle}`.toLowerCase()}>
-          <strong>{item.title}</strong><br />
-          <span>{item.subtitle}</span>
+      <p class="command-group-label">Pages</p>
+      {pageCommands.map((item) => (
+        <a class="command-item" href={item.external ? item.href : withBase(item.href)} target={item.external ? '_blank' : undefined} rel={item.external ? 'noreferrer' : undefined} data-command-item data-title={`${item.title} ${item.subtitle}`.toLowerCase()}>
+          <span><strong>{item.title}</strong><small>{item.subtitle}</small></span><span>→</span>
         </a>
       ))}
+      <p class="command-group-label">Posts</p>
+      {postCommands.map((item) => (
+        <a class="command-item" href={withBase(item.href)} data-command-item data-title={`${item.search} ${item.subtitle}`.toLowerCase()}>
+          <span><strong>{item.title}</strong><small>{item.subtitle}</small></span><span>→</span>
+        </a>
+      ))}
+      <p class="command-empty" data-command-empty hidden>검색 결과가 없습니다.</p>
     </div>
   </div>
 </div>
@@ -30,18 +56,22 @@ const commands = [
   const input = document.querySelector('[data-command-input]');
   const openButtons = document.querySelectorAll('[data-command-open]');
   const items = Array.from(document.querySelectorAll('[data-command-item]'));
+  const empty = document.querySelector('[data-command-empty]');
 
   const open = () => {
     backdrop?.setAttribute('data-open', 'true');
     backdrop?.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
     setTimeout(() => input?.focus(), 0);
   };
 
   const close = () => {
     backdrop?.setAttribute('data-open', 'false');
     backdrop?.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
     if (input) input.value = '';
-    items.forEach((item) => item.style.display = 'block');
+    items.forEach((item) => item.style.display = 'flex');
+    if (empty) empty.hidden = true;
   };
 
   openButtons.forEach((btn) => btn.addEventListener('click', open));
@@ -58,10 +88,14 @@ const commands = [
   });
 
   input?.addEventListener('input', () => {
-    const q = input.value.trim().toLowerCase();
+    const query = input.value.trim().toLowerCase();
+    let visible = 0;
     items.forEach((item) => {
       const target = item.getAttribute('data-title') || '';
-      item.style.display = target.includes(q) ? 'block' : 'none';
+      const matched = target.includes(query);
+      item.style.display = matched ? 'flex' : 'none';
+      if (matched) visible += 1;
     });
+    if (empty) empty.hidden = visible !== 0;
   });
 </script>

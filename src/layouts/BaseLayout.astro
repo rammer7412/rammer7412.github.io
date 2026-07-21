@@ -4,10 +4,14 @@ import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import CommandPalette from '@/components/CommandPalette.astro';
 import { site } from '@/data/site';
+import { withBase } from '@/utils/paths';
 
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  type?: string;
+  noindex?: boolean;
 }
 
 const {
@@ -15,9 +19,12 @@ const {
   description = site.description,
   image = '/og-image.png',
   type = 'website',
+  noindex = false
 } = Astro.props;
 
-const pageTitle = title === site.title ? site.title : `${site.title}`;
+const pageTitle = title === site.title ? site.title : `${title} | ${site.title}`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
+const imageURL = new URL(withBase(image), Astro.site ?? Astro.url.origin);
 ---
 
 <!doctype html>
@@ -26,20 +33,47 @@ const pageTitle = title === site.title ? site.title : `${site.title}`;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <meta name="google-site-verification" content="SxHdZcAdMb-dyUnpHtPFp_aagRqt1bNLqSK4z6Q_eb4" />
+    <meta name="theme-color" content="#f7f8fa" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <meta property="og:site_name" content={site.title} />
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={imageURL} />
+    <meta property="og:locale" content={site.locale} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageURL} />
+
     <title>{pageTitle}</title>
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8463924430150624"
-     crossorigin="anonymous"></script>
+    <link rel="icon" type="image/png" href={withBase('/favicon-96x96.png')} sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
+    <link rel="shortcut icon" href={withBase('/favicon.ico')} />
+    <link rel="apple-touch-icon" sizes="180x180" href={withBase('/apple-touch-icon.png')} />
+    <link rel="manifest" href={withBase('/site.webmanifest')} />
+    {site.adsenseClient && (
+      <script
+        async
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${site.adsenseClient}`}
+        crossorigin="anonymous"
+      ></script>
+    )}
+    <script is:inline>
+      const savedTheme = localStorage.getItem('rammer-theme');
+      const preferredDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.dataset.theme = savedTheme || (preferredDark ? 'dark' : 'light');
+    </script>
   </head>
   <body>
     <div class="progress-bar" id="progress-bar"></div>
+    <a class="skip-link" href="#main-content">본문으로 바로가기</a>
     <Header />
-    <main>
+    <main id="main-content">
       <slot />
     </main>
     <Footer />

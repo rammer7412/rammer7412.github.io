@@ -1,23 +1,21 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Hero from '@/components/Hero.astro';
+import PerspectiveSection from '@/components/PerspectiveSection.astro';
 import CategoryGrid from '@/components/CategoryGrid.astro';
+import FeaturedPosts from '@/components/FeaturedPosts.astro';
 import RecentLog from '@/components/RecentLog.astro';
 import KnowledgeMap from '@/components/KnowledgeMap.astro';
 import MistakeArchive from '@/components/MistakeArchive.astro';
+import { getAllPosts } from '@/utils/posts';
+import { site } from '@/data/site';
 
-const modules = import.meta.glob('../content/posts/*.md');
-const posts = await Promise.all(Object.entries(modules).map(async ([path, load]) => {
-  const mod: any = await load();
-  return {
-    slug: path.split('/').pop()?.replace('.md', '') ?? '',
-    frontmatter: mod.frontmatter
-  };
-}));
-posts.sort((a, b) => +new Date(b.frontmatter.date) - +new Date(a.frontmatter.date));
+const posts = getAllPosts();
 ---
-<BaseLayout title="rammer-lab" description="배운 것, 부순 것, 디버깅한 것, 끝내 이해한 것을 기록합니다.">
+<BaseLayout title={site.title} description={site.description}>
   <Hero />
+  <PerspectiveSection />
+  <FeaturedPosts posts={posts} />
   <CategoryGrid />
   <RecentLog posts={posts} />
   <KnowledgeMap />

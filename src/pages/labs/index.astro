@@ -1,40 +1,18 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import PostArchive from '@/components/PostArchive.astro';
 import MistakeArchive from '@/components/MistakeArchive.astro';
-import { withBase } from '@/utils/paths';
+import { getAllPosts, normalizeFormat } from '@/utils/posts';
 
-const modules = import.meta.glob('../../content/posts/*.md');
-const posts = await Promise.all(Object.entries(modules).map(async ([path, load]) => {
-  const mod: any = await load();
-  return {
-    slug: path.split('/').pop()?.replace('.md', '') ?? '',
-    frontmatter: mod.frontmatter
-  };
-}));
-const labs = posts
-  .filter((post) => post.frontmatter.type === 'lab')
-  .sort((a, b) => +new Date(b.frontmatter.date) - +new Date(a.frontmatter.date));
+const posts = getAllPosts().filter((post) => normalizeFormat(post.frontmatter) === 'lab');
 ---
-<BaseLayout title="Labs" description="실험 기록과 삽질 로그">
-  <section class="page-head">
-    <div class="container">
-      <span class="badge">~/labs</span>
-      <h1>실험 기록</h1>
-      <p>xv6, Docker, 배포, 보안 실습처럼 직접 만지고 깨지면서 이해한 내용을 기록합니다.</p>
+<BaseLayout title="실습 기록" description="시스템, 보안, 개발 과정에서 직접 구현하고 검증한 실습 기록입니다.">
+  <section class="page-hero compact">
+    <div class="container page-hero-grid">
+      <div><span class="eyebrow">LAB NOTES</span><h1>실습 기록</h1></div>
+      <p>직접 구현하고 실패하고 검증한 과정을 남깁니다. 결과보다 문제를 좁혀간 과정과 재현 가능한 근거를 중요하게 봅니다.</p>
     </div>
   </section>
-  <section class="container post-list">
-    {labs.map((post) => (
-      <a class="post-card" href={withBase(`/posts/${post.slug}/`)}>
-        <div class="post-meta">
-          <span>{post.frontmatter.date}</span>
-          <span>[{post.frontmatter.category}]</span>
-          {(post.frontmatter.tags ?? []).slice(0, 4).map((tag: string) => <span>#{tag}</span>)}
-        </div>
-        <h3>{post.frontmatter.title}</h3>
-        <p>{post.frontmatter.description}</p>
-      </a>
-    ))}
-  </section>
+  <section class="container archive-section"><PostArchive posts={posts} showFormatFilters={false} /></section>
   <MistakeArchive />
 </BaseLayout>

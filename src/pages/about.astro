@@ -1,25 +1,45 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import { site } from '@/data/site';
 ---
-<BaseLayout title="About" description="블로그 소개">
-  <section class="page-head">
-    <div class="container">
-      <span class="badge">~/about</span>
-      <h1>About this lab</h1>
-      <p>이 블로그는 완성된 지식보다, 이해하기까지의 과정을 남기는 개인 CS 연구 노트입니다.</p>
+<BaseLayout title="소개" description="Rammer Lab의 관심 분야, 글쓰기 원칙과 운영 방향을 소개합니다.">
+  <section class="page-hero about-hero">
+    <div class="container page-hero-grid">
+      <div>
+        <span class="eyebrow">ABOUT RAMMER LAB</span>
+        <h1>기술과 개인정보보호의<br />접점을 공부합니다.</h1>
+      </div>
+      <p>컴퓨터공학의 기술 기반을 바탕으로 개인정보가 실제 서비스에서 어떻게 처리되고 보호되는지 이해하는 것을 목표로 합니다.</p>
     </div>
   </section>
-  <section class="section">
-    <div class="container">
-      <div class="article-main glass">
-        <div class="article-content" style="margin-top:0">
-          <h2>What I write</h2>
-          <p>운영체제, 보안, C언어, 수학, 알고리즘 문제 풀이, 프로젝트 기록을 정리합니다.</p>
-          <h2>Writing rule</h2>
-          <p>개념은 시험 직전에도 읽을 수 있게, 실험 기록은 같은 실수를 반복하지 않도록, 문제 풀이는 사고 과정이 보이도록 작성합니다.</p>
-          <h2>Customize</h2>
-          <p><code>src/data/site.ts</code>에서 이름, GitHub 링크, 카테고리, Knowledge Map, 삽질 로그를 바꾸면 됩니다.</p>
-        </div>
+
+  <section class="section about-section">
+    <div class="container about-grid">
+      <aside class="about-profile">
+        <span class="profile-mark">R</span>
+        <h2>{site.author}</h2>
+        <p>Computer Science · Privacy · Security</p>
+        <a href={site.github} target="_blank" rel="noreferrer">GitHub ↗</a>
+        <a href={`mailto:${site.email}`}>Email ↗</a>
+      </aside>
+
+      <div class="about-content">
+        <section>
+          <span class="section-number">01</span>
+          <div><h2>관심 분야</h2><p>개인정보보호, 프라이버시 엔지니어링, 보안 컨설팅과 디지털포렌식에 관심이 있습니다. 운영체제, 소프트웨어 보안, 암호수학과 개발 경험을 개인정보보호 문제를 이해하는 기술 기반으로 연결하고 있습니다.</p></div>
+        </section>
+        <section>
+          <span class="section-number">02</span>
+          <div><h2>이곳에 기록하는 것</h2><p>전공 학습 노트와 실습 기록뿐 아니라 논문·보고서에 대한 견해, 기업과 서비스의 개인정보보호체계 분석, 직접 수행한 프로젝트의 설계와 회고를 정리합니다.</p></div>
+        </section>
+        <section>
+          <span class="section-number">03</span>
+          <div><h2>글쓰기 원칙</h2><ul><li>공개된 자료와 직접 확인한 사실을 구분합니다.</li><li>요약에서 끝내지 않고 제 생각과 한계를 함께 적습니다.</li><li>기술, 제도, 조직 운영 중 하나의 관점에만 머물지 않습니다.</li><li>실습 글은 가능한 한 재현할 수 있는 조건과 과정을 남깁니다.</li></ul></div>
+        </section>
+        <section>
+          <span class="section-number">04</span>
+          <div><h2>분석 글에 관한 안내</h2><p>기업이나 서비스에 대한 글은 공개 자료를 기반으로 한 개인적인 학습·분석이며, 공식 감사나 법률적 판단을 의미하지 않습니다. 자료가 부족한 부분은 추정하지 않고 분석의 한계로 명시합니다.</p></div>
+        </section>
       </div>
     </div>
   </section>

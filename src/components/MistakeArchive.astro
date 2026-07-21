@@ -1,22 +1,23 @@
 ---
-import { mistakeCards } from '@/data/site';
+import { learningNotes } from '@/data/site';
 import { withBase } from '@/utils/paths';
 ---
-<section class="section" id="things-i-broke">
+<section class="section" id="lessons-learned">
   <div class="container">
-    <div class="section-title">
+    <div class="section-heading split-heading">
       <div>
-        <span class="badge">Things I Broke</span>
-        <h2>삽질 로그</h2>
-        <p>틀린 과정까지 남겨두면, 나중에 같은 문제를 만났을 때 가장 빠른 해결책이 됩니다.</p>
+        <span class="eyebrow">LESSONS LEARNED</span>
+        <h2>틀린 과정도 자산으로 남깁니다.</h2>
       </div>
+      <p>결론만 기록하기보다 어떤 가정을 놓쳤고, 무엇을 확인하며 해결했는지 남겨 같은 실수를 줄입니다.</p>
     </div>
-    <div class="card-grid">
-      {mistakeCards.map((item) => (
-        <a class="mistake-card" href={withBase(item.href)}>
-          <span class="category-label">{item.category}</span>
+    <div class="lesson-grid">
+      {learningNotes.map((item) => (
+        <a class="lesson-card" href={withBase(item.href)}>
+          <span>{item.category}</span>
           <h3>{item.title}</h3>
           <p>{item.lesson}</p>
+          <strong>기록 읽기 →</strong>
         </a>
       ))}
     </div>

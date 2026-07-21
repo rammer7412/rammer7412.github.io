@@ -1,0 +1,141 @@
+---
+import { domainMeta, formatMeta } from '@/data/site';
+import { normalizeDomain, normalizeFormat, type PostSummary } from '@/utils/posts';
+import { withBase } from '@/utils/paths';
+
+interface Props {
+  posts: PostSummary[];
+  showDomainFilters?: boolean;
+  showFormatFilters?: boolean;
+  emptyTitle?: string;
+  emptyDescription?: string;
+}
+
+const {
+  posts,
+  showDomainFilters = true,
+  showFormatFilters = true,
+  emptyTitle = '아직 공개된 글이 없습니다.',
+  emptyDescription = '공부하고 분석한 내용을 차례로 채워갈 예정입니다.'
+} = Astro.props;
+
+const domains = [...new Set(posts.map((post) => normalizeDomain(post.frontmatter)))];
+const formats = [...new Set(posts.map((post) => normalizeFormat(post.frontmatter)))];
+---
+<div class="archive-shell" data-archive>
+  <div class="archive-tools">
+    <label class="archive-search">
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <circle cx="11" cy="11" r="7" />
+        <path d="m20 20-3.6-3.6" />
+      </svg>
+      <input type="search" placeholder="제목, 설명, 태그 검색" data-archive-search />
+    </label>
+    <span class="archive-count"><strong data-visible-count>{posts.length}</strong>개의 글</span>
+  </div>
+
+  {showDomainFilters && domains.length > 1 && (
+    <div class="filter-group" aria-label="주제 필터">
+      <strong>주제</strong>
+      <button class="filter-chip active" type="button" data-filter-kind="domain" data-filter-value="all">전체</button>
+      {domains.map((domain) => (
+        <button class="filter-chip" type="button" data-filter-kind="domain" data-filter-value={domain}>{domainMeta[domain]?.label ?? domain}</button>
+      ))}
+    </div>
+  )}
+
+  {showFormatFilters && formats.length > 1 && (
+    <div class="filter-group" aria-label="글 형식 필터">
+      <strong>형식</strong>
+      <button class="filter-chip active" type="button" data-filter-kind="format" data-filter-value="all">전체</button>
+      {formats.map((format) => (
+        <button class="filter-chip" type="button" data-filter-kind="format" data-filter-value={format}>{formatMeta[format] ?? format}</button>
+      ))}
+    </div>
+  )}
+
+  <div class="archive-list">
+    {posts.map((post) => {
+      const domain = normalizeDomain(post.frontmatter);
+      const format = normalizeFormat(post.frontmatter);
+      const searchText = `${post.frontmatter.title} ${post.frontmatter.description} ${post.frontmatter.category} ${(post.frontmatter.tags ?? []).join(' ')}`.toLowerCase();
+      return (
+        <article class="archive-card" data-post-card data-domain={domain} data-format={format} data-tags={(post.frontmatter.tags ?? []).join(',').toLowerCase()} data-search={searchText}>
+          <a href={withBase(`/posts/${post.slug}/`)}>
+            <div class="archive-card-meta">
+              <span>{domainMeta[domain]?.label ?? post.frontmatter.category}</span>
+              <span>{formatMeta[format] ?? format}</span>
+              <time datetime={post.frontmatter.date}>{post.frontmatter.date}</time>
+            </div>
+            <h2>{post.frontmatter.title}</h2>
+            <p>{post.frontmatter.description}</p>
+            <div class="archive-card-bottom">
+              <div>{(post.frontmatter.tags ?? []).slice(0, 5).map((tag) => <span>#{tag}</span>)}</div>
+              <strong>읽기 →</strong>
+            </div>
+          </a>
+        </article>
+      );
+    })}
+  </div>
+
+  <div class="empty-state" data-empty-state hidden>
+    <span>EMPTY</span>
+    <h2>{emptyTitle}</h2>
+    <p>{emptyDescription}</p>
+  </div>
+</div>
+
+<script is:inline>
+  document.querySelectorAll('[data-archive]').forEach((archive) => {
+    const cards = Array.from(archive.querySelectorAll('[data-post-card]'));
+    const search = archive.querySelector('[data-archive-search]');
+    const count = archive.querySelector('[data-visible-count]');
+    const empty = archive.querySelector('[data-empty-state]');
+    const buttons = Array.from(archive.querySelectorAll('[data-filter-kind]'));
+    const state = { domain: 'all', format: 'all', tag: '', query: '' };
+    const params = new URLSearchParams(window.location.search);
+
+    if (params.get('domain')) state.domain = params.get('domain');
+    if (params.get('format')) state.format = params.get('format');
+    if (params.get('tag')) state.tag = params.get('tag').toLowerCase();
+
+    const updateButtons = () => {
+      buttons.forEach((button) => {
+        const kind = button.dataset.filterKind;
+        const value = button.dataset.filterValue;
+        button.classList.toggle('active', state[kind] === value);
+      });
+    };
+
+    const apply = () => {
+      let visible = 0;
+      cards.forEach((card) => {
+        const domainMatch = state.domain === 'all' || card.dataset.domain === state.domain;
+        const formatMatch = state.format === 'all' || card.dataset.format === state.format;
+        const tagMatch = !state.tag || (card.dataset.tags || '').split(',').includes(state.tag);
+        const queryMatch = !state.query || (card.dataset.search || '').includes(state.query);
+        const show = domainMatch && formatMatch && tagMatch && queryMatch;
+        card.hidden = !show;
+        if (show) visible += 1;
+      });
+      if (count) count.textContent = String(visible);
+      if (empty) empty.hidden = visible !== 0;
+      updateButtons();
+    };
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        state[button.dataset.filterKind] = button.dataset.filterValue;
+        apply();
+      });
+    });
+
+    search?.addEventListener('input', () => {
+      state.query = search.value.trim().toLowerCase();
+      apply();
+    });
+
+    apply();
+  });
+</script>

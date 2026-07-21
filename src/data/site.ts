@@ -1,101 +1,173 @@
 export const site = {
-  title: 'Rammer CS Lab',
-  description: '배운 것, 부순 것, 디버깅한 것, 끝내 이해한 것을 기록합니다.',
+  title: 'Rammer Lab',
+  description: '개인정보보호와 기술을 함께 공부하며, 시스템·보안·포렌식·개발·리서치의 연결을 기록합니다.',
   author: 'rammer',
   github: 'https://github.com/rammer7412',
-  email: 'coderammer7412@gmail.com'
+  email: 'coderammer7412@gmail.com',
+  locale: 'ko_KR',
+  adsenseClient: 'ca-pub-8463924430150624'
+};
+
+export const navigation = [
+  { label: '개인정보보호', href: '/privacy/' },
+  { label: '기술', href: '/technology/' },
+  { label: '리서치', href: '/research/' },
+  { label: '프로젝트', href: '/projects/' },
+  { label: '아카이브', href: '/archive/' },
+  { label: '소개', href: '/about/' }
+];
+
+export const domainMeta: Record<string, { label: string; short: string; href: string }> = {
+  'privacy-governance': { label: '개인정보보호·거버넌스', short: 'Privacy', href: '/privacy/' },
+  'privacy-engineering': { label: '프라이버시 엔지니어링', short: 'Engineering', href: '/privacy/' },
+  'security-forensics': { label: '보안·포렌식', short: 'Security', href: '/technology/' },
+  'systems-development': { label: '시스템·개발', short: 'Systems', href: '/technology/' },
+  'cryptography-math': { label: '암호·수학', short: 'Crypto', href: '/technology/' },
+  'research-cases': { label: '리서치·사례 분석', short: 'Research', href: '/research/' },
+  project: { label: '프로젝트', short: 'Project', href: '/projects/' }
+};
+
+export const formatMeta: Record<string, string> = {
+  'study-note': '학습 노트',
+  lab: '실습 기록',
+  'problem-solving': '문제 풀이',
+  'paper-review': '논문 리뷰',
+  'report-review': '보고서 리뷰',
+  'case-analysis': '사례 분석',
+  project: '프로젝트',
+  opinion: '견해'
 };
 
 export const categories = [
   {
-    title: 'Operating Systems',
-    label: 'OS',
-    description: 'xv6, scheduling, paging, TLB, Copy-on-Write',
-    href: '/notes/?category=OS',
-    code: 'swtch(&c->scheduler, p->context);'
+    title: '개인정보보호·거버넌스',
+    label: 'PRIVACY',
+    description: '개인정보 생명주기, 정보주체 권리, 법·정책과 조직의 보호체계를 정리합니다.',
+    href: '/privacy/?domain=privacy-governance',
+    topics: ['생명주기', '법·정책', '관리체계']
   },
   {
-    title: 'Security',
-    label: 'SEC',
-    description: 'memory bug, exploit, format string, forensic notes',
-    href: '/notes/?category=Security',
-    code: 'printf(user_input);'
+    title: '프라이버시 엔지니어링',
+    label: 'ENGINEERING',
+    description: '최소 수집, 동의 설계, 데이터 흐름, 접근통제와 보호조치를 기술적으로 탐구합니다.',
+    href: '/privacy/?domain=privacy-engineering',
+    topics: ['Privacy by Design', '데이터 흐름', '보호조치']
   },
   {
-    title: 'C Programming',
-    label: 'C',
-    description: 'pointer, malloc/free, file I/O, struct problems',
-    href: '/notes/?category=C',
-    code: 'char *p = malloc(strlen(s) + 1);'
+    title: '보안·포렌식',
+    label: 'SECURITY',
+    description: '소프트웨어 취약점, 시스템 보안, 디지털포렌식과 침해사고 분석을 기록합니다.',
+    href: '/technology/?domain=security-forensics',
+    topics: ['Software Security', 'Forensics', 'Incident']
   },
   {
-    title: 'Math',
-    label: 'MATH',
-    description: 'number theory, primitive root, QR/QNR, rings',
-    href: '/notes/?category=Math',
-    code: 'x^2 ≡ a (mod p)'
+    title: '시스템·개발',
+    label: 'SYSTEMS',
+    description: '운영체제, C·Python, 웹 개발과 배포 과정에서 이해한 기술 기반을 정리합니다.',
+    href: '/technology/?domain=systems-development',
+    topics: ['OS', 'Programming', 'Web']
   },
   {
-    title: 'Problem Solving',
-    label: 'PS',
-    description: 'BOJ, algorithms, binary search, proof of correctness',
-    href: '/problems/',
-    code: 'while (lo <= hi) { mid = ... }'
+    title: '암호·수학',
+    label: 'CRYPTO',
+    description: '암호수학과 정수론을 개인정보 보호 기술의 기반 관점에서 공부합니다.',
+    href: '/technology/?domain=cryptography-math',
+    topics: ['Cryptography', 'Number Theory', 'Math']
   },
   {
-    title: 'Projects',
-    label: 'LAB',
-    description: 'Mini Judge, app development, deployment records',
-    href: '/projects/',
-    code: 'docker compose up -d --build'
+    title: '리서치·사례 분석',
+    label: 'RESEARCH',
+    description: '논문과 보고서를 읽고, 기업과 서비스의 개인정보보호 체계를 분석합니다.',
+    href: '/research/',
+    topics: ['Paper Review', 'Case Study', 'Opinion']
+  }
+];
+
+export const perspectives = [
+  {
+    number: '01',
+    title: 'Technology',
+    description: '개인정보가 실제 시스템에서 수집·저장·처리되는 구조와 보안 기술을 이해합니다.'
+  },
+  {
+    number: '02',
+    title: 'Privacy & Governance',
+    description: '개인정보보호 원칙과 법·정책, 조직의 관리체계를 기술 구현과 연결합니다.'
+  },
+  {
+    number: '03',
+    title: 'Research & Practice',
+    description: '논문, 보고서, 기업 사례와 직접 수행한 프로젝트를 바탕으로 견해를 정리합니다.'
   }
 ];
 
 export const knowledgeMap = [
   {
-    root: 'OS',
+    root: '개인정보 생명주기',
+    description: '데이터가 서비스 안에서 이동하는 전체 흐름',
     children: [
-      { name: 'Process', href: '/notes/?tag=process' },
-      { name: 'Scheduling', href: '/notes/?tag=scheduling' },
-      { name: 'Virtual Memory', href: '/notes/?tag=virtual-memory' },
-      { name: 'Copy-on-Write', href: '/posts/xv6-copy-on-write/' }
+      { name: '수집·동의', href: '/privacy/?tag=consent' },
+      { name: '이용·분석', href: '/privacy/?tag=processing' },
+      { name: '제공·위탁', href: '/privacy/?tag=sharing' },
+      { name: '보관·파기', href: '/privacy/?tag=retention' }
     ]
   },
   {
-    root: 'Security',
+    root: '기술 기반',
+    description: '개인정보를 안전하게 처리하기 위한 컴퓨터공학 기반',
     children: [
-      { name: 'Stack Overflow', href: '/notes/?tag=stack' },
-      { name: 'Format String', href: '/posts/format-string-n/' },
-      { name: 'Use After Free', href: '/notes/?tag=uaf' }
+      { name: '시스템·운영체제', href: '/technology/?domain=systems-development' },
+      { name: '소프트웨어 보안', href: '/technology/?domain=security-forensics' },
+      { name: '디지털포렌식', href: '/technology/?tag=forensics' },
+      { name: '암호·수학', href: '/technology/?domain=cryptography-math' }
     ]
   },
   {
-    root: 'C',
+    root: '보호체계',
+    description: '법·정책·조직·기술을 함께 보는 관리 관점',
     children: [
-      { name: 'Pointer', href: '/notes/?tag=pointer' },
-      { name: 'malloc/free', href: '/posts/c-eof-char/' },
-      { name: 'File I/O', href: '/notes/?tag=file-io' }
+      { name: 'Privacy by Design', href: '/privacy/?tag=privacy-by-design' },
+      { name: '위험 평가', href: '/privacy/?tag=risk' },
+      { name: '접근통제·로그', href: '/privacy/?tag=access-control' },
+      { name: '정보주체 권리', href: '/privacy/?tag=data-subject' }
+    ]
+  },
+  {
+    root: '리서치 과정',
+    description: '자료를 읽고 분석하여 내 관점으로 남기는 방법',
+    children: [
+      { name: '논문 리뷰', href: '/research/?format=paper-review' },
+      { name: '보고서 리뷰', href: '/research/?format=report-review' },
+      { name: '기업·서비스 분석', href: '/research/?format=case-analysis' },
+      { name: '프로젝트 회고', href: '/projects/' }
     ]
   }
 ];
 
-export const mistakeCards = [
+export const learningNotes = [
   {
-    title: 'char로 EOF를 받으면 안 되는 이유',
-    category: 'C',
-    lesson: 'EOF는 char가 아니라 int로 받아야 구분이 안전하다.',
+    title: 'EOF는 왜 int로 받아야 할까',
+    category: 'Programming',
+    lesson: '함수의 반환형과 특수 값을 함께 살피는 습관을 기록했습니다.',
     href: '/posts/c-eof-char/'
   },
   {
-    title: 'QEMU xv6.img write lock 오류',
-    category: 'OS Lab',
-    lesson: 'QEMU 프로세스가 중복 실행 중인지 먼저 확인한다.',
-    href: '/labs/'
+    title: 'Copy-on-Write에서 놓치기 쉬운 지점',
+    category: 'Systems',
+    lesson: '참조 횟수, 쓰기 권한, TLB 갱신이 하나의 흐름으로 연결됩니다.',
+    href: '/posts/xv6-copy-on-write/'
   },
   {
-    title: 'Docker context 착각',
-    category: 'DevOps',
-    lesson: '배포 전 docker context ls로 현재 컨텍스트를 확인한다.',
-    href: '/labs/'
+    title: '포맷 문자열이 쓰기 취약점이 되는 과정',
+    category: 'Security',
+    lesson: '입력 검증 문제를 메모리 구조와 함수 호출 관점에서 다시 정리했습니다.',
+    href: '/posts/format-string-n/'
   }
+];
+
+export const currentStudy = [
+  '개인정보보호 관리체계와 Privacy by Design',
+  '소프트웨어 보안과 디지털포렌식',
+  '운영체제·암호수학 기반 다지기',
+  '기업 개인정보처리방침 및 보호체계 분석 방법'
 ];

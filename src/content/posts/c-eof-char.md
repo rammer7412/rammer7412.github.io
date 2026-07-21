@@ -5,6 +5,9 @@ date: "2026-05-14"
 category: "C"
 tags: ["c", "eof", "file-io", "char"]
 type: "note"
+domain: "systems-development"
+format: "study-note"
+featured: false
 ---
 
 ## 결론

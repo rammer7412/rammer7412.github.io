@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 const repo = process.env.GITHUB_REPOSITORY?.split('/')[1] ?? '';
-const owner = process.env.GITHUB_REPOSITORY_OWNER ?? 'YOUR_GITHUB_USERNAME';
+const owner = process.env.GITHUB_REPOSITORY_OWNER ?? 'rammer7412';
 const isUserSite = repo.endsWith('.github.io');
 
 export default defineConfig({
@@ -12,7 +12,7 @@ export default defineConfig({
   markdown: {
     syntaxHighlight: 'shiki',
     shikiConfig: {
-      theme: 'github-dark'
+      theme: 'github-light-default'
     }
-  },
+  }
 });

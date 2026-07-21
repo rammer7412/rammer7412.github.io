@@ -5,6 +5,9 @@ date: "2026-05-16"
 category: "Security"
 tags: ["format-string", "pwn", "memory"]
 type: "note"
+domain: "security-forensics"
+format: "study-note"
+featured: true
 ---
 
 ## 한 줄 요약

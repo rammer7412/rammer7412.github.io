@@ -1,0 +1,40 @@
+---
+import { domainMeta, formatMeta } from '@/data/site';
+import { normalizeDomain, normalizeFormat, type PostSummary } from '@/utils/posts';
+import { withBase } from '@/utils/paths';
+
+const { posts = [] } = Astro.props as { posts: PostSummary[] };
+const featured = posts.filter((post) => post.frontmatter.featured).slice(0, 3);
+const displayPosts = featured.length >= 3 ? featured : posts.slice(0, 3);
+---
+<section class="section featured-section">
+  <div class="container">
+    <div class="section-heading split-heading">
+      <div>
+        <span class="eyebrow">FEATURED NOTES</span>
+        <h2>먼저 읽어볼 기록</h2>
+      </div>
+      <a class="text-link" href={withBase('/archive/')}>전체 아카이브 보기 <span>→</span></a>
+    </div>
+    <div class="featured-grid">
+      {displayPosts.map((post, index) => {
+        const domain = normalizeDomain(post.frontmatter);
+        const format = normalizeFormat(post.frontmatter);
+        return (
+          <a class:list={['featured-card', { primary: index === 0 }]} href={withBase(`/posts/${post.slug}/`)}>
+            <div class="post-kicker">
+              <span>{domainMeta[domain]?.label ?? post.frontmatter.category}</span>
+              <span>{formatMeta[format] ?? format}</span>
+            </div>
+            <h3>{post.frontmatter.title}</h3>
+            <p>{post.frontmatter.description}</p>
+            <div class="post-card-bottom">
+              <time datetime={post.frontmatter.date}>{post.frontmatter.date}</time>
+              <span>읽기 →</span>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</section>

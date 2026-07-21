@@ -1,49 +1,38 @@
 ---
+import { currentStudy } from '@/data/site';
 import { withBase } from '@/utils/paths';
 ---
 <section class="hero">
   <div class="container hero-grid">
-    <div class="hero-copy glass">
-      <span class="badge">Interactive CS Lab Notebook</span>
-      <h1>배운 것, 부순 것, <span class="gradient-text">디버깅한 것</span>.</h1>
+    <div class="hero-copy">
+      <span class="eyebrow">PRIVACY · TECHNOLOGY · RESEARCH</span>
+      <h1>기술을 이해하고,<br /><span>개인정보보호를 설계합니다.</span></h1>
       <p>
-        컴퓨터공학을 공부하며 전공 개념, 문제 풀이, 실험 기록, 삽질 로그를 정리합니다.
-        단순한 블로그가 아니라 내가 이해한 과정을 남기는 개인 CS 연구 노트입니다.
+        개인정보가 서비스 안에서 어떻게 수집·이용·보호되는지 공부합니다.
+        시스템, 보안, 포렌식, 개발의 기술 기반과 법·정책·조직의 관점을 함께 연결해 기록합니다.
       </p>
       <div class="hero-buttons">
-        <a class="solid-button" href={withBase('/notes/')}>전공 노트 보기</a>
-        <a class="ghost-button" href={withBase('/labs/')}>실험 기록 보기</a>
-        <a class="ghost-button" href={withBase('/problems/')}>문제 풀이 보기</a>
+        <a class="primary-button" href={withBase('/archive/')}>글 살펴보기</a>
+        <a class="secondary-button" href={withBase('/projects/')}>프로젝트 보기</a>
       </div>
-      <div class="hero-tags" aria-label="Topics">
-        {['OS', 'Security', 'C', 'Math', 'Problem Solving', 'xv6', 'Docker'].map((tag) => <span class="hero-tag">#{tag}</span>)}
-      </div>
-      <div class="stats-strip" aria-label="Site stats">
-        <div class="stat"><strong>notes</strong><span>개념 정리</span></div>
-        <div class="stat"><strong>labs</strong><span>실험 기록</span></div>
-        <div class="stat"><strong>bugs</strong><span>삽질 로그</span></div>
-        <div class="stat"><strong>ps</strong><span>문제 풀이</span></div>
+      <div class="hero-principles" aria-label="블로그 운영 원칙">
+        <span>기술적 근거</span>
+        <span>개인정보 관점</span>
+        <span>직접 분석과 견해</span>
       </div>
     </div>
 
-    <div class="terminal-card glass" aria-label="Latest posts terminal">
-      <div class="terminal-top">
-        <div class="dots"><span></span><span></span><span></span></div>
-        <span>latest.log</span>
+    <aside class="now-panel" aria-label="현재 공부하는 내용">
+      <div class="now-panel-head">
+        <span class="status-dot"></span>
+        <span>NOW STUDYING</span>
       </div>
-      <div class="terminal-body">
-        <div><span class="prompt">$</span> <span class="command">whoami</span></div>
-        <div>CS student exploring OS, Security, C, Math.</div>
-        <br />
-        <div><span class="prompt">$</span> <span class="command">cat latest.log</span></div>
-        <a class="log-line" href={withBase('/posts/xv6-copy-on-write/')}><span class="log-tag">[OS]</span><span>xv6 Copy-on-Write 구현 기록</span></a>
-        <a class="log-line" href={withBase('/posts/format-string-n/')}><span class="log-tag">[SEC]</span><span>Format String Attack에서 %n 이해하기</span></a>
-        <a class="log-line" href={withBase('/posts/c-eof-char/')}><span class="log-tag">[C]</span><span>EOF를 char로 받으면 안 되는 이유</span></a>
-        <a class="log-line" href={withBase('/posts/primitive-root-qr-qnr/')}><span class="log-tag">[MATH]</span><span>Primitive Root와 QR/QNR</span></a>
-        <br />
-        <div><span class="prompt">$</span> <span class="command">open command-palette</span></div>
-        <div>Press <span class="prompt">Ctrl + K</span> to jump anywhere.</div>
-      </div>
-    </div>
+      <ol>
+        {currentStudy.map((item, index) => (
+          <li><span>{String(index + 1).padStart(2, '0')}</span><p>{item}</p></li>
+        ))}
+      </ol>
+      <a href={withBase('/about/')}>Rammer Lab 소개 <span>→</span></a>
+    </aside>
   </div>
 </section>

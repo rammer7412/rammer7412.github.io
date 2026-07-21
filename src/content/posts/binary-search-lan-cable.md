@@ -5,6 +5,9 @@ date: "2026-05-08"
 category: "Problem Solving"
 tags: ["binary-search", "parametric-search", "boj"]
 type: "problem"
+domain: "systems-development"
+format: "problem-solving"
+featured: false
 ---
 
 ## 문제 감각

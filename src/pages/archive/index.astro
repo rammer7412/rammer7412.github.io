@@ -1,0 +1,21 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PostArchive from '@/components/PostArchive.astro';
+import { getAllPosts } from '@/utils/posts';
+
+const posts = getAllPosts();
+---
+<BaseLayout title="아카이브" description="Rammer Lab의 개인정보보호, 기술, 리서치, 프로젝트 기록 전체를 탐색합니다.">
+  <section class="page-hero">
+    <div class="container page-hero-grid">
+      <div>
+        <span class="eyebrow">ALL WRITING</span>
+        <h1>아카이브</h1>
+      </div>
+      <p>주제와 글 형식을 분리해 관리합니다. 필요한 개념을 검색하거나 개인정보보호, 기술, 리서치 영역별로 탐색할 수 있습니다.</p>
+    </div>
+  </section>
+  <section class="container archive-section">
+    <PostArchive posts={posts} />
+  </section>
+</BaseLayout>

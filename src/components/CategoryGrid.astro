@@ -4,20 +4,26 @@ import { withBase } from '@/utils/paths';
 ---
 <section class="section">
   <div class="container">
-    <div class="section-title">
+    <div class="section-heading split-heading">
       <div>
-        <span class="badge">Explore</span>
-        <h2>내 지식의 입구</h2>
-        <p>전공 노트, 실험 기록, 문제 풀이를 주제별로 모아둡니다. 카드 위에 마우스를 올리면 각 주제의 코드 조각이 살짝 보입니다.</p>
+        <span class="eyebrow">EXPLORE TOPICS</span>
+        <h2>공부의 영역</h2>
       </div>
+      <p>개인정보보호를 중심에 두되, 이를 실제로 이해하고 구현하는 데 필요한 컴퓨터공학 기반도 함께 축적합니다.</p>
     </div>
-    <div class="card-grid">
-      {categories.map((category) => (
-        <a class="category-card" href={withBase(category.href)}>
-          <span class="category-label">{category.label}</span>
+    <div class="topic-grid">
+      {categories.map((category, index) => (
+        <a class="topic-card" href={withBase(category.href)}>
+          <div class="topic-card-top">
+            <span class="topic-index">{String(index + 1).padStart(2, '0')}</span>
+            <span class="topic-label">{category.label}</span>
+          </div>
           <h3>{category.title}</h3>
           <p>{category.description}</p>
-          <span class="hover-code">{category.code}</span>
+          <div class="topic-tags">
+            {category.topics.map((topic) => <span>{topic}</span>)}
+          </div>
+          <span class="card-arrow" aria-hidden="true">↗</span>
         </a>
       ))}
     </div>

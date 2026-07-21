@@ -1,0 +1,31 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+<BaseLayout title="사이트 개인정보 안내" description="Rammer Lab의 쿠키, 광고와 외부 서비스 사용 현황을 안내합니다.">
+  <section class="page-hero compact">
+    <div class="container page-hero-grid">
+      <div><span class="eyebrow">SITE PRIVACY</span><h1>사이트 개인정보 안내</h1></div>
+      <p>개인정보보호를 다루는 블로그인 만큼, 이 사이트가 사용하는 저장 기술과 외부 서비스를 투명하게 기록합니다.</p>
+    </div>
+  </section>
+  <section class="section legal-section">
+    <article class="container legal-document">
+      <h2>사이트가 직접 입력받는 정보</h2>
+      <p>현재 Rammer Lab은 회원가입, 댓글, 문의 폼을 운영하지 않으므로 사이트가 직접 이름이나 이메일 주소 등의 개인정보를 입력받지 않습니다.</p>
+
+      <h2>Google AdSense</h2>
+      <p>이 사이트는 광고 게재를 위해 Google AdSense 스크립트를 사용합니다. Google 및 광고 파트너는 광고 제공, 부정 사용 방지, 광고 성과 측정 등을 위해 쿠키나 유사 기술을 사용할 수 있습니다. 실제 데이터 처리는 Google의 정책과 방문자의 지역 및 광고 설정에 따라 달라질 수 있습니다.</p>
+      <p><code>ads.txt</code> 파일은 이 사이트의 광고 인벤토리를 판매할 수 있는 승인된 판매자를 공개하기 위한 파일이며, 방문자 추적용 스크립트는 아닙니다.</p>
+
+      <h2>테마 설정 저장</h2>
+      <p>밝은 화면과 어두운 화면 중 사용자가 선택한 테마를 기억하기 위해 브라우저의 <code>localStorage</code>에 <code>rammer-theme</code> 값을 저장합니다. 이 값은 사용자의 기기 안에서만 사용되며 Rammer Lab의 서버로 직접 전송하지 않습니다.</p>
+
+      <h2>외부 링크와 호스팅</h2>
+      <p>GitHub와 이메일 등 외부 링크를 포함할 수 있으며, 외부 사이트로 이동한 이후의 데이터 처리는 해당 서비스의 정책을 따릅니다. 사이트는 GitHub Pages를 통해 제공되므로 서비스 운영 과정에서 발생하는 기술적 로그에는 GitHub의 정책과 설정이 적용될 수 있습니다.</p>
+
+      <h2>변경 안내</h2>
+      <p>향후 웹 분석, 댓글, 문의 기능 등 새로운 기능을 추가하면 실제 동작과 이용 목적을 확인한 뒤 이 페이지를 함께 수정합니다.</p>
+      <p class="legal-updated">마지막 수정: 2026-07-21</p>
+    </article>
+  </section>
+</BaseLayout>

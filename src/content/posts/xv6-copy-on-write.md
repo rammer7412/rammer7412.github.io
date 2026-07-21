@@ -5,6 +5,9 @@ date: "2026-05-18"
 category: "OS"
 tags: ["xv6", "paging", "cow", "virtual-memory"]
 type: "lab"
+domain: "systems-development"
+format: "lab"
+featured: true
 ---
 
 ## 한 줄 요약

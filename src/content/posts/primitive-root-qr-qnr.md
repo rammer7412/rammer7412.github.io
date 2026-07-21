@@ -5,6 +5,9 @@ date: "2026-05-10"
 category: "Math"
 tags: ["number-theory", "primitive-root", "qr", "qnr"]
 type: "note"
+domain: "cryptography-math"
+format: "study-note"
+featured: true
 ---
 
 ## 핵심 명제
