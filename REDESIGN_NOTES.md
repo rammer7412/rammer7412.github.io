@@ -19,6 +19,9 @@
 - Windows 파일과 빌드 산출물을 제외하는 `.gitignore` 보완
 - Windows 로컬 개발과 GitHub Actions 모두 `npm ci`를 사용할 수 있도록 문서화
 - 새 브랜드에 맞는 `og-image.png` 제작
+- 모든 Markdown 글에서 `$...$`, `$$...$$` LaTeX 수식 렌더링 지원
+- 코드 블록의 Shiki 밝은·어두운 테마 자동 전환 적용
+- Primitive Root 글의 기존 수식을 LaTeX 문법으로 변환
 
 ## 먼저 확인하면 좋은 화면
 
@@ -26,7 +29,7 @@
 2. `/writing/`의 통합 글 분류와 필터
 3. `/about/`의 Profile·Focus·현재 학습 내용
 4. `/projects/`에 표시한 프로젝트명과 상태
-5. `상단 및 모바일 메뉴의 About / Writing / Projects 표시
+5. 상단 및 모바일 메뉴의 About / Writing / Projects 표시
 6. `/site-privacy/`의 AdSense 안내 문구
 7. 모바일 메뉴와 다크 모드
 

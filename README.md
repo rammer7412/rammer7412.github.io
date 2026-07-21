@@ -104,6 +104,39 @@ draft: false
 
 논문 리뷰, 기업 사례 분석, 프로젝트 글의 시작 양식은 `src/content/templates`에 있습니다. 템플릿을 `src/content/posts`로 복사한 뒤 `draft: false`로 변경하면 공개됩니다.
 
+### LaTeX 수식 작성
+
+모든 Markdown 글에서 LaTeX 수식을 사용할 수 있습니다.
+
+인라인 수식:
+
+```markdown
+소수 $p$에 대해 $g^{p-1} \equiv 1 \pmod p$가 성립한다.
+```
+
+블록 수식:
+
+```markdown
+$$
+g^{\frac{p-1}{q}} \not\equiv 1 \pmod p
+$$
+```
+
+수식은 `$...$` 또는 `$$...$$`로 감싸야 합니다. 백틱으로 감싸면 수식이 아니라 인라인 코드로 표시됩니다. 코드 블록과 `code` 태그 내부는 MathJax 처리 대상에서 자동으로 제외됩니다.
+
+### 코드 블록과 테마
+
+코드 블록에 언어를 지정하면 Shiki 구문 강조가 적용됩니다.
+
+````markdown
+```python
+def power(base, exponent):
+    return base ** exponent
+```
+````
+
+밝은 모드에서는 GitHub Light, 어두운 모드에서는 GitHub Dark 계열 토큰 색상이 자동으로 사용됩니다. 글마다 별도의 테마 설정을 추가할 필요가 없습니다.
+
 ## Main configuration
 
 사이트 이름, 소개, 메뉴, 카테고리, 지식 지도와 AdSense 클라이언트 ID는 `src/data/site.ts`에서 관리합니다.
