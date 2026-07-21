@@ -1,0 +1,21 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PostArchive from '@/components/PostArchive.astro';
+import { getAllPosts } from '@/utils/posts';
+
+const posts = getAllPosts();
+---
+<BaseLayout title="Writing" description="기술, 개인정보보호, 보안, 리서치와 학습 기록을 한곳에서 탐색합니다.">
+  <section class="page-hero">
+    <div class="container page-hero-grid">
+      <div>
+        <span class="eyebrow">NOTES · ANALYSIS · RESEARCH</span>
+        <h1>Writing</h1>
+      </div>
+      <p>기술, 개인정보보호, 보안, 포렌식과 리서치 기록을 한곳에 모았습니다. 주제와 글 형식으로 분류하거나 제목, 설명, 태그를 검색할 수 있습니다.</p>
+    </div>
+  </section>
+  <section class="container archive-section">
+    <PostArchive posts={posts} />
+  </section>
+</BaseLayout>

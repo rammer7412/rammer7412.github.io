@@ -5,10 +5,10 @@
 - 사이트 이름을 **Rammer Lab**으로 통일
 - 개인정보보호와 기술을 함께 보여주는 편집형 홈 화면으로 개편
 - 밝은 테마와 다크 모드 토글 제공
-- 상단 메뉴를 개인정보보호, 기술, 리서치, 프로젝트, 아카이브, 소개로 재구성
+- 상단 메뉴를 About, Writing, Projects의 세 영역으로 단순화
 - 기존 `/notes`, `/labs`, `/problems` 주소 유지
 - 실제 게시글 제목·설명·태그를 검색하는 `Ctrl/⌘ + K` 검색 추가
-- 아카이브에 주제·글 형식·검색어·URL 쿼리 기반 필터 추가
+- Writing에 주제·글 형식·검색어·URL 쿼리 기반 필터 추가
 - 게시글을 `domain`과 `format`으로 분리해 관리
 - Astro Content Collection 스키마로 frontmatter 검증
 - 논문 리뷰, 사례 분석, 프로젝트 Markdown 템플릿 추가
@@ -23,10 +23,10 @@
 ## 먼저 확인하면 좋은 화면
 
 1. `/` 홈 화면의 문구와 영역 순서
-2. `/technology/`의 기존 기술 글 분류
-3. `/privacy/`와 `/research/`의 빈 상태 문구
+2. `/writing/`의 통합 글 분류와 필터
+3. `/about/`의 Profile·Focus·현재 학습 내용
 4. `/projects/`에 표시한 프로젝트명과 상태
-5. `/about/`의 자기소개 문구
+5. `상단 및 모바일 메뉴의 About / Writing / Projects 표시
 6. `/site-privacy/`의 AdSense 안내 문구
 7. 모바일 메뉴와 다크 모드
 

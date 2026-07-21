@@ -1,15 +1,15 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { site } from '@/data/site';
+import { currentStudy, site } from '@/data/site';
 ---
-<BaseLayout title="소개" description="Rammer Lab의 관심 분야, 글쓰기 원칙과 운영 방향을 소개합니다.">
+<BaseLayout title="About" description="Rammer Lab과 운영자의 관심 분야, 학습 방향과 기록 원칙을 소개합니다.">
   <section class="page-hero about-hero">
     <div class="container page-hero-grid">
       <div>
-        <span class="eyebrow">ABOUT RAMMER LAB</span>
-        <h1>기술과 개인정보보호의<br />접점을 공부합니다.</h1>
+        <span class="eyebrow">PROFILE · CV · RAMMER LAB</span>
+        <h1>About</h1>
       </div>
-      <p>컴퓨터공학의 기술 기반을 바탕으로 개인정보가 실제 서비스에서 어떻게 처리되고 보호되는지 이해하는 것을 목표로 합니다.</p>
+      <p>컴퓨터공학의 기술 기반과 개인정보보호의 제도·조직적 관점을 함께 공부하며, 그 과정과 결과를 Rammer Lab에 기록합니다.</p>
     </div>
   </section>
 
@@ -26,19 +26,43 @@ import { site } from '@/data/site';
       <div class="about-content">
         <section>
           <span class="section-number">01</span>
-          <div><h2>관심 분야</h2><p>개인정보보호, 프라이버시 엔지니어링, 보안 컨설팅과 디지털포렌식에 관심이 있습니다. 운영체제, 소프트웨어 보안, 암호수학과 개발 경험을 개인정보보호 문제를 이해하는 기술 기반으로 연결하고 있습니다.</p></div>
+          <div>
+            <h2>Profile</h2>
+            <p>컴퓨터공학을 공부하며 개인정보보호, 프라이버시 엔지니어링, 보안 컨설팅과 디지털포렌식 분야를 탐구하고 있습니다. 기술이 실제 서비스의 데이터 처리와 보호체계 안에서 어떻게 작동하는지를 이해하는 것이 목표입니다.</p>
+          </div>
         </section>
         <section>
           <span class="section-number">02</span>
-          <div><h2>이곳에 기록하는 것</h2><p>전공 학습 노트와 실습 기록뿐 아니라 논문·보고서에 대한 견해, 기업과 서비스의 개인정보보호체계 분석, 직접 수행한 프로젝트의 설계와 회고를 정리합니다.</p></div>
+          <div>
+            <h2>Focus</h2>
+            <p>운영체제, 소프트웨어 보안, 암호수학과 개발 경험을 기반으로 개인정보 생명주기, 데이터 흐름, 기술적·관리적 보호조치와 기업의 개인정보보호체계를 연결해 공부합니다.</p>
+          </div>
         </section>
         <section>
           <span class="section-number">03</span>
-          <div><h2>글쓰기 원칙</h2><ul><li>공개된 자료와 직접 확인한 사실을 구분합니다.</li><li>요약에서 끝내지 않고 제 생각과 한계를 함께 적습니다.</li><li>기술, 제도, 조직 운영 중 하나의 관점에만 머물지 않습니다.</li><li>실습 글은 가능한 한 재현할 수 있는 조건과 과정을 남깁니다.</li></ul></div>
+          <div>
+            <h2>Currently Studying</h2>
+            <ul>{currentStudy.map((item) => <li>{item}</li>)}</ul>
+          </div>
         </section>
         <section>
           <span class="section-number">04</span>
-          <div><h2>분석 글에 관한 안내</h2><p>기업이나 서비스에 대한 글은 공개 자료를 기반으로 한 개인적인 학습·분석이며, 공식 감사나 법률적 판단을 의미하지 않습니다. 자료가 부족한 부분은 추정하지 않고 분석의 한계로 명시합니다.</p></div>
+          <div>
+            <h2>Writing Principles</h2>
+            <ul>
+              <li>공개된 자료, 직접 확인한 사실과 개인적인 해석을 구분합니다.</li>
+              <li>요약에서 끝내지 않고 제 생각, 적용 가능성과 한계를 함께 적습니다.</li>
+              <li>기술, 제도와 조직 운영 중 하나의 관점에만 머물지 않습니다.</li>
+              <li>실습과 프로젝트는 가능한 한 재현 가능한 조건과 과정을 남깁니다.</li>
+            </ul>
+          </div>
+        </section>
+        <section>
+          <span class="section-number">05</span>
+          <div>
+            <h2>About This Site</h2>
+            <p>Writing에는 기술 학습 노트, 개인정보보호 분석, 논문과 보고서 리뷰를 정리합니다. Projects에는 직접 진행하는 작업의 목표, 설계, 진행 상황과 회고를 별도로 기록합니다.</p>
+          </div>
         </section>
       </div>
     </div>

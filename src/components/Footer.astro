@@ -10,11 +10,10 @@ import { withBase } from '@/utils/paths';
     </div>
     <nav aria-label="하단 메뉴">
       <strong>Explore</strong>
-      {navigation.slice(0, 5).map((item) => <a href={withBase(item.href)}>{item.label}</a>)}
+      {navigation.map((item) => <a href={withBase(item.href)}>{item.label}</a>)}
     </nav>
     <nav aria-label="정보 메뉴">
       <strong>Information</strong>
-      <a href={withBase('/about/')}>소개</a>
       <a href={withBase('/site-privacy/')}>사이트 개인정보 안내</a>
       <a href={site.github} target="_blank" rel="noreferrer">GitHub</a>
       <a href={`mailto:${site.email}`}>Contact</a>

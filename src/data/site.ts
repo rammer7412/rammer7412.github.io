@@ -9,21 +9,18 @@ export const site = {
 };
 
 export const navigation = [
-  { label: '개인정보보호', href: '/privacy/' },
-  { label: '기술', href: '/technology/' },
-  { label: '리서치', href: '/research/' },
-  { label: '프로젝트', href: '/projects/' },
-  { label: '아카이브', href: '/archive/' },
-  { label: '소개', href: '/about/' }
+  { label: 'About', href: '/about/' },
+  { label: 'Writing', href: '/writing/' },
+  { label: 'Projects', href: '/projects/' }
 ];
 
 export const domainMeta: Record<string, { label: string; short: string; href: string }> = {
-  'privacy-governance': { label: '개인정보보호·거버넌스', short: 'Privacy', href: '/privacy/' },
-  'privacy-engineering': { label: '프라이버시 엔지니어링', short: 'Engineering', href: '/privacy/' },
-  'security-forensics': { label: '보안·포렌식', short: 'Security', href: '/technology/' },
-  'systems-development': { label: '시스템·개발', short: 'Systems', href: '/technology/' },
-  'cryptography-math': { label: '암호·수학', short: 'Crypto', href: '/technology/' },
-  'research-cases': { label: '리서치·사례 분석', short: 'Research', href: '/research/' },
+  'privacy-governance': { label: '개인정보보호·거버넌스', short: 'Privacy', href: '/writing/?domain=privacy-governance' },
+  'privacy-engineering': { label: '프라이버시 엔지니어링', short: 'Engineering', href: '/writing/?domain=privacy-engineering' },
+  'security-forensics': { label: '보안·포렌식', short: 'Security', href: '/writing/?domain=security-forensics' },
+  'systems-development': { label: '시스템·개발', short: 'Systems', href: '/writing/?domain=systems-development' },
+  'cryptography-math': { label: '암호·수학', short: 'Crypto', href: '/writing/?domain=cryptography-math' },
+  'research-cases': { label: '리서치·사례 분석', short: 'Research', href: '/writing/?domain=research-cases' },
   project: { label: '프로젝트', short: 'Project', href: '/projects/' }
 };
 
@@ -43,42 +40,42 @@ export const categories = [
     title: '개인정보보호·거버넌스',
     label: 'PRIVACY',
     description: '개인정보 생명주기, 정보주체 권리, 법·정책과 조직의 보호체계를 정리합니다.',
-    href: '/privacy/?domain=privacy-governance',
+    href: '/writing/?domain=privacy-governance',
     topics: ['생명주기', '법·정책', '관리체계']
   },
   {
     title: '프라이버시 엔지니어링',
     label: 'ENGINEERING',
     description: '최소 수집, 동의 설계, 데이터 흐름, 접근통제와 보호조치를 기술적으로 탐구합니다.',
-    href: '/privacy/?domain=privacy-engineering',
+    href: '/writing/?domain=privacy-engineering',
     topics: ['Privacy by Design', '데이터 흐름', '보호조치']
   },
   {
     title: '보안·포렌식',
     label: 'SECURITY',
     description: '소프트웨어 취약점, 시스템 보안, 디지털포렌식과 침해사고 분석을 기록합니다.',
-    href: '/technology/?domain=security-forensics',
+    href: '/writing/?domain=security-forensics',
     topics: ['Software Security', 'Forensics', 'Incident']
   },
   {
     title: '시스템·개발',
     label: 'SYSTEMS',
     description: '운영체제, C·Python, 웹 개발과 배포 과정에서 이해한 기술 기반을 정리합니다.',
-    href: '/technology/?domain=systems-development',
+    href: '/writing/?domain=systems-development',
     topics: ['OS', 'Programming', 'Web']
   },
   {
     title: '암호·수학',
     label: 'CRYPTO',
     description: '암호수학과 정수론을 개인정보 보호 기술의 기반 관점에서 공부합니다.',
-    href: '/technology/?domain=cryptography-math',
+    href: '/writing/?domain=cryptography-math',
     topics: ['Cryptography', 'Number Theory', 'Math']
   },
   {
     title: '리서치·사례 분석',
     label: 'RESEARCH',
     description: '논문과 보고서를 읽고, 기업과 서비스의 개인정보보호 체계를 분석합니다.',
-    href: '/research/',
+    href: '/writing/?domain=research-cases',
     topics: ['Paper Review', 'Case Study', 'Opinion']
   }
 ];
@@ -106,39 +103,39 @@ export const knowledgeMap = [
     root: '개인정보 생명주기',
     description: '데이터가 서비스 안에서 이동하는 전체 흐름',
     children: [
-      { name: '수집·동의', href: '/privacy/?tag=consent' },
-      { name: '이용·분석', href: '/privacy/?tag=processing' },
-      { name: '제공·위탁', href: '/privacy/?tag=sharing' },
-      { name: '보관·파기', href: '/privacy/?tag=retention' }
+      { name: '수집·동의', href: '/writing/?tag=consent' },
+      { name: '이용·분석', href: '/writing/?tag=processing' },
+      { name: '제공·위탁', href: '/writing/?tag=sharing' },
+      { name: '보관·파기', href: '/writing/?tag=retention' }
     ]
   },
   {
     root: '기술 기반',
     description: '개인정보를 안전하게 처리하기 위한 컴퓨터공학 기반',
     children: [
-      { name: '시스템·운영체제', href: '/technology/?domain=systems-development' },
-      { name: '소프트웨어 보안', href: '/technology/?domain=security-forensics' },
-      { name: '디지털포렌식', href: '/technology/?tag=forensics' },
-      { name: '암호·수학', href: '/technology/?domain=cryptography-math' }
+      { name: '시스템·운영체제', href: '/writing/?domain=systems-development' },
+      { name: '소프트웨어 보안', href: '/writing/?domain=security-forensics' },
+      { name: '디지털포렌식', href: '/writing/?tag=forensics' },
+      { name: '암호·수학', href: '/writing/?domain=cryptography-math' }
     ]
   },
   {
     root: '보호체계',
     description: '법·정책·조직·기술을 함께 보는 관리 관점',
     children: [
-      { name: 'Privacy by Design', href: '/privacy/?tag=privacy-by-design' },
-      { name: '위험 평가', href: '/privacy/?tag=risk' },
-      { name: '접근통제·로그', href: '/privacy/?tag=access-control' },
-      { name: '정보주체 권리', href: '/privacy/?tag=data-subject' }
+      { name: 'Privacy by Design', href: '/writing/?tag=privacy-by-design' },
+      { name: '위험 평가', href: '/writing/?tag=risk' },
+      { name: '접근통제·로그', href: '/writing/?tag=access-control' },
+      { name: '정보주체 권리', href: '/writing/?tag=data-subject' }
     ]
   },
   {
     root: '리서치 과정',
     description: '자료를 읽고 분석하여 내 관점으로 남기는 방법',
     children: [
-      { name: '논문 리뷰', href: '/research/?format=paper-review' },
-      { name: '보고서 리뷰', href: '/research/?format=report-review' },
-      { name: '기업·서비스 분석', href: '/research/?format=case-analysis' },
+      { name: '논문 리뷰', href: '/writing/?format=paper-review' },
+      { name: '보고서 리뷰', href: '/writing/?format=report-review' },
+      { name: '기업·서비스 분석', href: '/writing/?format=case-analysis' },
       { name: '프로젝트 회고', href: '/projects/' }
     ]
   }

@@ -23,7 +23,7 @@ const format = normalizeFormat(frontmatter);
 const raw = typeof post.rawContent === 'function' ? post.rawContent() : '';
 const wordCount = raw.replace(/---[\s\S]*?---/, '').trim().split(/\s+/).filter(Boolean).length;
 const readingMinutes = Math.max(1, Math.ceil(wordCount / 300));
-const backHref = domainMeta[domain]?.href ?? '/archive/';
+const backHref = domainMeta[domain]?.href ?? '/writing/';
 const isAnalysis = ['case-analysis', 'paper-review', 'report-review', 'opinion'].includes(format);
 ---
 <BaseLayout
@@ -35,7 +35,7 @@ const isAnalysis = ['case-analysis', 'paper-review', 'report-review', 'opinion']
   <article class="article-page">
     <header class="article-header">
       <div class="container article-header-inner">
-        <a class="article-back" href={withBase(backHref)}>← {domainMeta[domain]?.label ?? '아카이브'}</a>
+        <a class="article-back" href={withBase(backHref)}>← {domainMeta[domain]?.label ?? 'Writing'}</a>
         <div class="article-taxonomy">
           <span>{domainMeta[domain]?.label ?? frontmatter.category}</span>
           <span>{formatMeta[format] ?? format}</span>
@@ -74,11 +74,11 @@ const isAnalysis = ['case-analysis', 'paper-review', 'report-review', 'opinion']
           <div class="sidebar-block">
             <span class="sidebar-label">TAGS</span>
             <div class="sidebar-tags">
-              {(frontmatter.tags ?? []).map((tag: string) => <a href={withBase(`/archive/?tag=${encodeURIComponent(tag)}`)}>#{tag}</a>)}
+              {(frontmatter.tags ?? []).map((tag: string) => <a href={withBase(`/writing/?tag=${encodeURIComponent(tag)}`)}>#{tag}</a>)}
             </div>
           </div>
         )}
-        <a class="sidebar-archive-link" href={withBase('/archive/')}>전체 아카이브 보기 <span>→</span></a>
+        <a class="sidebar-archive-link" href={withBase('/writing/')}>전체 글 보기 <span>→</span></a>
       </aside>
     </div>
   </article>
