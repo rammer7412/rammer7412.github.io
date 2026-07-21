@@ -1022,9 +1022,9 @@ html[data-theme='dark'] .moon-icon {
 .page-hero h1 {
   margin: 18px 0 0;
   color: var(--heading);
-  font-size: clamp(48px, 7vw, 78px);
-  line-height: 1.05;
-  letter-spacing: -0.07em;
+  font-size: clamp(40px, 5.5vw, 64px);
+  line-height: 1.08;
+  letter-spacing: -0.055em;
 }
 
 .about-hero h1 {

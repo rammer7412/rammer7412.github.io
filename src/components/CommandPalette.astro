@@ -11,7 +11,7 @@ const journalEntries = (await getCollection('journal'))
   .sort((a, b) => +new Date(b.data.date) - +new Date(a.data.date));
 const pageCommands = [
   ...navigation.map((item) => ({ title: item.label, subtitle: '페이지', href: item.href })),
-  { title: '사이트 개인정보 안내', subtitle: '쿠키 및 외부 서비스 안내', href: '/site-privacy/' },
+  { title: 'Privacy Notice', subtitle: '쿠키 및 외부 서비스 안내', href: '/site-privacy/' },
   { title: 'GitHub', subtitle: site.github, href: site.github, external: true }
 ];
 
