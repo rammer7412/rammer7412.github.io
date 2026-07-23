@@ -245,16 +245,15 @@ img {
 }
 
 .logo-mark {
-  display: grid;
-  place-items: center;
+  display: block;
   width: 40px;
   height: 40px;
+  flex: 0 0 auto;
+  border: 1px solid var(--border);
   border-radius: 11px;
-  background: var(--heading);
-  color: var(--surface);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 23px;
-  font-weight: 700;
+  object-fit: cover;
+  object-position: center;
+  background: var(--surface);
 }
 
 .logo-copy {
@@ -1377,15 +1376,14 @@ html[data-theme='dark'] .moon-icon {
 }
 
 .profile-mark {
-  display: grid;
-  width: 72px;
-  height: 72px;
-  place-items: center;
-  border-radius: 19px;
-  background: var(--heading);
-  color: var(--surface);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 40px;
+  display: block;
+  width: 96px;
+  height: 96px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  object-fit: cover;
+  object-position: center;
+  background: var(--surface);
 }
 
 .about-profile h2 {

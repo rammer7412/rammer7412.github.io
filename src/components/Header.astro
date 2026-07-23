@@ -17,7 +17,15 @@ const isActive = (href: string) => {
 <header class="header">
   <div class="container header-inner">
     <a class="logo" href={withBase('/')} aria-label={`${site.title} 홈`}>
-      <span class="logo-mark">R</span>
+      <img
+        class="logo-mark"
+        src={withBase('/images/profile.jpg')}
+        alt=""
+        width="40"
+        height="40"
+        loading="eager"
+        decoding="async"
+      />
       <span class="logo-copy">
         <strong>{site.title}</strong>
         <small>Privacy · Technology · Research</small>

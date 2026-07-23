@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { currentStudy, site } from '@/data/site';
+import { withBase } from '@/utils/paths';
 ---
 <BaseLayout title="About" description="Rammer Lab과 운영자의 관심 분야, 학습 방향과 기록 원칙을 소개합니다.">
   <section class="page-hero about-hero">
@@ -16,7 +17,15 @@ import { currentStudy, site } from '@/data/site';
   <section class="section about-section">
     <div class="container about-grid">
       <aside class="about-profile">
-        <span class="profile-mark">R</span>
+        <img
+          class="profile-mark"
+          src={withBase('/images/profile.jpg')}
+          alt="Rammer Lab 프로필 이미지"
+          width="96"
+          height="96"
+          loading="eager"
+          decoding="async"
+        />
         <h2>{site.author}</h2>
         <p>Computer Science · Privacy · Security</p>
         <a href={site.github} target="_blank" rel="noreferrer">GitHub ↗</a>
