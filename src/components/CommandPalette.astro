@@ -47,7 +47,7 @@ const postCommands = posts.map((post) => {
   const format = normalizeFormat(post.frontmatter);
   return {
     title: post.frontmatter.title,
-    subtitle: `${domainMeta[domain]?.label ?? post.frontmatter.category} · ${formatMeta[format] ?? format}`,
+    subtitle: `${domainMeta[domain]?.label ?? 'Writing'} · ${post.frontmatter.category} · ${formatMeta[format] ?? format}`,
     href: `/posts/${post.slug}/`,
     search: `${post.frontmatter.title} ${post.frontmatter.description} ${post.frontmatter.category} ${(post.frontmatter.tags ?? []).join(' ')}`
   };

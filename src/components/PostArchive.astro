@@ -67,7 +67,7 @@ const formats = formatFilters ?? [...new Set(posts.map((post) => normalizeFormat
         <article class="archive-card" data-post-card data-domain={domain} data-format={format} data-tags={(post.frontmatter.tags ?? []).join(',').toLowerCase()} data-search={searchText}>
           <a href={withBase(`/posts/${post.slug}/`)}>
             <div class="archive-card-meta">
-              <span>{domainMeta[domain]?.label ?? post.frontmatter.category}</span>
+              <span>{domainMeta[domain]?.label ?? 'Writing'} · {post.frontmatter.category}</span>
               <span>{formatMeta[format] ?? format}</span>
               <time datetime={post.frontmatter.date}>{post.frontmatter.date}</time>
             </div>

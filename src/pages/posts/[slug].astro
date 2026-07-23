@@ -43,7 +43,7 @@ const isAnalysis = ['case-analysis', 'paper-review', 'report-review', 'opinion']
       <div class="container article-header-inner">
         <a class="article-back" href={withBase(backHref)}>← {domainMeta[domain]?.label ?? 'Writing'}</a>
         <div class="article-taxonomy">
-          <span>{domainMeta[domain]?.label ?? frontmatter.category}</span>
+          <span>{domainMeta[domain]?.label ?? 'Writing'} · {frontmatter.category}</span>
           <span>{formatMeta[format] ?? format}</span>
         </div>
         <h1>{frontmatter.title}</h1>
@@ -71,7 +71,8 @@ const isAnalysis = ['case-analysis', 'paper-review', 'report-review', 'opinion']
         <div class="sidebar-block">
           <span class="sidebar-label">ABOUT THIS NOTE</span>
           <dl>
-            <div><dt>주제</dt><dd>{domainMeta[domain]?.label ?? frontmatter.category}</dd></div>
+            <div><dt>주제</dt><dd>{domainMeta[domain]?.label ?? 'Writing'}</dd></div>
+            <div><dt>분류</dt><dd>{frontmatter.category}</dd></div>
             <div><dt>형식</dt><dd>{formatMeta[format] ?? format}</dd></div>
             <div><dt>작성</dt><dd>{frontmatter.date}</dd></div>
           </dl>
