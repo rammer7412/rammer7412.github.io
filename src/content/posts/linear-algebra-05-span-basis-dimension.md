@@ -16,136 +16,73 @@ Span은 첫 번째 질문에, Basis와 Dimension은 두 번째 질문에 답한�
 
 ## Span
 
-vector <span class="math-inline" data-tex="\mathbf{v}_1,\ldots,\mathbf{v}_k"></span>의 모든 Linear Combination으로 이루어진 set을 이 vector들의 Span이라고 한다.
+vector <span class="math-inline" data-tex-b64="XG1hdGhiZnt2fV8xLFxsZG90cyxcbWF0aGJme3Z9X2s="></span>의 모든 Linear Combination으로 이루어진 set을 이 vector들의 Span이라고 한다.
 
-<div class="math-display">
-\[
-\operatorname{span}\{\mathbf{v}_1,\ldots,\mathbf{v}_k\}
-=
-\left\{
-\sum_{i=1}^k c_i\mathbf{v}_i
-\mid c_i\in\mathbb{R}
-\right\}
-\]
-</div>
+<div class="math-display" data-tex-b64="XG9wZXJhdG9ybmFtZXtzcGFufVx7XG1hdGhiZnt2fV8xLFxsZG90cyxcbWF0aGJme3Z9X2tcfQo9ClxsZWZ0XHsKXHN1bV97aT0xfV5rIGNfaVxtYXRoYmZ7dn1faQpcbWlkIGNfaVxpblxtYXRoYmJ7Un0KXHJpZ2h0XH0="></div>
 
-Span은 항상 Subspace이다. zero vector는 모든 coefficient를 <span class="math-inline" data-tex="0"></span>으로 두면 얻을 수 있고, Linear Combination끼리 더하거나 scalar multiplication해도 다시 같은 vector들의 Linear Combination이 되기 때문이다.
+Span은 항상 Subspace이다. zero vector는 모든 coefficient를 <span class="math-inline" data-tex-b64="MA=="></span>으로 두면 얻을 수 있고, Linear Combination끼리 더하거나 scalar multiplication해도 다시 같은 vector들의 Linear Combination이 되기 때문이다.
 
 ### R²를 Span하는 예
 
-<div class="math-display">
-\[
-\mathbf{e}_1=
-\begin{bmatrix}1\\0\end{bmatrix},
-\qquad
-\mathbf{e}_2=
-\begin{bmatrix}0\\1\end{bmatrix}
-\]
-</div>
+<div class="math-display" data-tex-b64="XG1hdGhiZntlfV8xPQpcYmVnaW57Ym1hdHJpeH0xXFwwXGVuZHtibWF0cml4fSwKXHFxdWFkClxtYXRoYmZ7ZX1fMj0KXGJlZ2lue2JtYXRyaXh9MFxcMVxlbmR7Ym1hdHJpeH0="></div>
 
 를 생각하면
 
-<div class="math-display">
-\[
-c_1\mathbf{e}_1+c_2\mathbf{e}_2
-=
-\begin{bmatrix}c_1\\c_2\end{bmatrix}
-\]
-</div>
+<div class="math-display" data-tex-b64="Y18xXG1hdGhiZntlfV8xK2NfMlxtYXRoYmZ7ZX1fMgo9ClxiZWdpbntibWF0cml4fWNfMVxcY18yXGVuZHtibWF0cml4fQ=="></div>
 
 이므로
 
-<div class="math-display">
-\[
-\operatorname{span}\{\mathbf{e}_1,\mathbf{e}_2\}
-=\mathbb{R}^2
-\]
-</div>
+<div class="math-display" data-tex-b64="XG9wZXJhdG9ybmFtZXtzcGFufVx7XG1hdGhiZntlfV8xLFxtYXRoYmZ7ZX1fMlx9Cj1cbWF0aGJie1J9XjI="></div>
 
 이다.
 
-반면 <span class="math-inline" data-tex="(1,0)"></span>과 <span class="math-inline" data-tex="(2,0)"></span>의 Linear Combination은 항상 <span class="math-inline" data-tex="x"></span>축 위에만 놓인다. 서로 다른 두 vector라도 같은 direction을 가리키면 <span class="math-inline" data-tex="\mathbb{R}^2"></span> 전체를 Span할 수 없다.
+반면 <span class="math-inline" data-tex-b64="KDEsMCk="></span>과 <span class="math-inline" data-tex-b64="KDIsMCk="></span>의 Linear Combination은 항상 <span class="math-inline" data-tex-b64="eA=="></span>축 위에만 놓인다. 서로 다른 두 vector라도 같은 direction을 가리키면 <span class="math-inline" data-tex-b64="XG1hdGhiYntSfV4y"></span> 전체를 Span할 수 없다.
 
 ## Basis
 
-Vector Space <span class="math-inline" data-tex="V"></span>의 subset <span class="math-inline" data-tex="B=\lbrace\mathbf{v}_1,\ldots,\mathbf{v}_k\rbrace"></span>가 다음 두 조건을 만족하면 <span class="math-inline" data-tex="V"></span>의 Basis라고 한다.
+Vector Space <span class="math-inline" data-tex-b64="Vg=="></span>의 subset <span class="math-inline" data-tex-b64="Qj1cbGJyYWNlXG1hdGhiZnt2fV8xLFxsZG90cyxcbWF0aGJme3Z9X2tccmJyYWNl"></span>가 다음 두 조건을 만족하면 <span class="math-inline" data-tex-b64="Vg=="></span>의 Basis라고 한다.
 
-1. <span class="math-inline" data-tex="B"></span>는 linearly independent이다.
-2. <span class="math-inline" data-tex="B"></span>는 <span class="math-inline" data-tex="V"></span>를 Span한다.
+1. <span class="math-inline" data-tex-b64="Qg=="></span>는 linearly independent이다.
+2. <span class="math-inline" data-tex-b64="Qg=="></span>는 <span class="math-inline" data-tex-b64="Vg=="></span>를 Span한다.
 
 첫 번째 조건은 redundancy가 없다는 뜻이고, 두 번째 조건은 space 전체를 표현할 만큼 충분하다는 뜻이다.
 
 Basis는 다음 두 관점으로 이해할 수 있다.
 
-- <span class="math-inline" data-tex="V"></span>를 Span하는 minimal vector set
+- <span class="math-inline" data-tex-b64="Vg=="></span>를 Span하는 minimal vector set
 - 더 이상 vector를 추가하지 않아도 되는 maximal linearly independent set
 
-<span class="math-inline" data-tex="\mathbb{R}^2"></span>의 Standard Basis는
+<span class="math-inline" data-tex-b64="XG1hdGhiYntSfV4y"></span>의 Standard Basis는
 
-<div class="math-display">
-\[
-\left\{
-\begin{bmatrix}1\\0\end{bmatrix},
-\begin{bmatrix}0\\1\end{bmatrix}
-\right\}
-\]
-</div>
+<div class="math-display" data-tex-b64="XGxlZnRcewpcYmVnaW57Ym1hdHJpeH0xXFwwXGVuZHtibWF0cml4fSwKXGJlZ2lue2JtYXRyaXh9MFxcMVxlbmR7Ym1hdHJpeH0KXHJpZ2h0XH0="></div>
 
 이다. 그러나 Basis가 이것 하나로 정해지는 것은 아니다. 예를 들어
 
-<div class="math-display">
-\[
-\left\{
-\begin{bmatrix}2\\0\end{bmatrix},
-\begin{bmatrix}1\\-1\end{bmatrix}
-\right\}
-\]
-</div>
+<div class="math-display" data-tex-b64="XGxlZnRcewpcYmVnaW57Ym1hdHJpeH0yXFwwXGVuZHtibWF0cml4fSwKXGJlZ2lue2JtYXRyaXh9MVxcLTFcZW5ke2JtYXRyaXh9ClxyaWdodFx9"></div>
 
-도 두 vector가 linearly independent이고 <span class="math-inline" data-tex="\mathbb{R}^2"></span>를 Span하므로 Basis이다.
+도 두 vector가 linearly independent이고 <span class="math-inline" data-tex-b64="XG1hdGhiYntSfV4y"></span>를 Span하므로 Basis이다.
 
 ## Dimension
 
-Vector Space <span class="math-inline" data-tex="V"></span>의 Basis에 포함된 vector의 개수를 <span class="math-inline" data-tex="V"></span>의 Dimension이라고 한다.
+Vector Space <span class="math-inline" data-tex-b64="Vg=="></span>의 Basis에 포함된 vector의 개수를 <span class="math-inline" data-tex-b64="Vg=="></span>의 Dimension이라고 한다.
 
-<div class="math-display">
-\[
-\dim(V)=k
-\]
-</div>
+<div class="math-display" data-tex-b64="XGRpbShWKT1r"></div>
 
-는 <span class="math-inline" data-tex="V"></span>의 모든 Basis가 <span class="math-inline" data-tex="k"></span>개의 vector로 이루어진다는 뜻이다.
+는 <span class="math-inline" data-tex-b64="Vg=="></span>의 모든 Basis가 <span class="math-inline" data-tex-b64="aw=="></span>개의 vector로 이루어진다는 뜻이다.
 
 Basis 자체는 여러 가지일 수 있지만, finite-dimensional Vector Space의 모든 Basis는 같은 개수의 vector를 가진다. 따라서 Dimension은 선택한 Basis와 무관하다.
 
 ### Linearly Dependent Vector가 포함된 Spanning Set
 
-<div class="math-display">
-\[
-W=\operatorname{span}\left\{
-\begin{bmatrix}1\\2\\3\end{bmatrix},
-\begin{bmatrix}2\\4\\6\end{bmatrix}
-\right\}
-\]
-</div>
+<div class="math-display" data-tex-b64="Vz1cb3BlcmF0b3JuYW1le3NwYW59XGxlZnRcewpcYmVnaW57Ym1hdHJpeH0xXFwyXFwzXGVuZHtibWF0cml4fSwKXGJlZ2lue2JtYXRyaXh9MlxcNFxcNlxlbmR7Ym1hdHJpeH0KXHJpZ2h0XH0="></div>
 
 에서 두 번째 vector는 첫 번째 vector의 두 배이다.
 
-<div class="math-display">
-\[
-\begin{bmatrix}2\\4\\6\end{bmatrix}
-=2
-\begin{bmatrix}1\\2\\3\end{bmatrix}
-\]
-</div>
+<div class="math-display" data-tex-b64="XGJlZ2lue2JtYXRyaXh9MlxcNFxcNlxlbmR7Ym1hdHJpeH0KPTIKXGJlZ2lue2JtYXRyaXh9MVxcMlxcM1xlbmR7Ym1hdHJpeH0="></div>
 
-따라서 두 번째 vector를 제거해도 Span이 변하지 않는다. <span class="math-inline" data-tex="W"></span>의 Basis는 하나의 vector만으로 구성할 수 있으므로
+따라서 두 번째 vector를 제거해도 Span이 변하지 않는다. <span class="math-inline" data-tex-b64="Vw=="></span>의 Basis는 하나의 vector만으로 구성할 수 있으므로
 
-<div class="math-display">
-\[
-\dim(W)=1
-\]
-</div>
+<div class="math-display" data-tex-b64="XGRpbShXKT0x"></div>
 
 이다.
 
@@ -153,25 +90,11 @@ W=\operatorname{span}\left\{
 
 vector들을 matrix의 column으로 모으면 Span과 Linear Independence를 Gaussian Elimination으로 확인할 수 있다.
 
-<div class="math-display">
-\[
-A=
-\begin{bmatrix}
-|&|&&|\\
-\mathbf{v}_1&\mathbf{v}_2&\cdots&\mathbf{v}_k\\
-|&|&&|
-\end{bmatrix}
-\]
-</div>
+<div class="math-display" data-tex-b64="QT0KXGJlZ2lue2JtYXRyaXh9CnwmfCYmfFxcClxtYXRoYmZ7dn1fMSZcbWF0aGJme3Z9XzImXGNkb3RzJlxtYXRoYmZ7dn1fa1xcCnwmfCYmfApcZW5ke2JtYXRyaXh9"></div>
 
-이때 <span class="math-inline" data-tex="A"></span>의 Column Space는
+이때 <span class="math-inline" data-tex-b64="QQ=="></span>의 Column Space는
 
-<div class="math-display">
-\[
-\operatorname{Col}(A)
-=\operatorname{span}\{\mathbf{v}_1,\ldots,\mathbf{v}_k\}
-\]
-</div>
+<div class="math-display" data-tex-b64="XG9wZXJhdG9ybmFtZXtDb2x9KEEpCj1cb3BlcmF0b3JuYW1le3NwYW59XHtcbWF0aGJme3Z9XzEsXGxkb3RzLFxtYXRoYmZ7dn1fa1x9"></div>
 
 이다. row reduction 후 pivot column의 개수는 Column Space의 Dimension, 즉 matrix의 rank와 같다.
 
@@ -189,32 +112,17 @@ A=
 
 ### 1
 
-다음 vector들이 Span하는 space <span class="math-inline" data-tex="W"></span>의 Dimension을 구한다.
+다음 vector들이 Span하는 space <span class="math-inline" data-tex-b64="Vw=="></span>의 Dimension을 구한다.
 
-<div class="math-display">
-\[
-\mathbf{v}_1=
-\begin{bmatrix}1\\0\\-1\end{bmatrix},
-\qquad
-\mathbf{v}_2=
-\begin{bmatrix}-2\\1\\1\end{bmatrix},
-\qquad
-\mathbf{v}_3=
-\begin{bmatrix}0\\0\\-1\end{bmatrix}
-\]
-</div>
+<div class="math-display" data-tex-b64="XG1hdGhiZnt2fV8xPQpcYmVnaW57Ym1hdHJpeH0xXFwwXFwtMVxlbmR7Ym1hdHJpeH0sClxxcXVhZApcbWF0aGJme3Z9XzI9ClxiZWdpbntibWF0cml4fS0yXFwxXFwxXGVuZHtibWF0cml4fSwKXHFxdWFkClxtYXRoYmZ7dn1fMz0KXGJlZ2lue2JtYXRyaXh9MFxcMFxcLTFcZW5ke2JtYXRyaXh9"></div>
 
-<div class="math-display">
-\[
-W=\operatorname{span}\{\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3\}
-\]
-</div>
+<div class="math-display" data-tex-b64="Vz1cb3BlcmF0b3JuYW1le3NwYW59XHtcbWF0aGJme3Z9XzEsXG1hdGhiZnt2fV8yLFxtYXRoYmZ7dn1fM1x9"></div>
 
 ### 2
 
 다음 명제가 참인지 판단한다.
 
-> <span class="math-inline" data-tex="(\mathbf{x}_1,\ldots,\mathbf{x}_n)"></span>이 Vector Space <span class="math-inline" data-tex="V"></span>를 Span하면 <span class="math-inline" data-tex="\dim(V)=n"></span>이다.
+> <span class="math-inline" data-tex-b64="KFxtYXRoYmZ7eH1fMSxcbGRvdHMsXG1hdGhiZnt4fV9uKQ=="></span>이 Vector Space <span class="math-inline" data-tex-b64="Vg=="></span>를 Span하면 <span class="math-inline" data-tex-b64="XGRpbShWKT1u"></span>이다.
 
 ## 풀이
 
@@ -223,24 +131,11 @@ W=\operatorname{span}\{\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3\}
 
 세 vector를 column으로 둔 matrix는
 
-<div class="math-display">
-\[
-A=
-\begin{bmatrix}
-1&-2&0\\
-0&1&0\\
--1&1&-1
-\end{bmatrix}
-\]
-</div>
+<div class="math-display" data-tex-b64="QT0KXGJlZ2lue2JtYXRyaXh9CjEmLTImMFxcCjAmMSYwXFwKLTEmMSYtMQpcZW5ke2JtYXRyaXh9"></div>
 
-이다. 이 matrix의 determinant는 <span class="math-inline" data-tex="-1"></span>로 <span class="math-inline" data-tex="0"></span>이 아니므로 세 column vector는 linearly independent이다. 따라서
+이다. 이 matrix의 determinant는 <span class="math-inline" data-tex-b64="LTE="></span>로 <span class="math-inline" data-tex-b64="MA=="></span>이 아니므로 세 column vector는 linearly independent이다. 따라서
 
-<div class="math-display">
-\[
-\dim(W)=3
-\]
-</div>
+<div class="math-display" data-tex-b64="XGRpbShXKT0z"></div>
 
 이다.
 
@@ -248,21 +143,13 @@ A=
 
 거짓이다. spanning set에 linearly dependent한 vector가 포함될 수 있기 때문이다.
 
-예를 들어 <span class="math-inline" data-tex="\mathbb{R}^2"></span>에서
+예를 들어 <span class="math-inline" data-tex-b64="XG1hdGhiYntSfV4y"></span>에서
 
-<div class="math-display">
-\[
-(1,0),\quad(0,1),\quad(1,0)
-\]
-</div>
+<div class="math-display" data-tex-b64="KDEsMCksXHF1YWQoMCwxKSxccXVhZCgxLDAp"></div>
 
-은 <span class="math-inline" data-tex="\mathbb{R}^2"></span>를 Span하지만 vector는 세 개이고 Dimension은 <span class="math-inline" data-tex="2"></span>이다. 일반적으로 <span class="math-inline" data-tex="n"></span>개의 vector가 <span class="math-inline" data-tex="V"></span>를 Span하면
+은 <span class="math-inline" data-tex-b64="XG1hdGhiYntSfV4y"></span>를 Span하지만 vector는 세 개이고 Dimension은 <span class="math-inline" data-tex-b64="Mg=="></span>이다. 일반적으로 <span class="math-inline" data-tex-b64="bg=="></span>개의 vector가 <span class="math-inline" data-tex-b64="Vg=="></span>를 Span하면
 
-<div class="math-display">
-\[
-\dim(V)\le n
-\]
-</div>
+<div class="math-display" data-tex-b64="XGRpbShWKVxsZSBu"></div>
 
 이다.
 

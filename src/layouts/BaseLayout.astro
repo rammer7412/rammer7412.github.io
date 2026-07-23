@@ -81,10 +81,27 @@ const imageURL = new URL(withBase(image), Astro.site ?? Astro.url.origin);
         },
         startup: {
           ready: () => {
-            document.querySelectorAll('.math-inline[data-tex]').forEach((element) => {
-              const tex = element.getAttribute('data-tex') ?? '';
+            const decodeTex = (encoded) => {
+              try {
+                const binary = atob(encoded);
+                const bytes = Uint8Array.from(binary, (character) => character.charCodeAt(0));
+                return new TextDecoder().decode(bytes);
+              } catch (error) {
+                console.error('Failed to decode math expression.', error);
+                return '';
+              }
+            };
+
+            document.querySelectorAll('.math-inline[data-tex-b64]').forEach((element) => {
+              const tex = decodeTex(element.getAttribute('data-tex-b64') ?? '');
               element.textContent = `\\(${tex}\\)`;
             });
+
+            document.querySelectorAll('.math-display[data-tex-b64]').forEach((element) => {
+              const tex = decodeTex(element.getAttribute('data-tex-b64') ?? '');
+              element.textContent = `\\[${tex}\\]`;
+            });
+
             MathJax.startup.defaultReady();
           }
         }

@@ -18,34 +18,16 @@ draft: false
 
 Linear System
 
-<div class="math-display">
-\[
-\begin{cases}
-x+2y+z=6\\
-2x+3y+3z=14\\
-x+y+z=8
-\end{cases}
-\]
-</div>
+<div class="math-display" data-tex-b64="XGJlZ2lue2Nhc2VzfQp4KzJ5K3o9NlxcCjJ4KzN5KzN6PTE0XFwKeCt5K3o9OApcZW5ke2Nhc2VzfQ=="></div>
 
 은 다음 Augmented Matrix로 표현된다.
 
-<div class="math-display">
-\[
-\left[
-\begin{array}{ccc|c}
-1&2&1&6\\
-2&3&3&14\\
-1&1&1&8
-\end{array}
-\right]
-\]
-</div>
+<div class="math-display" data-tex-b64="XGxlZnRbClxiZWdpbnthcnJheX17Y2NjfGN9CjEmMiYxJjZcXAoyJjMmMyYxNFxcCjEmMSYxJjgKXGVuZHthcnJheX0KXHJpZ2h0XQ=="></div>
 
 Gaussian Elimination에서는 다음 세 가지 Elementary Row Operation을 사용한다.
 
 1. 두 row를 interchange한다.
-2. 한 row에 <span class="math-inline" data-tex="0"></span>이 아닌 constant를 곱한다.
+2. 한 row에 <span class="math-inline" data-tex-b64="MA=="></span>이 아닌 constant를 곱한다.
 3. 한 row에 다른 row의 scalar multiple을 더한다.
 
 이 operation들은 Linear System의 solution set을 바꾸지 않는다.
@@ -55,20 +37,12 @@ Gaussian Elimination에서는 다음 세 가지 Elementary Row Operation을 사�
 matrix가 다음 조건을 만족하면 Row Echelon Form이라고 한다.
 
 1. nonzero row의 leading entry는 위 row의 pivot보다 오른쪽에 있다.
-2. 각 pivot 아래의 entry는 모두 <span class="math-inline" data-tex="0"></span>이다.
+2. 각 pivot 아래의 entry는 모두 <span class="math-inline" data-tex-b64="MA=="></span>이다.
 3. zero row는 아래쪽에 놓인다.
 
 예를 들어
 
-<div class="math-display">
-\[
-\begin{bmatrix}
-1&2&-1&3\\
-0&1&5&-2\\
-0&0&4&7
-\end{bmatrix}
-\]
-</div>
+<div class="math-display" data-tex-b64="XGJlZ2lue2JtYXRyaXh9CjEmMiYtMSYzXFwKMCYxJjUmLTJcXAowJjAmNCY3ClxlbmR7Ym1hdHJpeH0="></div>
 
 은 Row Echelon Form이다.
 
@@ -76,63 +50,25 @@ matrix가 다음 조건을 만족하면 Row Echelon Form이라고 한다.
 
 처음 Augmented Matrix에서 첫 번째 column의 pivot 아래를 제거한다.
 
-<div class="math-display">
-\[
-R_2\leftarrow R_2-2R_1,
-\qquad
-R_3\leftarrow R_3-R_1
-\]
-</div>
+<div class="math-display" data-tex-b64="Ul8yXGxlZnRhcnJvdyBSXzItMlJfMSwKXHFxdWFkClJfM1xsZWZ0YXJyb3cgUl8zLVJfMQ=="></div>
 
 그러면
 
-<div class="math-display">
-\[
-\left[
-\begin{array}{ccc|c}
-1&2&1&6\\
-0&-1&1&2\\
-0&-1&0&2
-\end{array}
-\right]
-\]
-</div>
+<div class="math-display" data-tex-b64="XGxlZnRbClxiZWdpbnthcnJheX17Y2NjfGN9CjEmMiYxJjZcXAowJi0xJjEmMlxcCjAmLTEmMCYyClxlbmR7YXJyYXl9ClxyaWdodF0="></div>
 
 가 된다. 이어서
 
-<div class="math-display">
-\[
-R_3\leftarrow R_3-R_2
-\]
-</div>
+<div class="math-display" data-tex-b64="Ul8zXGxlZnRhcnJvdyBSXzMtUl8y"></div>
 
 를 적용하면
 
-<div class="math-display">
-\[
-\left[
-\begin{array}{ccc|c}
-1&2&1&6\\
-0&-1&1&2\\
-0&0&-1&0
-\end{array}
-\right]
-\]
-</div>
+<div class="math-display" data-tex-b64="XGxlZnRbClxiZWdpbnthcnJheX17Y2NjfGN9CjEmMiYxJjZcXAowJi0xJjEmMlxcCjAmMCYtMSYwClxlbmR7YXJyYXl9ClxyaWdodF0="></div>
 
 이다.
 
 아래 row부터 back substitution하면
 
-<div class="math-display">
-\[
-z=0,
-\qquad
-y=-2,
-\qquad
-x=10
-\]
-</div>
+<div class="math-display" data-tex-b64="ej0wLApccXF1YWQKeT0tMiwKXHFxdWFkCng9MTA="></div>
 
 을 얻는다. 모든 variable column에 pivot이 하나씩 존재하고 contradiction row가 없으므로 unique solution을 가진다.
 
@@ -140,49 +76,21 @@ x=10
 
 row reduction 결과에 다음과 같은 row가 나타나면 contradiction이다.
 
-<div class="math-display">
-\[
-\begin{bmatrix}
-0&0&0&|&2
-\end{bmatrix}
-\]
-</div>
+<div class="math-display" data-tex-b64="XGJlZ2lue2JtYXRyaXh9CjAmMCYwJnwmMgpcZW5ke2JtYXRyaXh9"></div>
 
 이는
 
-<div class="math-display">
-\[
-0=2
-\]
-</div>
+<div class="math-display" data-tex-b64="MD0y"></div>
 
 를 의미하므로 solution이 존재하지 않는다.
 
 예를 들어
 
-<div class="math-display">
-\[
-\begin{cases}
-x+y+z=1\\
-2x+2y+2z=2\\
-x+y+z=3
-\end{cases}
-\]
-</div>
+<div class="math-display" data-tex-b64="XGJlZ2lue2Nhc2VzfQp4K3krej0xXFwKMngrMnkrMno9MlxcCngreSt6PTMKXGVuZHtjYXNlc30="></div>
 
 에서 첫 번째 row를 이용해 두 번째와 세 번째 row를 제거하면
 
-<div class="math-display">
-\[
-\left[
-\begin{array}{ccc|c}
-1&1&1&1\\
-0&0&0&0\\
-0&0&0&2
-\end{array}
-\right]
-\]
-</div>
+<div class="math-display" data-tex-b64="XGxlZnRbClxiZWdpbnthcnJheX17Y2NjfGN9CjEmMSYxJjFcXAowJjAmMCYwXFwKMCYwJjAmMgpcZW5ke2FycmF5fQpccmlnaHRd"></div>
 
 가 된다. 따라서 이 Linear System은 No Solution이다.
 
@@ -190,46 +98,19 @@ x+y+z=3
 
 contradiction은 없지만 pivot이 없는 variable column이 존재하면 free variable이 생긴다.
 
-<div class="math-display">
-\[
-\begin{cases}
-x+y+z=2\\
-2x+2y+2z=4
-\end{cases}
-\]
-</div>
+<div class="math-display" data-tex-b64="XGJlZ2lue2Nhc2VzfQp4K3krej0yXFwKMngrMnkrMno9NApcZW5ke2Nhc2VzfQ=="></div>
 
 를 row reduction하면
 
-<div class="math-display">
-\[
-\left[
-\begin{array}{ccc|c}
-1&1&1&2\\
-0&0&0&0
-\end{array}
-\right]
-\]
-</div>
+<div class="math-display" data-tex-b64="XGxlZnRbClxiZWdpbnthcnJheX17Y2NjfGN9CjEmMSYxJjJcXAowJjAmMCYwClxlbmR7YXJyYXl9ClxyaWdodF0="></div>
 
-가 된다. <span class="math-inline" data-tex="y=s"></span>, <span class="math-inline" data-tex="z=t"></span>를 free variable로 두면
+가 된다. <span class="math-inline" data-tex-b64="eT1z"></span>, <span class="math-inline" data-tex-b64="ej10"></span>를 free variable로 두면
 
-<div class="math-display">
-\[
-x=2-s-t
-\]
-</div>
+<div class="math-display" data-tex-b64="eD0yLXMtdA=="></div>
 
 이므로 solution set은
 
-<div class="math-display">
-\[
-\begin{bmatrix}x\\y\\z\end{bmatrix}
-=
-\begin{bmatrix}2-s-t\\s\\t\end{bmatrix},
-\qquad s,t\in\mathbb{R}
-\]
-</div>
+<div class="math-display" data-tex-b64="XGJlZ2lue2JtYXRyaXh9eFxceVxcelxlbmR7Ym1hdHJpeH0KPQpcYmVnaW57Ym1hdHJpeH0yLXMtdFxcc1xcdFxlbmR7Ym1hdHJpeH0sClxxcXVhZCBzLHRcaW5cbWF0aGJie1J9"></div>
 
 이다.
 
@@ -241,7 +122,7 @@ x=2-s-t
 | --- | --- | --- |
 | Unique Solution | Consistent | 모든 variable column에 pivot이 존재 |
 | Infinitely Many Solutions | Consistent | free variable이 존재하고 contradiction은 없음 |
-| No Solution | Inconsistent | <span class="math-inline" data-tex="0=c"></span> 꼴의 contradiction row가 존재 |
+| No Solution | Inconsistent | <span class="math-inline" data-tex-b64="MD1j"></span> 꼴의 contradiction row가 존재 |
 
 Gaussian Elimination은 solution을 계산하는 방법이면서 동시에 Linear System의 structure를 분석하는 방법이다.
 
@@ -259,49 +140,19 @@ Gaussian Elimination은 solution을 계산하는 방법이면서 동시에 Linea
 
 다음 Linear System을 Gaussian Elimination으로 푼다.
 
-<div class="math-display">
-\[
-\begin{cases}
-x+y+z=6\\
-2x+3y+z=14\\
-x+2y+3z=14
-\end{cases}
-\]
-</div>
+<div class="math-display" data-tex-b64="XGJlZ2lue2Nhc2VzfQp4K3krej02XFwKMngrM3krej0xNFxcCngrMnkrM3o9MTQKXGVuZHtjYXNlc30="></div>
 
 ### 2
 
 다음 Linear System의 Consistency와 solution의 형태를 판단한다.
 
-<div class="math-display">
-\[
-\begin{cases}
-x+2y+3z=4\\
-5x+6y+7z=8\\
-9x+10y+11z=12
-\end{cases}
-\]
-</div>
+<div class="math-display" data-tex-b64="XGJlZ2lue2Nhc2VzfQp4KzJ5KzN6PTRcXAo1eCs2eSs3ej04XFwKOXgrMTB5KzExej0xMgpcZW5ke2Nhc2VzfQ=="></div>
 
 ### 3
 
-다음 <span class="math-inline" data-tex="A\mathbf{x}=\mathbf{b}"></span>에서 <span class="math-inline" data-tex="\mathbf{x}"></span>를 구한다.
+다음 <span class="math-inline" data-tex-b64="QVxtYXRoYmZ7eH09XG1hdGhiZntifQ=="></span>에서 <span class="math-inline" data-tex-b64="XG1hdGhiZnt4fQ=="></span>를 구한다.
 
-<div class="math-display">
-\[
-A=
-\begin{bmatrix}
-1&2&3\\
-4&5&6\\
-7&8&10
-\end{bmatrix},
-\qquad
-\mathbf{b}=
-\begin{bmatrix}
-6\\15\\25
-\end{bmatrix}
-\]
-</div>
+<div class="math-display" data-tex-b64="QT0KXGJlZ2lue2JtYXRyaXh9CjEmMiYzXFwKNCY1JjZcXAo3JjgmMTAKXGVuZHtibWF0cml4fSwKXHFxdWFkClxtYXRoYmZ7Yn09ClxiZWdpbntibWF0cml4fQo2XFwxNVxcMjUKXGVuZHtibWF0cml4fQ=="></div>
 
 ## 풀이
 
@@ -310,24 +161,15 @@ A=
 
 row reduction 후 solution은
 
-<div class="math-display">
-\[
-(x,y,z)=(0,4,2)
-\]
-</div>
+<div class="math-display" data-tex-b64="KHgseSx6KT0oMCw0LDIp"></div>
 
 이다.
 
 ### 2번
 
-Coefficient Matrix와 Augmented Matrix의 rank가 모두 <span class="math-inline" data-tex="2"></span>이고 variable은 <span class="math-inline" data-tex="3"></span>개이므로 consistent하며 Infinitely Many Solutions를 가진다. <span class="math-inline" data-tex="z=t"></span>로 두면
+Coefficient Matrix와 Augmented Matrix의 rank가 모두 <span class="math-inline" data-tex-b64="Mg=="></span>이고 variable은 <span class="math-inline" data-tex-b64="Mw=="></span>개이므로 consistent하며 Infinitely Many Solutions를 가진다. <span class="math-inline" data-tex-b64="ej10"></span>로 두면
 
-<div class="math-display">
-\[
-(x,y,z)=(t-2,3-2t,t),
-\qquad t\in\mathbb{R}
-\]
-</div>
+<div class="math-display" data-tex-b64="KHgseSx6KT0odC0yLDMtMnQsdCksClxxcXVhZCB0XGluXG1hdGhiYntSfQ=="></div>
 
 이다.
 
@@ -335,14 +177,7 @@ Coefficient Matrix와 Augmented Matrix의 rank가 모두 <span class="math-inlin
 
 row reduction하면
 
-<div class="math-display">
-\[
-\mathbf{x}=
-\begin{bmatrix}
-1\\1\\1
-\end{bmatrix}
-\]
-</div>
+<div class="math-display" data-tex-b64="XG1hdGhiZnt4fT0KXGJlZ2lue2JtYXRyaXh9CjFcXDFcXDEKXGVuZHtibWF0cml4fQ=="></div>
 
 을 얻는다.
 
