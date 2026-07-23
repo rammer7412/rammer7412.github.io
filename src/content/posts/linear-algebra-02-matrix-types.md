@@ -1,6 +1,6 @@
 ---
-title: "2. 자주 사용하는 행렬의 종류"
-description: "정사각 행렬, 단위 행렬, 대각 행렬, 전치 행렬과 삼각 행렬의 정의와 성질을 정리한다."
+title: "2. 자주 사용하는 Matrix의 종류"
+description: "Square Matrix, Identity Matrix, Diagonal Matrix, Transpose와 Triangular Matrix의 정의와 성질을 정리한다."
 date: "2025-06-29"
 category: "선형대수학"
 tags: ["linear-algebra", "matrix", "transpose", "triangular-matrix"]
@@ -10,11 +10,11 @@ featured: false
 draft: false
 ---
 
-행렬을 계산 도구로만 보면 원소를 배열한 표처럼 보이지만, 특정한 형태를 가진 행렬에는 계산을 단순하게 만드는 성질이 있다. 이후 가우스 소거법, 역행렬, 고유값을 공부할 때 반복해서 등장하는 행렬들을 정리한다.
+matrix는 원소를 배열한 표처럼 보이지만, 특정한 형태를 가진 matrix에는 계산을 단순하게 만드는 성질이 있다. 이후 Gaussian Elimination, inverse matrix, eigenvalue를 공부할 때 반복해서 등장하는 matrix들을 정리한다.
 
-## 정사각 행렬(Square Matrix)
+## Square Matrix
 
-행과 열의 개수가 같은 행렬을 정사각 행렬이라고 한다. $n\times n$ 정사각 행렬은 다음 형태이다.
+row와 column의 개수가 같은 matrix를 Square Matrix라고 한다. $n\times n$ Square Matrix는 다음 형태이다.
 
 <div class="math-display">
 \[
@@ -27,7 +27,8 @@ a_{n1}&a_{n2}&\cdots&a_{nn}
 \end{bmatrix}
 \]
 </div>
-행렬식, 고유값, 대각화처럼 뒤에서 다루는 많은 개념은 정사각 행렬을 대상으로 정의된다.
+
+determinant, eigenvalue, diagonalization처럼 뒤에서 다루는 많은 개념은 Square Matrix를 대상으로 정의된다.
 
 예를 들어
 
@@ -41,11 +42,12 @@ A=
 \end{bmatrix}
 \]
 </div>
-는 $3\times3$ 정사각 행렬이다.
 
-## 단위 행렬(Identity Matrix)
+는 $3\times3$ Square Matrix이다.
 
-단위 행렬은 주대각선 원소가 모두 $1$이고 나머지 원소가 $0$인 정사각 행렬이다. $n\times n$ 단위 행렬을 $I_n$으로 나타낸다.
+## Identity Matrix
+
+Identity Matrix는 main diagonal의 element가 모두 $1$이고 나머지 element가 $0$인 Square Matrix이다. $n\times n$ Identity Matrix를 $I_n$으로 나타낸다.
 
 <div class="math-display">
 \[
@@ -58,16 +60,18 @@ I_n=
 \end{bmatrix}
 \]
 </div>
-행렬 곱셈에서 수의 $1$과 같은 역할을 한다.
+
+Matrix Multiplication에서 수의 $1$과 같은 identity 역할을 한다.
 
 <div class="math-display">
 \[
 AI_n=I_nA=A
 \]
 </div>
-## 대각 행렬(Diagonal Matrix)
 
-주대각선 이외의 모든 원소가 $0$인 정사각 행렬을 대각 행렬이라고 한다.
+## Diagonal Matrix
+
+main diagonal 이외의 모든 element가 $0$인 Square Matrix를 Diagonal Matrix라고 한다.
 
 <div class="math-display">
 \[
@@ -81,9 +85,10 @@ d_1&0&\cdots&0\\
 =\operatorname{diag}(d_1,d_2,\ldots,d_n)
 \]
 </div>
-대각 성분에는 $0$도 올 수 있다. 단위 행렬은 모든 대각 성분이 $1$인 대각 행렬이다.
 
-대각 행렬의 연산은 성분별 계산으로 단순화된다.
+main diagonal의 element에는 $0$도 올 수 있다. Identity Matrix는 모든 diagonal element가 $1$인 Diagonal Matrix이다.
+
+Diagonal Matrix의 operation은 component-wise calculation으로 단순화된다.
 
 <div class="math-display">
 \[
@@ -93,6 +98,7 @@ d_1&0&\cdots&0\\
 \operatorname{diag}(a_1b_1,\ldots,a_nb_n)
 \]
 </div>
+
 또한
 
 <div class="math-display">
@@ -100,17 +106,19 @@ d_1&0&\cdots&0\\
 D^k=\operatorname{diag}(d_1^k,\ldots,d_n^k)
 \]
 </div>
+
 이다.
 
-## 전치 행렬(Transpose)
+## Transpose
 
-행렬의 행과 열을 맞바꾼 행렬을 전치 행렬이라고 한다. $A=[a_{ij}]$일 때
+matrix의 row와 column을 맞바꾼 matrix를 Transpose라고 한다. $A=[a_{ij}]$일 때
 
 <div class="math-display">
 \[
 (A^T)_{ij}=a_{ji}
 \]
 </div>
+
 로 정의한다.
 
 예를 들어
@@ -124,6 +132,7 @@ A=
 \end{bmatrix}
 \]
 </div>
+
 이면
 
 <div class="math-display">
@@ -136,55 +145,62 @@ A^T=
 \end{bmatrix}
 \]
 </div>
+
 이다.
 
-전치 연산에서 자주 사용하는 성질은 다음과 같다.
+Transpose에서 자주 사용하는 성질은 다음과 같다.
 
 <div class="math-display">
 \[
 (A^T)^T=A
 \]
 </div>
+
 <div class="math-display">
 \[
 (A+B)^T=A^T+B^T
 \]
 </div>
+
 <div class="math-display">
 \[
 (cA)^T=cA^T
 \]
 </div>
+
 <div class="math-display">
 \[
 (AB)^T=B^TA^T
 \]
 </div>
-마지막 식에서 곱의 순서가 뒤집힌다는 점이 중요하다.
 
-### 대칭 행렬과 반대칭 행렬
+마지막 식에서는 product의 순서가 뒤집힌다.
 
-정사각 행렬 $A$가
+### Symmetric Matrix와 Skew-Symmetric Matrix
+
+Square Matrix $A$가
 
 <div class="math-display">
 \[
 A^T=A
 \]
 </div>
-를 만족하면 대칭 행렬(symmetric matrix)이라고 한다. 반대로
+
+를 만족하면 Symmetric Matrix라고 한다. 반대로
 
 <div class="math-display">
 \[
 A^T=-A
 \]
 </div>
-이면 반대칭 행렬(skew-symmetric matrix)이라고 한다. 실수 반대칭 행렬의 주대각선 원소는 모두 $0$이다.
 
-## 삼각 행렬(Triangular Matrix)
+이면 Skew-Symmetric Matrix라고 한다. real Skew-Symmetric Matrix의 main diagonal element는 모두 $0$이다.
 
-정사각 행렬에서 주대각선의 한쪽이 모두 $0$이면 삼각 행렬이다.
+## Triangular Matrix
 
-상삼각 행렬은 주대각선 아래가 모두 $0$이다.
+Square Matrix에서 main diagonal의 한쪽이 모두 $0$이면 Triangular Matrix이다.
+
+Upper Triangular Matrix는 main diagonal 아래가 모두 $0$이다.
 
 <div class="math-display">
 \[
@@ -197,7 +213,8 @@ u_{11}&u_{12}&\cdots&u_{1n}\\
 \end{bmatrix}
 \]
 </div>
-하삼각 행렬은 주대각선 위가 모두 $0$이다.
+
+Lower Triangular Matrix는 main diagonal 위가 모두 $0$이다.
 
 <div class="math-display">
 \[
@@ -210,27 +227,27 @@ l_{n1}&\cdots&l_{n,n-1}&l_{nn}
 \end{bmatrix}
 \]
 </div>
-같은 종류의 삼각 행렬끼리 곱하면 다시 같은 종류의 삼각 행렬이 된다. 대각 행렬은 상삼각 행렬이면서 동시에 하삼각 행렬이다.
 
-삼각 행렬은 가우스 소거법과 역대입에서 자연스럽게 등장한다. 행렬식도 주대각선 원소의 곱으로 바로 계산할 수 있다.
+같은 종류의 Triangular Matrix끼리 곱하면 다시 같은 종류의 Triangular Matrix가 된다. Diagonal Matrix는 Upper Triangular Matrix이면서 동시에 Lower Triangular Matrix이다.
+
+Triangular Matrix는 Gaussian Elimination과 back substitution에서 자연스럽게 등장한다. determinant도 main diagonal element의 product로 바로 계산할 수 있다.
 
 <div class="math-display">
 \[
 \det(U)=u_{11}u_{22}\cdots u_{nn}
 \]
 </div>
+
 ## 정리
 
-행렬의 형태를 알아보는 일은 단순한 이름 암기가 아니다.
-
-- 단위 행렬은 행렬 곱셈의 항등원이다.
-- 대각 행렬은 곱셈과 거듭제곱이 성분별 계산으로 단순화된다.
-- 전치는 행과 열의 관점을 바꾸며, 대칭성과 직교성의 기초가 된다.
-- 삼각 행렬은 연립방정식 풀이와 행렬 분해에서 핵심적인 역할을 한다.
+- Identity Matrix는 Matrix Multiplication의 identity이다.
+- Diagonal Matrix는 multiplication과 power가 component-wise calculation으로 단순화된다.
+- Transpose는 row와 column의 관점을 바꾸며 Symmetric Matrix와 orthogonality를 이해하는 기초가 된다.
+- Triangular Matrix는 Linear System의 풀이와 Matrix Decomposition에서 중요한 역할을 한다.
 
 ## 확인 문제
 
-1. 다음 행렬이 정사각, 대각, 상삼각, 하삼각 행렬 중 어디에 해당하는지 분류한다.
+1. 다음 matrix가 Square Matrix, Diagonal Matrix, Upper Triangular Matrix, Lower Triangular Matrix 중 어디에 해당하는지 분류한다.
 
 <div class="math-display">
 \[
@@ -242,15 +259,16 @@ A=
 \end{bmatrix}
 \]
 </div>
-2. $(AB)^T=B^TA^T$에서 곱의 순서가 바뀌는 이유를 원소 단위로 확인한다.
-3. 임의의 실수 정사각 행렬 $A$를 대칭 행렬 $B$와 반대칭 행렬 $C$의 합 $A=B+C$로 나타낸다.
+
+2. $(AB)^T=B^TA^T$에서 product의 순서가 바뀌는 이유를 element 단위로 확인한다.
+3. 임의의 real Square Matrix $A$를 Symmetric Matrix $B$와 Skew-Symmetric Matrix $C$의 sum $A=B+C$로 나타낸다.
 
 <details>
 <summary>정답 보기</summary>
 
 ### 1번
 
-$A$는 $3\times3$ 정사각 행렬이며, 주대각선 이외의 원소가 모두 $0$이므로 대각 행렬이다. 따라서 상삼각 행렬이면서 하삼각 행렬이기도 하다.
+$A$는 $3\times3$ Square Matrix이며 main diagonal 이외의 element가 모두 $0$이므로 Diagonal Matrix이다. 따라서 Upper Triangular Matrix이면서 Lower Triangular Matrix이기도 하다.
 
 ### 2번
 
@@ -261,6 +279,7 @@ $(AB)_{ij}=\sum_k a_{ik}b_{kj}$이므로
 ((AB)^T)_{ij}=(AB)_{ji}=\sum_k a_{jk}b_{ki}
 \]
 </div>
+
 이다. 한편
 
 <div class="math-display">
@@ -269,7 +288,8 @@ $(AB)_{ij}=\sum_k a_{ik}b_{kj}$이므로
 =\sum_k b_{ki}a_{jk}
 \]
 </div>
-이고 스칼라 곱은 교환 가능하므로 두 식이 같다.
+
+이고 scalar multiplication은 commutative하므로 두 식이 같다.
 
 ### 3번
 
@@ -280,10 +300,11 @@ B=\frac{A+A^T}{2},
 C=\frac{A-A^T}{2}
 \]
 </div>
+
 로 두면 $B^T=B$, $C^T=-C$이고 $B+C=A$가 된다.
 
 </details>
 
 ---
 
-**선형대수학 정리 시리즈** · 2/5 · [← 이전: 벡터 공간과 선형 사상](/posts/linear-algebra-01-vector-spaces/) · [다음: 내적, 노름과 선형결합 →](/posts/linear-algebra-03-inner-product-linear-combination/)
+**Linear Algebra 정리 시리즈** · 2/5 · [← 이전: Vector Space와 Linear Map](/posts/linear-algebra-01-vector-spaces/) · [다음: Inner Product, Norm과 Linear Combination →](/posts/linear-algebra-03-inner-product-linear-combination/)
