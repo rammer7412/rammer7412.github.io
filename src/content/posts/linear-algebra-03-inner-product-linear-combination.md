@@ -14,7 +14,7 @@ vector를 공부할 때 Inner Product는 component끼리 곱해 더하는 operat
 
 ## Inner Product
 
-$\mathbf{u},\mathbf{v}\in\mathbb{R}^n$을
+<span class="math-inline">\(\mathbf{u},\mathbf{v}\in\mathbb{R}^n\)</span>을
 
 <div class="math-display">
 \[
@@ -34,7 +34,7 @@ $\mathbf{u},\mathbf{v}\in\mathbb{R}^n$을
 \]
 </div>
 
-예를 들어 $\mathbf{u}=(1,2,3)$, $\mathbf{v}=(4,-1,2)$이면
+예를 들어 <span class="math-inline">\(\mathbf{u}=(1,2,3)\)</span>, <span class="math-inline">\(\mathbf{v}=(4,-1,2)\)</span>이면
 
 <div class="math-display">
 \[
@@ -84,7 +84,7 @@ real Vector Space의 standard Inner Product는 다음 성질을 만족한다.
 \]
 </div>
 
-특히 $\mathbf{u}\cdot\mathbf{v}=0$이면 두 vector는 orthogonal이다.
+특히 <span class="math-inline">\(\mathbf{u}\cdot\mathbf{v}=0\)</span>이면 두 vector는 orthogonal이다.
 
 ## Norm
 
@@ -100,15 +100,15 @@ Norm은 vector의 magnitude를 측정하는 함수이다. standard Euclidean Nor
 
 Norm은 다음 세 조건을 만족해야 한다.
 
-1. $\lVert\mathbf{u}\rVert\ge0$이고 $\lVert\mathbf{u}\rVert=0\iff\mathbf{u}=\mathbf{0}$
-2. $\lVert c\mathbf{u}\rVert=|c|\lVert\mathbf{u}\rVert$
-3. $\lVert\mathbf{u}+\mathbf{v}\rVert\le\lVert\mathbf{u}\rVert+\lVert\mathbf{v}\rVert$
+1. <span class="math-inline">\(\lVert\mathbf{u}\rVert\ge0\)</span>이고 <span class="math-inline">\(\lVert\mathbf{u}\rVert=0\iff\mathbf{u}=\mathbf{0}\)</span>
+2. <span class="math-inline">\(\lVert c\mathbf{u}\rVert=|c|\lVert\mathbf{u}\rVert\)</span>
+3. <span class="math-inline">\(\lVert\mathbf{u}+\mathbf{v}\rVert\le\lVert\mathbf{u}\rVert+\lVert\mathbf{v}\rVert\)</span>
 
 세 번째 조건은 triangle inequality이다.
 
 ### 여러 종류의 Norm
 
-$1$-Norm은 component의 absolute value를 모두 더한다.
+<span class="math-inline">\(1\)</span>-Norm은 component의 absolute value를 모두 더한다.
 
 <div class="math-display">
 \[
@@ -116,7 +116,7 @@ $1$-Norm은 component의 absolute value를 모두 더한다.
 \]
 </div>
 
-일반적인 $p$-Norm은 다음과 같다.
+일반적인 <span class="math-inline">\(p\)</span>-Norm은 다음과 같다.
 
 <div class="math-display">
 \[
@@ -139,7 +139,7 @@ Infinity Norm은 absolute value가 가장 큰 component를 선택한다.
 
 ## Linear Combination
 
-vector $\mathbf{v}_1,\ldots,\mathbf{v}_k$와 scalar $c_1,\ldots,c_k$가 있을 때
+vector <span class="math-inline">\(\mathbf{v}_1,\ldots,\mathbf{v}_k\)</span>와 scalar <span class="math-inline">\(c_1,\ldots,c_k\)</span>가 있을 때
 
 <div class="math-display">
 \[
@@ -149,7 +149,7 @@ c_1\mathbf{v}_1+c_2\mathbf{v}_2+\cdots+c_k\mathbf{v}_k
 
 형태의 vector를 주어진 vector들의 Linear Combination이라고 한다.
 
-$\mathbb{R}^2$의 Standard Basis
+<span class="math-inline">\(\mathbb{R}^2\)</span>의 Standard Basis
 
 <div class="math-display">
 \[
@@ -159,7 +159,7 @@ $\mathbb{R}^2$의 Standard Basis
 \]
 </div>
 
-를 사용하면 모든 vector $(x,y)$를
+를 사용하면 모든 vector <span class="math-inline">\((x,y)\)</span>를
 
 <div class="math-display">
 \[
@@ -173,7 +173,7 @@ Linear Combination은 주어진 vector들로 어떤 space를 만들 수 있는�
 
 ## Linear Independence
 
-vector set $\lbrace\mathbf{v}_1,\ldots,\mathbf{v}_k\rbrace$가 다음 조건을 만족하면 linearly independent이다.
+vector set <span class="math-inline">\(\lbrace\mathbf{v}_1,\ldots,\mathbf{v}_k\rbrace\)</span>가 다음 조건을 만족하면 linearly independent이다.
 
 <div class="math-display">
 \[
@@ -185,7 +185,7 @@ c_1=\cdots=c_k=0
 
 zero vector를 만드는 coefficient combination이 trivial solution 하나뿐이라는 뜻이다.
 
-반대로 $0$이 아닌 coefficient를 포함하는 combination으로 zero vector를 만들 수 있다면 linearly dependent이다. 이 경우 어떤 vector 하나가 나머지 vector들의 Linear Combination으로 표현된다.
+반대로 <span class="math-inline">\(0\)</span>이 아닌 coefficient를 포함하는 combination으로 zero vector를 만들 수 있다면 linearly dependent이다. 이 경우 어떤 vector 하나가 나머지 vector들의 Linear Combination으로 표현된다.
 
 예를 들어
 
@@ -211,7 +211,7 @@ zero vector를 만드는 coefficient combination이 trivial solution 하나뿐�
 
 linearly independent인 vector들로 어떤 vector를 표현할 수 있다면 그 Linear Combination의 coefficient는 unique하다.
 
-같은 vector $\mathbf{x}$가
+같은 vector <span class="math-inline">\(\mathbf{x}\)</span>가
 
 <div class="math-display">
 \[
@@ -235,7 +235,7 @@ linearly independent인 vector들로 어떤 vector를 표현할 수 있다면 �
 \]
 </div>
 
-이다. vector들이 linearly independent이므로 모든 $i$에 대해 $c_i-d_i=0$이고, 따라서 $c_i=d_i$이다.
+이다. vector들이 linearly independent이므로 모든 <span class="math-inline">\(i\)</span>에 대해 <span class="math-inline">\(c_i-d_i=0\)</span>이고, 따라서 <span class="math-inline">\(c_i=d_i\)</span>이다.
 
 이 성질이 하나의 Basis에 대한 coordinate를 unique하게 정의할 수 있는 이유이다.
 
@@ -249,11 +249,11 @@ linearly independent인 vector들로 어떤 vector를 표현할 수 있다면 �
 
 ## 확인 문제
 
-1. $\mathbf{u}=(3,-4,1)$의 $1$-Norm, $2$-Norm, Infinity Norm을 계산한다.
-2. $\mathbf{v}_1=(1,0,1)$, $\mathbf{v}_2=(0,1,1)$, $\mathbf{v}_3=(1,1,2)$가 linearly independent인지 확인한다.
+1. <span class="math-inline">\(\mathbf{u}=(3,-4,1)\)</span>의 <span class="math-inline">\(1\)</span>-Norm, <span class="math-inline">\(2\)</span>-Norm, Infinity Norm을 계산한다.
+2. <span class="math-inline">\(\mathbf{v}_1=(1,0,1)\)</span>, <span class="math-inline">\(\mathbf{v}_2=(0,1,1)\)</span>, <span class="math-inline">\(\mathbf{v}_3=(1,1,2)\)</span>가 linearly independent인지 확인한다.
 
-<details>
-<summary>정답 보기</summary>
+## 풀이
+
 
 ### 1번
 
@@ -293,7 +293,6 @@ linearly independent인 vector들로 어떤 vector를 표현할 수 있다면 �
 
 이라는 nontrivial relation이 존재한다. 따라서 세 vector는 linearly dependent이다.
 
-</details>
 
 ---
 

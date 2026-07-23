@@ -16,7 +16,7 @@ Span은 첫 번째 질문에, Basis와 Dimension은 두 번째 질문에 답한�
 
 ## Span
 
-vector $\mathbf{v}_1,\ldots,\mathbf{v}_k$의 모든 Linear Combination으로 이루어진 set을 이 vector들의 Span이라고 한다.
+vector <span class="math-inline">\(\mathbf{v}_1,\ldots,\mathbf{v}_k\)</span>의 모든 Linear Combination으로 이루어진 set을 이 vector들의 Span이라고 한다.
 
 <div class="math-display">
 \[
@@ -29,7 +29,7 @@ vector $\mathbf{v}_1,\ldots,\mathbf{v}_k$의 모든 Linear Combination으로 이
 \]
 </div>
 
-Span은 항상 Subspace이다. zero vector는 모든 coefficient를 $0$으로 두면 얻을 수 있고, Linear Combination끼리 더하거나 scalar multiplication해도 다시 같은 vector들의 Linear Combination이 되기 때문이다.
+Span은 항상 Subspace이다. zero vector는 모든 coefficient를 <span class="math-inline">\(0\)</span>으로 두면 얻을 수 있고, Linear Combination끼리 더하거나 scalar multiplication해도 다시 같은 vector들의 Linear Combination이 되기 때문이다.
 
 ### R²를 Span하는 예
 
@@ -64,23 +64,23 @@ c_1\mathbf{e}_1+c_2\mathbf{e}_2
 
 이다.
 
-반면 $(1,0)$과 $(2,0)$의 Linear Combination은 항상 $x$축 위에만 놓인다. 서로 다른 두 vector라도 같은 direction을 가리키면 $\mathbb{R}^2$ 전체를 Span할 수 없다.
+반면 <span class="math-inline">\((1,0)\)</span>과 <span class="math-inline">\((2,0)\)</span>의 Linear Combination은 항상 <span class="math-inline">\(x\)</span>축 위에만 놓인다. 서로 다른 두 vector라도 같은 direction을 가리키면 <span class="math-inline">\(\mathbb{R}^2\)</span> 전체를 Span할 수 없다.
 
 ## Basis
 
-Vector Space $V$의 subset $B=\lbrace\mathbf{v}_1,\ldots,\mathbf{v}_k\rbrace$가 다음 두 조건을 만족하면 $V$의 Basis라고 한다.
+Vector Space <span class="math-inline">\(V\)</span>의 subset <span class="math-inline">\(B=\lbrace\mathbf{v}_1,\ldots,\mathbf{v}_k\rbrace\)</span>가 다음 두 조건을 만족하면 <span class="math-inline">\(V\)</span>의 Basis라고 한다.
 
-1. $B$는 linearly independent이다.
-2. $B$는 $V$를 Span한다.
+1. <span class="math-inline">\(B\)</span>는 linearly independent이다.
+2. <span class="math-inline">\(B\)</span>는 <span class="math-inline">\(V\)</span>를 Span한다.
 
 첫 번째 조건은 redundancy가 없다는 뜻이고, 두 번째 조건은 space 전체를 표현할 만큼 충분하다는 뜻이다.
 
 Basis는 다음 두 관점으로 이해할 수 있다.
 
-- $V$를 Span하는 minimal vector set
+- <span class="math-inline">\(V\)</span>를 Span하는 minimal vector set
 - 더 이상 vector를 추가하지 않아도 되는 maximal linearly independent set
 
-$\mathbb{R}^2$의 Standard Basis는
+<span class="math-inline">\(\mathbb{R}^2\)</span>의 Standard Basis는
 
 <div class="math-display">
 \[
@@ -102,11 +102,11 @@ $\mathbb{R}^2$의 Standard Basis는
 \]
 </div>
 
-도 두 vector가 linearly independent이고 $\mathbb{R}^2$를 Span하므로 Basis이다.
+도 두 vector가 linearly independent이고 <span class="math-inline">\(\mathbb{R}^2\)</span>를 Span하므로 Basis이다.
 
 ## Dimension
 
-Vector Space $V$의 Basis에 포함된 vector의 개수를 $V$의 Dimension이라고 한다.
+Vector Space <span class="math-inline">\(V\)</span>의 Basis에 포함된 vector의 개수를 <span class="math-inline">\(V\)</span>의 Dimension이라고 한다.
 
 <div class="math-display">
 \[
@@ -114,7 +114,7 @@ Vector Space $V$의 Basis에 포함된 vector의 개수를 $V$의 Dimension이�
 \]
 </div>
 
-는 $V$의 모든 Basis가 $k$개의 vector로 이루어진다는 뜻이다.
+는 <span class="math-inline">\(V\)</span>의 모든 Basis가 <span class="math-inline">\(k\)</span>개의 vector로 이루어진다는 뜻이다.
 
 Basis 자체는 여러 가지일 수 있지만, finite-dimensional Vector Space의 모든 Basis는 같은 개수의 vector를 가진다. 따라서 Dimension은 선택한 Basis와 무관하다.
 
@@ -139,7 +139,7 @@ W=\operatorname{span}\left\{
 \]
 </div>
 
-따라서 두 번째 vector를 제거해도 Span이 변하지 않는다. $W$의 Basis는 하나의 vector만으로 구성할 수 있으므로
+따라서 두 번째 vector를 제거해도 Span이 변하지 않는다. <span class="math-inline">\(W\)</span>의 Basis는 하나의 vector만으로 구성할 수 있으므로
 
 <div class="math-display">
 \[
@@ -164,7 +164,7 @@ A=
 \]
 </div>
 
-이때 $A$의 Column Space는
+이때 <span class="math-inline">\(A\)</span>의 Column Space는
 
 <div class="math-display">
 \[
@@ -189,7 +189,7 @@ A=
 
 ### 1
 
-다음 vector들이 Span하는 space $W$의 Dimension을 구한다.
+다음 vector들이 Span하는 space <span class="math-inline">\(W\)</span>의 Dimension을 구한다.
 
 <div class="math-display">
 \[
@@ -214,10 +214,10 @@ W=\operatorname{span}\{\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3\}
 
 다음 명제가 참인지 판단한다.
 
-> $(\mathbf{x}_1,\ldots,\mathbf{x}_n)$이 Vector Space $V$를 Span하면 $\dim(V)=n$이다.
+> <span class="math-inline">\((\mathbf{x}_1,\ldots,\mathbf{x}_n)\)</span>이 Vector Space <span class="math-inline">\(V\)</span>를 Span하면 <span class="math-inline">\(\dim(V)=n\)</span>이다.
 
-<details>
-<summary>정답 보기</summary>
+## 풀이
+
 
 ### 1번
 
@@ -234,7 +234,7 @@ A=
 \]
 </div>
 
-이다. 이 matrix의 determinant는 $-1$로 $0$이 아니므로 세 column vector는 linearly independent이다. 따라서
+이다. 이 matrix의 determinant는 <span class="math-inline">\(-1\)</span>로 <span class="math-inline">\(0\)</span>이 아니므로 세 column vector는 linearly independent이다. 따라서
 
 <div class="math-display">
 \[
@@ -248,7 +248,7 @@ A=
 
 거짓이다. spanning set에 linearly dependent한 vector가 포함될 수 있기 때문이다.
 
-예를 들어 $\mathbb{R}^2$에서
+예를 들어 <span class="math-inline">\(\mathbb{R}^2\)</span>에서
 
 <div class="math-display">
 \[
@@ -256,7 +256,7 @@ A=
 \]
 </div>
 
-은 $\mathbb{R}^2$를 Span하지만 vector는 세 개이고 Dimension은 $2$이다. 일반적으로 $n$개의 vector가 $V$를 Span하면
+은 <span class="math-inline">\(\mathbb{R}^2\)</span>를 Span하지만 vector는 세 개이고 Dimension은 <span class="math-inline">\(2\)</span>이다. 일반적으로 <span class="math-inline">\(n\)</span>개의 vector가 <span class="math-inline">\(V\)</span>를 Span하면
 
 <div class="math-display">
 \[
@@ -266,7 +266,6 @@ A=
 
 이다.
 
-</details>
 
 ---
 

@@ -14,7 +14,7 @@ matrix는 원소를 배열한 표처럼 보이지만, 특정한 형태를 가진
 
 ## Square Matrix
 
-row와 column의 개수가 같은 matrix를 Square Matrix라고 한다. $n\times n$ Square Matrix는 다음 형태이다.
+row와 column의 개수가 같은 matrix를 Square Matrix라고 한다. <span class="math-inline">\(n\times n\)</span> Square Matrix는 다음 형태이다.
 
 <div class="math-display">
 \[
@@ -43,11 +43,11 @@ A=
 \]
 </div>
 
-는 $3\times3$ Square Matrix이다.
+는 <span class="math-inline">\(3\times3\)</span> Square Matrix이다.
 
 ## Identity Matrix
 
-Identity Matrix는 main diagonal의 element가 모두 $1$이고 나머지 element가 $0$인 Square Matrix이다. $n\times n$ Identity Matrix를 $I_n$으로 나타낸다.
+Identity Matrix는 main diagonal의 element가 모두 <span class="math-inline">\(1\)</span>이고 나머지 element가 <span class="math-inline">\(0\)</span>인 Square Matrix이다. <span class="math-inline">\(n\times n\)</span> Identity Matrix를 <span class="math-inline">\(I_n\)</span>으로 나타낸다.
 
 <div class="math-display">
 \[
@@ -61,7 +61,7 @@ I_n=
 \]
 </div>
 
-Matrix Multiplication에서 수의 $1$과 같은 identity 역할을 한다.
+Matrix Multiplication에서 수의 <span class="math-inline">\(1\)</span>과 같은 identity 역할을 한다.
 
 <div class="math-display">
 \[
@@ -71,7 +71,7 @@ AI_n=I_nA=A
 
 ## Diagonal Matrix
 
-main diagonal 이외의 모든 element가 $0$인 Square Matrix를 Diagonal Matrix라고 한다.
+main diagonal 이외의 모든 element가 <span class="math-inline">\(0\)</span>인 Square Matrix를 Diagonal Matrix라고 한다.
 
 <div class="math-display">
 \[
@@ -86,7 +86,7 @@ d_1&0&\cdots&0\\
 \]
 </div>
 
-main diagonal의 element에는 $0$도 올 수 있다. Identity Matrix는 모든 diagonal element가 $1$인 Diagonal Matrix이다.
+main diagonal의 element에는 <span class="math-inline">\(0\)</span>도 올 수 있다. Identity Matrix는 모든 diagonal element가 <span class="math-inline">\(1\)</span>인 Diagonal Matrix이다.
 
 Diagonal Matrix의 operation은 component-wise calculation으로 단순화된다.
 
@@ -111,7 +111,7 @@ D^k=\operatorname{diag}(d_1^k,\ldots,d_n^k)
 
 ## Transpose
 
-matrix의 row와 column을 맞바꾼 matrix를 Transpose라고 한다. $A=[a_{ij}]$일 때
+matrix의 row와 column을 맞바꾼 matrix를 Transpose라고 한다. <span class="math-inline">\(A=[a_{ij}]\)</span>일 때
 
 <div class="math-display">
 \[
@@ -178,7 +178,7 @@ Transpose에서 자주 사용하는 성질은 다음과 같다.
 
 ### Symmetric Matrix와 Skew-Symmetric Matrix
 
-Square Matrix $A$가
+Square Matrix <span class="math-inline">\(A\)</span>가
 
 <div class="math-display">
 \[
@@ -194,13 +194,13 @@ A^T=-A
 \]
 </div>
 
-이면 Skew-Symmetric Matrix라고 한다. real Skew-Symmetric Matrix의 main diagonal element는 모두 $0$이다.
+이면 Skew-Symmetric Matrix라고 한다. real Skew-Symmetric Matrix의 main diagonal element는 모두 <span class="math-inline">\(0\)</span>이다.
 
 ## Triangular Matrix
 
-Square Matrix에서 main diagonal의 한쪽이 모두 $0$이면 Triangular Matrix이다.
+Square Matrix에서 main diagonal의 한쪽이 모두 <span class="math-inline">\(0\)</span>이면 Triangular Matrix이다.
 
-Upper Triangular Matrix는 main diagonal 아래가 모두 $0$이다.
+Upper Triangular Matrix는 main diagonal 아래가 모두 <span class="math-inline">\(0\)</span>이다.
 
 <div class="math-display">
 \[
@@ -214,7 +214,7 @@ u_{11}&u_{12}&\cdots&u_{1n}\\
 \]
 </div>
 
-Lower Triangular Matrix는 main diagonal 위가 모두 $0$이다.
+Lower Triangular Matrix는 main diagonal 위가 모두 <span class="math-inline">\(0\)</span>이다.
 
 <div class="math-display">
 \[
@@ -260,19 +260,19 @@ A=
 \]
 </div>
 
-2. $(AB)^T=B^TA^T$에서 product의 순서가 바뀌는 이유를 element 단위로 확인한다.
-3. 임의의 real Square Matrix $A$를 Symmetric Matrix $B$와 Skew-Symmetric Matrix $C$의 sum $A=B+C$로 나타낸다.
+2. <span class="math-inline">\((AB)^T=B^TA^T\)</span>에서 product의 순서가 바뀌는 이유를 element 단위로 확인한다.
+3. 임의의 real Square Matrix <span class="math-inline">\(A\)</span>를 Symmetric Matrix <span class="math-inline">\(B\)</span>와 Skew-Symmetric Matrix <span class="math-inline">\(C\)</span>의 sum <span class="math-inline">\(A=B+C\)</span>로 나타낸다.
 
-<details>
-<summary>정답 보기</summary>
+## 풀이
+
 
 ### 1번
 
-$A$는 $3\times3$ Square Matrix이며 main diagonal 이외의 element가 모두 $0$이므로 Diagonal Matrix이다. 따라서 Upper Triangular Matrix이면서 Lower Triangular Matrix이기도 하다.
+<span class="math-inline">\(A\)</span>는 <span class="math-inline">\(3\times3\)</span> Square Matrix이며 main diagonal 이외의 element가 모두 <span class="math-inline">\(0\)</span>이므로 Diagonal Matrix이다. 따라서 Upper Triangular Matrix이면서 Lower Triangular Matrix이기도 하다.
 
 ### 2번
 
-$(AB)_{ij}=\sum_k a_{ik}b_{kj}$이므로
+<span class="math-inline">\((AB)_{ij}=\sum_k a_{ik}b_{kj}\)</span>이므로
 
 <div class="math-display">
 \[
@@ -301,9 +301,8 @@ C=\frac{A-A^T}{2}
 \]
 </div>
 
-로 두면 $B^T=B$, $C^T=-C$이고 $B+C=A$가 된다.
+로 두면 <span class="math-inline">\(B^T=B\)</span>, <span class="math-inline">\(C^T=-C\)</span>이고 <span class="math-inline">\(B+C=A\)</span>가 된다.
 
-</details>
 
 ---
 

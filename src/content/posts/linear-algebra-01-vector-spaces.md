@@ -16,13 +16,13 @@ Linear Algebra를 처음 공부할 때 가장 낯설었던 부분은 vector 자�
 
 ## Field
 
-Field $F$는 덧셈과 곱셈이 정의된 집합이며, 두 연산이 익숙한 산술 법칙을 만족하는 algebraic structure이다. 핵심 조건은 다음과 같다.
+Field <span class="math-inline">\(F\)</span>는 덧셈과 곱셈이 정의된 집합이며, 두 연산이 익숙한 산술 법칙을 만족하는 algebraic structure이다. 핵심 조건은 다음과 같다.
 
 - 덧셈과 곱셈에 대해 commutative law와 associative law가 성립한다.
 - 곱셈은 덧셈에 대해 distributive law를 만족한다.
-- 덧셈의 identity $0$과 곱셈의 identity $1$이 존재한다.
+- 덧셈의 identity <span class="math-inline">\(0\)</span>과 곱셈의 identity <span class="math-inline">\(1\)</span>이 존재한다.
 - 모든 원소는 additive inverse를 가진다.
-- $0$이 아닌 모든 원소는 multiplicative inverse를 가진다.
+- <span class="math-inline">\(0\)</span>이 아닌 모든 원소는 multiplicative inverse를 가진다.
 
 대표적인 예는 다음과 같다.
 
@@ -32,11 +32,11 @@ Field $F$는 덧셈과 곱셈이 정의된 집합이며, 두 연산이 익숙한
 \]
 </div>
 
-소수 $p$에 대한 $\mathbb{Z}_p$도 Field가 된다. Vector Space에서 vector의 component와 scalar는 보통 이러한 Field의 원소로 잡는다.
+소수 <span class="math-inline">\(p\)</span>에 대한 <span class="math-inline">\(\mathbb{Z}_p\)</span>도 Field가 된다. Vector Space에서 vector의 component와 scalar는 보통 이러한 Field의 원소로 잡는다.
 
 ## Vector Space
 
-Field $F$ 위의 Vector Space $V$는 vector addition과 scalar multiplication이 정의된 집합이다. 모든 $\mathbf{u},\mathbf{v},\mathbf{w}\in V$와 $a,b\in F$에 대해 다음 성질이 성립한다.
+Field <span class="math-inline">\(F\)</span> 위의 Vector Space <span class="math-inline">\(V\)</span>는 vector addition과 scalar multiplication이 정의된 집합이다. 모든 <span class="math-inline">\(\mathbf{u},\mathbf{v},\mathbf{w}\in V\)</span>와 <span class="math-inline">\(a,b\in F\)</span>에 대해 다음 성질이 성립한다.
 
 <div class="math-display">
 \[
@@ -80,15 +80,15 @@ a(\mathbf{u}+\mathbf{v})=a\mathbf{u}+a\mathbf{v}
 
 핵심은 vector를 더하거나 scalar multiplication해도 같은 공간 안에 남고, 그 연산이 일반적인 산술과 모순되지 않는다는 점이다.
 
-가장 익숙한 예는 $\mathbb{R}^n$이다. polynomial의 집합이나 matrix의 집합도 적절한 operation을 정의하면 Vector Space가 된다.
+가장 익숙한 예는 <span class="math-inline">\(\mathbb{R}^n\)</span>이다. polynomial의 집합이나 matrix의 집합도 적절한 operation을 정의하면 Vector Space가 된다.
 
 ## Subspace
 
-$S$가 Vector Space $V$의 subset이라고 하자. $S$가 다음 세 조건을 만족하면 $V$의 Subspace이다.
+<span class="math-inline">\(S\)</span>가 Vector Space <span class="math-inline">\(V\)</span>의 subset이라고 하자. <span class="math-inline">\(S\)</span>가 다음 세 조건을 만족하면 <span class="math-inline">\(V\)</span>의 Subspace이다.
 
-1. $\mathbf{0}\in S$
-2. $\mathbf{x},\mathbf{y}\in S$이면 $\mathbf{x}+\mathbf{y}\in S$
-3. $\mathbf{x}\in S$, $a\in F$이면 $a\mathbf{x}\in S$
+1. <span class="math-inline">\(\mathbf{0}\in S\)</span>
+2. <span class="math-inline">\(\mathbf{x},\mathbf{y}\in S\)</span>이면 <span class="math-inline">\(\mathbf{x}+\mathbf{y}\in S\)</span>
+3. <span class="math-inline">\(\mathbf{x}\in S\)</span>, <span class="math-inline">\(a\in F\)</span>이면 <span class="math-inline">\(a\mathbf{x}\in S\)</span>
 
 두 번째와 세 번째 조건은 각각 vector addition과 scalar multiplication에 대해 closed라는 뜻이다.
 
@@ -100,7 +100,7 @@ S=\{(x,y)\in\mathbb{R}^2:x+y=0\}
 \]
 </div>
 
-은 $\mathbb{R}^2$의 Subspace이다. zero vector가 포함되고, 조건을 만족하는 두 vector의 sum과 scalar multiple도 다시 $x+y=0$을 만족한다.
+은 <span class="math-inline">\(\mathbb{R}^2\)</span>의 Subspace이다. zero vector가 포함되고, 조건을 만족하는 두 vector의 sum과 scalar multiple도 다시 <span class="math-inline">\(x+y=0\)</span>을 만족한다.
 
 반면
 
@@ -110,11 +110,11 @@ S=\{(x,y)\in\mathbb{R}^2:x+y=3\}
 \]
 </div>
 
-은 Subspace가 아니다. $(0,0)$이 포함되지 않기 때문이다. 원점을 지나지 않는 line은 $\mathbb{R}^2$의 Subspace가 될 수 없다는 geometric intuition과도 연결된다.
+은 Subspace가 아니다. <span class="math-inline">\((0,0)\)</span>이 포함되지 않기 때문이다. 원점을 지나지 않는 line은 <span class="math-inline">\(\mathbb{R}^2\)</span>의 Subspace가 될 수 없다는 geometric intuition과도 연결된다.
 
 ## Linearity
 
-함수 $T$가 다음 두 성질을 만족하면 linear하다고 한다.
+함수 <span class="math-inline">\(T\)</span>가 다음 두 성질을 만족하면 linear하다고 한다.
 
 <div class="math-display">
 \[
@@ -151,7 +151,7 @@ T(\mathbf{0})=\mathbf{0}
 
 ## Linear Map과 Matrix
 
-Vector Space $V$와 $W$ 사이의 함수
+Vector Space <span class="math-inline">\(V\)</span>와 <span class="math-inline">\(W\)</span> 사이의 함수
 
 <div class="math-display">
 \[
@@ -159,7 +159,7 @@ T:V\to W
 \]
 </div>
 
-가 Linearity를 만족하면 $T$를 Linear Map이라고 한다.
+가 Linearity를 만족하면 <span class="math-inline">\(T\)</span>를 Linear Map이라고 한다.
 
 finite-dimensional space에서는 matrix가 Linear Map을 표현하는 대표적인 도구이다. matrix
 
@@ -184,7 +184,7 @@ x_1\\x_2
 \]
 </div>
 
-를 생각하면 $T(\mathbf{x})=A\mathbf{x}$는 다음과 같다.
+를 생각하면 <span class="math-inline">\(T(\mathbf{x})=A\mathbf{x}\)</span>는 다음과 같다.
 
 <div class="math-display">
 \[
@@ -217,15 +217,15 @@ Matrix Multiplication의 distributive law와 scalar multiplication의 associativ
 
 ## 확인 문제
 
-1. $S=\lbrace(x,y)\in\mathbb{R}^2:x+y=0\rbrace$가 $\mathbb{R}^2$의 Subspace인지 확인한다.
-2. $T(x,y)=(xy,x+y)$가 $\mathbb{R}^2\to\mathbb{R}^2$의 Linear Map인지 확인한다.
+1. <span class="math-inline">\(S=\lbrace(x,y)\in\mathbb{R}^2:x+y=0\rbrace\)</span>가 <span class="math-inline">\(\mathbb{R}^2\)</span>의 Subspace인지 확인한다.
+2. <span class="math-inline">\(T(x,y)=(xy,x+y)\)</span>가 <span class="math-inline">\(\mathbb{R}^2\to\mathbb{R}^2\)</span>의 Linear Map인지 확인한다.
 
-<details>
-<summary>정답 보기</summary>
+## 풀이
+
 
 ### 1번
 
-$S$에는 $(0,0)$이 포함된다. $(x_1,y_1),(x_2,y_2)\in S$이면
+<span class="math-inline">\(S\)</span>에는 <span class="math-inline">\((0,0)\)</span>이 포함된다. <span class="math-inline">\((x_1,y_1),(x_2,y_2)\in S\)</span>이면
 
 <div class="math-display">
 \[
@@ -233,7 +233,7 @@ $S$에는 $(0,0)$이 포함된다. $(x_1,y_1),(x_2,y_2)\in S$이면
 \]
 </div>
 
-이므로 sum도 $S$에 속한다. 또한 $a\in\mathbb{R}$에 대해
+이므로 sum도 <span class="math-inline">\(S\)</span>에 속한다. 또한 <span class="math-inline">\(a\in\mathbb{R}\)</span>에 대해
 
 <div class="math-display">
 \[
@@ -241,11 +241,11 @@ a x_1+a y_1=a(x_1+y_1)=0
 \]
 </div>
 
-이므로 scalar multiple도 $S$에 속한다. 따라서 $S$는 Subspace이다.
+이므로 scalar multiple도 <span class="math-inline">\(S\)</span>에 속한다. 따라서 <span class="math-inline">\(S\)</span>는 Subspace이다.
 
 ### 2번
 
-Linear Map이 아니다. 예를 들어 $\mathbf{u}=(1,0)$, $\mathbf{v}=(0,1)$로 두면
+Linear Map이 아니다. 예를 들어 <span class="math-inline">\(\mathbf{u}=(1,0)\)</span>, <span class="math-inline">\(\mathbf{v}=(0,1)\)</span>로 두면
 
 <div class="math-display">
 \[
@@ -263,7 +263,6 @@ T(\mathbf{u}+\mathbf{v})=T(1,1)=(1,2)
 
 이다. additivity가 성립하지 않는다.
 
-</details>
 
 ---
 

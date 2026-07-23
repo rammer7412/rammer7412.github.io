@@ -18,6 +18,7 @@ export const navigation = [
 
 export const domainMeta: Record<string, { label: string; short: string; href: string }> = {
   'linear-algebra': { label: '선형대수학', short: '선형대수학', href: '/writing/?domain=linear-algebra' },
+  'probability-theory': { label: '확률 이론', short: '확률 이론', href: '/writing/?domain=probability-theory' },
   math: { label: '수학', short: 'Math', href: '/writing/?domain=math' },
   'operating-systems': { label: '운영체제', short: 'OS', href: '/writing/?domain=operating-systems' },
   'artificial-intelligence': { label: '인공지능', short: 'AI', href: '/writing/?domain=artificial-intelligence' },

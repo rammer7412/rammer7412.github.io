@@ -20,6 +20,7 @@ const posts = defineCollection({
       'project',
       'math',
       'linear-algebra',
+      'probability-theory',
       'operating-systems',
       'artificial-intelligence'
     ]),
