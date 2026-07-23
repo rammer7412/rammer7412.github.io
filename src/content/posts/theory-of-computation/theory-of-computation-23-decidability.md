@@ -11,7 +11,7 @@ seriesOrder: 23
 featured: false
 draft: false
 ---
-Turing Machine이 Language를 처리한다고 해도 Non-member Input에서 반드시 결과를 내는지는 별개의 문제이다. 이 차이에 따라 **Turing-recognizable**과 **Decidable** Language를 구분한다.
+Turing Machine이 Language를 처리한다고 해도 Non-member Input에서 반드시 결과를 내는지는 별개의 문제이다. 이 차이에 따라 <strong>Turing-recognizable</strong>과 <strong>Decidable</strong> Language를 구분한다.
 
 ## Turing-recognizable Language
 

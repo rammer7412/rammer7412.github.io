@@ -1,5 +1,5 @@
 ---
-title: "9. 일변량 Transformation"
+title: "9. Univariate Transformation"
 description: "하나의 Random Variable에 함수를 적용했을 때 새로운 PMF 또는 PDF를 구하는 방법을 정리한다."
 date: "2025-07-08"
 category: "확률 이론"

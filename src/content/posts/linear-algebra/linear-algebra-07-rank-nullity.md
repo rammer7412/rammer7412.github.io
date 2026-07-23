@@ -75,7 +75,7 @@ Rank는 Row Space 또는 Column Space의 Dimension이다.
 
 Row Space의 Basis는 Row Echelon Form의 0이 아닌 행들로 구할 수 있다.
 
-Column Space의 Basis를 구할 때는 주의해야 한다. Reduced Matrix의 pivot column이 아니라 **원래 행렬에서 pivot position에 대응하는 column**을 선택해야 한다. Row operation은 column 사이의 선형관계는 유지하지만 Column Space 자체는 바꿀 수 있기 때문이다.
+Column Space의 Basis를 구할 때는 주의해야 한다. Reduced Matrix의 pivot column이 아니라 <strong>원래 행렬에서 pivot position에 대응하는 column</strong>을 선택해야 한다. Row operation은 column 사이의 선형관계는 유지하지만 Column Space 자체는 바꿀 수 있기 때문이다.
 
 ## Nullity
 

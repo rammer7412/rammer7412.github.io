@@ -11,7 +11,7 @@ seriesOrder: 3
 featured: false
 draft: false
 ---
-무한한 Language를 모든 String의 목록으로 적는 것은 불가능하다. **Grammar**는 유한한 Symbol과 Production Rule을 이용해 String을 생성하며, Language의 구조를 명시적으로 표현한다.
+무한한 Language를 모든 String의 목록으로 적는 것은 불가능하다. <strong>Grammar</strong>는 유한한 Symbol과 Production Rule을 이용해 String을 생성하며, Language의 구조를 명시적으로 표현한다.
 
 ## Grammar의 구성
 
@@ -89,7 +89,7 @@ Sentential Form에 Variable이 여러 개 있으면 어느 Variable을 먼저 �
 
 ## 생성과 인식의 차이
 
-Grammar는 String을 **생성**하는 모델이다. Automaton은 입력 String을 받아 Language에 속하는지 **인식**하는 모델이다. 같은 Language Class에 대해 Grammar와 Automaton이 동등하다는 정리는 이 두 관점이 동일한 표현력을 가진다는 뜻이다.
+Grammar는 String을 <strong>생성</strong>하는 모델이다. Automaton은 입력 String을 받아 Language에 속하는지 <strong>인식</strong>하는 모델이다. 같은 Language Class에 대해 Grammar와 Automaton이 동등하다는 정리는 이 두 관점이 동일한 표현력을 가진다는 뜻이다.
 
 ## 혼동하기 쉬운 점
 

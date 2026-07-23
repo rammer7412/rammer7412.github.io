@@ -11,7 +11,7 @@ seriesOrder: 4
 featured: false
 draft: false
 ---
-**Deterministic Finite Automaton(DFA)**은 입력을 왼쪽에서 오른쪽으로 한 Symbol씩 읽으며 State를 바꾸는 계산 모델이다. 기억장치는 유한한 State뿐이므로 과거 입력 전체가 아니라 현재 판단에 필요한 정보만 State에 요약한다.
+<strong>Deterministic Finite Automaton(DFA)</strong>은 입력을 왼쪽에서 오른쪽으로 한 Symbol씩 읽으며 State를 바꾸는 계산 모델이다. 기억장치는 유한한 State뿐이므로 과거 입력 전체가 아니라 현재 판단에 필요한 정보만 State에 요약한다.
 
 ## 형식적 정의
 

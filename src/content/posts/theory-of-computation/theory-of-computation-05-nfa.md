@@ -11,7 +11,7 @@ seriesOrder: 5
 featured: false
 draft: false
 ---
-**Nondeterministic Finite Automaton(NFA)**은 하나의 State와 Input Symbol에서 다음 State가 여러 개일 수 있는 모델이다. 계산 경로를 하나만 선택하는 것이 아니라 가능한 모든 경로를 동시에 고려한다고 해석한다.
+<strong>Nondeterministic Finite Automaton(NFA)</strong>은 하나의 State와 Input Symbol에서 다음 State가 여러 개일 수 있는 모델이다. 계산 경로를 하나만 선택하는 것이 아니라 가능한 모든 경로를 동시에 고려한다고 해석한다.
 
 ## 형식적 정의
 
@@ -27,7 +27,7 @@ NFA의 Transition Function은 State 하나가 아니라 State Set을 반환한�
 
 ## Acceptance
 
-NFA는 입력을 모두 읽은 뒤 가능한 경로 중 **하나 이상**이 Accept State에 도달하면 Accept한다.
+NFA는 입력을 모두 읽은 뒤 가능한 경로 중 <strong>하나 이상</strong>이 Accept State에 도달하면 Accept한다.
 
 모든 경로가 성공할 필요는 없다. 어떤 경로가 중간에 막혀도 다른 경로가 Accept하면 전체 입력을 Accept한다.
 

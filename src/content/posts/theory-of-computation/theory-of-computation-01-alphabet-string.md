@@ -15,7 +15,7 @@ draft: false
 
 ## Alphabet
 
-**Alphabet**은 기호의 유한하고 공집합이 아닌 집합이다. 보통 <span class="math-inline" data-tex-b64="XFNpZ21h"></span>로 나타낸다.
+<strong>Alphabet</strong>은 기호의 유한하고 공집합이 아닌 집합이다. 보통 <span class="math-inline" data-tex-b64="XFNpZ21h"></span>로 나타낸다.
 
 <div class="math-display" data-tex-b64="XFNpZ21hPVx7MCwxXH0="></div>
 
@@ -27,7 +27,7 @@ Alphabet 자체는 문자열이 아니라 문자열을 만드는 재료의 집�
 
 ## String
 
-**String**은 Alphabet의 Symbol을 유한한 순서로 나열한 것이다. <span class="math-inline" data-tex-b64="dz0wMTAx"></span>은 <span class="math-inline" data-tex-b64="XFNpZ21hPVx7MCwxXH0="></span> 위의 String이다.
+<strong>String</strong>은 Alphabet의 Symbol을 유한한 순서로 나열한 것이다. <span class="math-inline" data-tex-b64="dz0wMTAx"></span>은 <span class="math-inline" data-tex-b64="XFNpZ21hPVx7MCwxXH0="></span> 위의 String이다.
 
 String의 길이는 포함된 Symbol의 개수이며 <span class="math-inline" data-tex-b64="fHd8"></span>로 나타낸다.
 
@@ -37,7 +37,7 @@ String의 길이는 포함된 Symbol의 개수이며 <span class="math-inline" d
 
 ## Empty String
 
-Symbol을 하나도 포함하지 않는 String을 **Empty String**이라고 하며 <span class="math-inline" data-tex-b64="XHZhcmVwc2lsb24="></span>로 나타낸다.
+Symbol을 하나도 포함하지 않는 String을 <strong>Empty String</strong>이라고 하며 <span class="math-inline" data-tex-b64="XHZhcmVwc2lsb24="></span>로 나타낸다.
 
 <div class="math-display" data-tex-b64="fFx2YXJlcHNpbG9ufD0w"></div>
 
@@ -49,7 +49,7 @@ Empty String은 String이므로 Language의 원소가 될 수 있다. 그러나 
 
 ## Concatenation
 
-두 String을 순서대로 이어 붙이는 연산을 **Concatenation**이라고 한다. <span class="math-inline" data-tex-b64="eD1hYg=="></span>, <span class="math-inline" data-tex-b64="eT1iYQ=="></span>이면
+두 String을 순서대로 이어 붙이는 연산을 <strong>Concatenation</strong>이라고 한다. <span class="math-inline" data-tex-b64="eD1hYg=="></span>, <span class="math-inline" data-tex-b64="eT1iYQ=="></span>이면
 
 <div class="math-display" data-tex-b64="eHk9YWJiYSxccXF1YWQgeXg9YmFhYg=="></div>
 

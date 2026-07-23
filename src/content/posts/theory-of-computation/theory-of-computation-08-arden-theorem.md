@@ -11,7 +11,7 @@ seriesOrder: 8
 featured: false
 draft: false
 ---
-Finite Automaton의 각 State에서 Accept State까지 갈 수 있는 String의 집합을 변수로 두면 Language Equation을 만들 수 있다. **Arden’s Theorem**은 반복 구조가 포함된 이 방정식을 푸는 도구이다.
+Finite Automaton의 각 State에서 Accept State까지 갈 수 있는 String의 집합을 변수로 두면 Language Equation을 만들 수 있다. <strong>Arden’s Theorem</strong>은 반복 구조가 포함된 이 방정식을 푸는 도구이다.
 
 ## Theorem
 

@@ -11,7 +11,7 @@ seriesOrder: 22
 featured: false
 draft: false
 ---
-Turing Machine에는 Tape 수, Head 수, 이동 방식이 다른 여러 변형이 있다. 이 모델들은 Program을 더 간단하거나 빠르게 표현할 수 있지만 **계산 가능한 Language와 Function의 범위**는 표준 Single-tape TM과 같다.
+Turing Machine에는 Tape 수, Head 수, 이동 방식이 다른 여러 변형이 있다. 이 모델들은 Program을 더 간단하거나 빠르게 표현할 수 있지만 <strong>계산 가능한 Language와 Function의 범위</strong>는 표준 Single-tape TM과 같다.
 
 ## Multi-tape Turing Machine
 

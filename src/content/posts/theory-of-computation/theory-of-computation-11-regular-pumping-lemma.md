@@ -11,7 +11,7 @@ seriesOrder: 11
 featured: false
 draft: false
 ---
-Regular Language의 DFA는 State가 유한하다. 충분히 긴 String을 읽으면 어떤 State를 반복해서 방문할 수밖에 없으며, 반복 구간을 여러 번 순환해도 Accept할 수 있다. 이 성질을 형식화한 것이 **Pumping Lemma**이다.
+Regular Language의 DFA는 State가 유한하다. 충분히 긴 String을 읽으면 어떤 State를 반복해서 방문할 수밖에 없으며, 반복 구간을 여러 번 순환해도 Accept할 수 있다. 이 성질을 형식화한 것이 <strong>Pumping Lemma</strong>이다.
 
 ## 정리의 내용
 
@@ -112,4 +112,4 @@ Pumping Lemma를 복잡한 Language에 직접 적용하기 어렵다면 Regular 
 
 ### 2번
 
-Pumping Lemma에서는 분해를 증명자가 선택할 수 없다. 조건을 만족하는 **모든** <span class="math-inline" data-tex-b64="eCx5LHo="></span>에 대해 실패함을 보여야 한다. 다만 이 예에서는 <span class="math-inline" data-tex-b64="fHh5fFxsZSBw"></span>를 이용하면 모든 가능한 <span class="math-inline" data-tex-b64="eQ=="></span>가 0으로만 이루어진다는 사실을 증명할 수 있으므로 그 뒤에 Pumping을 적용해야 한다.
+Pumping Lemma에서는 분해를 증명자가 선택할 수 없다. 조건을 만족하는 <strong>모든</strong> <span class="math-inline" data-tex-b64="eCx5LHo="></span>에 대해 실패함을 보여야 한다. 다만 이 예에서는 <span class="math-inline" data-tex-b64="fHh5fFxsZSBw"></span>를 이용하면 모든 가능한 <span class="math-inline" data-tex-b64="eQ=="></span>가 0으로만 이루어진다는 사실을 증명할 수 있으므로 그 뒤에 Pumping을 적용해야 한다.

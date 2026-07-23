@@ -11,7 +11,7 @@ seriesOrder: 13
 featured: false
 draft: false
 ---
-CFG에는 Language 생성에 기여하지 않는 Variable이나 불필요한 중간 Production이 포함될 수 있다. **Grammar Simplification**은 원래 Language를 가능한 한 유지하면서 구조를 단순화한다. Normal Form 변환이나 Parsing Algorithm 적용 전에 자주 수행한다.
+CFG에는 Language 생성에 기여하지 않는 Variable이나 불필요한 중간 Production이 포함될 수 있다. <strong>Grammar Simplification</strong>은 원래 Language를 가능한 한 유지하면서 구조를 단순화한다. Normal Form 변환이나 Parsing Algorithm 적용 전에 자주 수행한다.
 
 ## Nullable Variable과 ε-production
 

@@ -11,7 +11,7 @@ seriesOrder: 20
 featured: false
 draft: false
 ---
-Turing Machine의 현재 상황은 State 하나만으로 설명할 수 없다. Tape에 무엇이 기록되어 있는지와 Head 위치도 필요하다. 이를 모두 포함한 순간 상태를 **Configuration** 또는 Instantaneous Description이라고 한다.
+Turing Machine의 현재 상황은 State 하나만으로 설명할 수 없다. Tape에 무엇이 기록되어 있는지와 Head 위치도 필요하다. 이를 모두 포함한 순간 상태를 <strong>Configuration</strong> 또는 Instantaneous Description이라고 한다.
 
 ## Configuration 표기
 

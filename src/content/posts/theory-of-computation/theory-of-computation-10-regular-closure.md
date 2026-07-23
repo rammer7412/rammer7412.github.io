@@ -11,7 +11,7 @@ seriesOrder: 10
 featured: false
 draft: false
 ---
-Language Class가 어떤 연산에 **닫혀 있다**는 말은 그 Class의 Language에 연산을 적용한 결과도 항상 같은 Class에 속한다는 뜻이다. Closure Property는 새로운 Language가 Regular인지 직접 Automaton을 설계하지 않고 판단하는 데 유용하다.
+Language Class가 어떤 연산에 <strong>닫혀 있다</strong>는 말은 그 Class의 Language에 연산을 적용한 결과도 항상 같은 Class에 속한다는 뜻이다. Closure Property는 새로운 Language가 Regular인지 직접 Automaton을 설계하지 않고 판단하는 데 유용하다.
 
 ## Union
 

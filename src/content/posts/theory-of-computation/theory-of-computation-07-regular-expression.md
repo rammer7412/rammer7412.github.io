@@ -11,7 +11,7 @@ seriesOrder: 7
 featured: false
 draft: false
 ---
-**Regular Expression(RE)**은 Regular Language를 간결한 식으로 표현하는 방법이다. 문자열을 직접 나열하지 않고 기본 Language와 세 연산을 재귀적으로 조합한다.
+<strong>Regular Expression(RE)</strong>은 Regular Language를 간결한 식으로 표현하는 방법이다. 문자열을 직접 나열하지 않고 기본 Language와 세 연산을 재귀적으로 조합한다.
 
 ## 기본 Regular Expression
 

@@ -11,7 +11,7 @@ seriesOrder: 19
 featured: false
 draft: false
 ---
-**Turing Machine(TM)**은 Algorithm이 수행할 수 있는 계산의 범위를 연구하기 위한 표준 수학 모델이다. 실제 Computer의 Hardware 구조를 그대로 모사하지는 않지만, 유한한 Program과 필요에 따라 확장되는 Memory를 가진다는 점에서 일반 계산을 표현할 수 있다.
+<strong>Turing Machine(TM)</strong>은 Algorithm이 수행할 수 있는 계산의 범위를 연구하기 위한 표준 수학 모델이다. 실제 Computer의 Hardware 구조를 그대로 모사하지는 않지만, 유한한 Program과 필요에 따라 확장되는 Memory를 가진다는 점에서 일반 계산을 표현할 수 있다.
 
 ## 구성 요소
 

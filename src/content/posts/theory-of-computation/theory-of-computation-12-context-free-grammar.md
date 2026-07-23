@@ -11,7 +11,7 @@ seriesOrder: 12
 featured: false
 draft: false
 ---
-**Context-Free Grammar(CFG)**는 Production Rule의 왼쪽이 하나의 Variable인 Grammar이다. 중첩된 괄호, 산술식, Programming Language Syntax처럼 재귀적인 구조를 표현할 수 있다.
+<strong>Context-Free Grammar(CFG)</strong>는 Production Rule의 왼쪽이 하나의 Variable인 Grammar이다. 중첩된 괄호, 산술식, Programming Language Syntax처럼 재귀적인 구조를 표현할 수 있다.
 
 ## 형식적 정의
 

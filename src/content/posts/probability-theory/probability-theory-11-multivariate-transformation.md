@@ -1,5 +1,5 @@
 ---
-title: "11. 다변량 Transformation과 Jacobian"
+title: "11. Multivariate Transformation과 Jacobian"
 description: "두 Random Variable을 동시에 변환할 때 원상 합산과 Jacobian으로 Joint Distribution을 구하는 방법을 정리한다."
 date: "2025-08-14"
 category: "확률 이론"

@@ -11,7 +11,7 @@ seriesOrder: 6
 featured: false
 draft: false
 ---
-이산 Distribution은 셀 수 있는 값에 확률을 배분한다. 공식을 외우기보다 **무엇을 세는 Random Variable인지**, **시행이 독립인지**, **복원추출인지**를 먼저 확인해야 적절한 Distribution을 선택할 수 있다.
+이산 Distribution은 셀 수 있는 값에 확률을 배분한다. 공식을 외우기보다 <strong>무엇을 세는 Random Variable인지</strong>, <strong>시행이 독립인지</strong>, <strong>복원추출인지</strong>를 먼저 확인해야 적절한 Distribution을 선택할 수 있다.
 
 ## Bernoulli Distribution
 

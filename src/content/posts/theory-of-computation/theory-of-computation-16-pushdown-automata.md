@@ -11,7 +11,7 @@ seriesOrder: 16
 featured: false
 draft: false
 ---
-Finite Automaton은 State가 유한하므로 임의의 개수를 기억할 수 없다. **Pushdown Automaton(PDA)**은 Stack을 추가하여 중첩 구조나 앞부분의 개수를 기억한다. CFG와 같은 Context-Free Language를 다룬다.
+Finite Automaton은 State가 유한하므로 임의의 개수를 기억할 수 없다. <strong>Pushdown Automaton(PDA)</strong>은 Stack을 추가하여 중첩 구조나 앞부분의 개수를 기억한다. CFG와 같은 Context-Free Language를 다룬다.
 
 ## 구성 요소
 

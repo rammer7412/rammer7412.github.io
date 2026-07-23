@@ -11,7 +11,7 @@ seriesOrder: 1
 featured: false
 draft: false
 ---
-확률 이론은 ‘어떤 일이 일어날 가능성’을 수치로 표현하는 학문이지만, 확률값을 계산하기 전에 먼저 **무엇을 결과로 보고 어떤 사건에 확률을 부여할지** 정해야 한다. 이를 하나의 수학적 구조로 묶은 것이 Probability Space이다.
+확률 이론은 ‘어떤 일이 일어날 가능성’을 수치로 표현하는 학문이지만, 확률값을 계산하기 전에 먼저 <strong>무엇을 결과로 보고 어떤 사건에 확률을 부여할지</strong> 정해야 한다. 이를 하나의 수학적 구조로 묶은 것이 Probability Space이다.
 
 ## Probability Space의 구성
 
@@ -19,9 +19,9 @@ Probability Space는 다음 세 요소로 이루어진다.
 
 <div class="math-display" data-tex-b64="KFxPbWVnYSxcbWF0aGNhbHtGfSxcbWF0aGJie1B9KQ=="></div>
 
-- <span class="math-inline" data-tex-b64="XE9tZWdh"></span>는 가능한 모든 결과를 모은 **표본공간(sample space)**이다.
-- <span class="math-inline" data-tex-b64="XG1hdGhjYWx7Rn0="></span>는 확률을 부여할 사건들을 모은 **사건족(event space)**이다.
-- <span class="math-inline" data-tex-b64="XG1hdGhiYntQfQ=="></span>는 각 사건에 0과 1 사이의 값을 부여하는 **확률측도(probability measure)**이다.
+- <span class="math-inline" data-tex-b64="XE9tZWdh"></span>는 가능한 모든 결과를 모은 <strong>표본공간(sample space)</strong>이다.
+- <span class="math-inline" data-tex-b64="XG1hdGhjYWx7Rn0="></span>는 확률을 부여할 사건들을 모은 <strong>사건족(event space)</strong>이다.
+- <span class="math-inline" data-tex-b64="XG1hdGhiYntQfQ=="></span>는 각 사건에 0과 1 사이의 값을 부여하는 <strong>확률측도(probability measure)</strong>이다.
 
 표본공간의 원소 하나를 결과(outcome)라고 한다. 사건(event)은 결과 하나 또는 여러 결과를 묶은 집합이다. 예를 들어 동전을 한 번 던질 때
 
@@ -50,7 +50,7 @@ De Morgan 법칙은 여집합이 포함된 사건을 바꿔 쓸 때 자주 사�
 
 ## 서로 배반인 사건
 
-두 사건이 동시에 일어날 수 없으면 **서로 배반(mutually exclusive)**이라고 한다.
+두 사건이 동시에 일어날 수 없으면 <strong>서로 배반(mutually exclusive)</strong>이라고 한다.
 
 <div class="math-display" data-tex-b64="QVxjYXAgQj1cdmFybm90aGluZw=="></div>
 

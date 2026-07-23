@@ -11,7 +11,7 @@ seriesOrder: 1
 featured: false
 draft: false
 ---
-Linear Algebra를 처음 공부할 때 가장 낯설었던 부분은 vector 자체보다 **Vector Space의 정의**였다. vector를 화살표나 좌표로만 이해하면 계산은 할 수 있지만, 함수와 matrix를 하나의 구조로 묶어 이해하기는 어렵다.
+Linear Algebra를 처음 공부할 때 가장 낯설었던 부분은 vector 자체보다 <strong>Vector Space의 정의</strong>였다. vector를 화살표나 좌표로만 이해하면 계산은 할 수 있지만, 함수와 matrix를 하나의 구조로 묶어 이해하기는 어렵다.
 
 이 글에서는 Field에서 출발해 Vector Space, Subspace, Linearity와 Linear Map으로 이어지는 흐름을 정리한다.
 
@@ -123,7 +123,7 @@ Matrix Multiplication의 distributive law와 scalar multiplication의 associativ
 - Linear Map은 vector addition과 scalar multiplication을 보존하는 함수이다.
 - matrix는 finite-dimensional Linear Map을 구체적으로 표현한다.
 
-각 개념은 결국 **Linear Combination을 보존하는 공간과 함수**를 설명하기 위해 연결된다.
+각 개념은 결국 <strong>Linear Combination을 보존하는 공간과 함수</strong>를 설명하기 위해 연결된다.
 
 ## 확인 문제
 

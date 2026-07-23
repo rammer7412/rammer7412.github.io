@@ -11,7 +11,7 @@ seriesOrder: 21
 featured: false
 draft: false
 ---
-Turing Machine은 Input을 Accept·Reject하는 장치뿐 아니라 Output을 계산하는 **Transducer**로 사용할 수 있다. Algorithm은 본질적으로 Input과 Output 사이의 함수 관계를 계산하므로 이 관점이 실제 Programming과 더 직접적으로 연결된다.
+Turing Machine은 Input을 Accept·Reject하는 장치뿐 아니라 Output을 계산하는 <strong>Transducer</strong>로 사용할 수 있다. Algorithm은 본질적으로 Input과 Output 사이의 함수 관계를 계산하므로 이 관점이 실제 Programming과 더 직접적으로 연결된다.
 
 ## 함수 계산
 
@@ -29,7 +29,7 @@ TM은 String만 직접 다루므로 숫자, Graph, Program 같은 대상을 Stri
 
 - Unary Encoding: 자연수 <span class="math-inline" data-tex-b64="bg=="></span>을 <span class="math-inline" data-tex-b64="MV5u"></span>으로 표현한다.
 - Binary Encoding: 일반적인 Binary Representation을 사용한다.
-- 여러 값을 구분하려면 Separator <span class="math-inline" data-tex-b64="Iw=="></span> 등을 사용한다.
+- 여러 값을 구분하려면 Separator <span class="math-inline" data-tex-b64="XCM="></span> 등을 사용한다.
 
 Encoding은 유일하게 Decoding 가능해야 한다.
 
@@ -45,7 +45,7 @@ Input을
 
 으로 만든다고 하자.
 
-간단한 Algorithm은 Separator <span class="math-inline" data-tex-b64="Iw=="></span>를 지우고 오른쪽 Block을 한 칸 왼쪽으로 이동하는 것이다. 또는 <span class="math-inline" data-tex-b64="Iw=="></span>를 1로 바꾸고 전체 끝의 1 하나를 지우면 합의 길이를 맞출 수 있다.
+간단한 Algorithm은 Separator <span class="math-inline" data-tex-b64="XCM="></span>를 지우고 오른쪽 Block을 한 칸 왼쪽으로 이동하는 것이다. 또는 <span class="math-inline" data-tex-b64="XCM="></span>를 1로 바꾸고 전체 끝의 1 하나를 지우면 합의 길이를 맞출 수 있다.
 
 ## 예제: Binary Increment
 
@@ -89,7 +89,7 @@ Recognizer를 함수 관점에서 보면 Member Input에서는 1을 출력하고
 
 ### 1번
 
-Unary Input <span class="math-inline" data-tex-b64="MTExIzEx"></span>에 Unary Addition Transducer를 적용한 Output을 구한다.
+Unary Input <span class="math-inline" data-tex-b64="MTExXCMxMQ=="></span>에 Unary Addition Transducer를 적용한 Output을 구한다.
 
 ### 2번
 

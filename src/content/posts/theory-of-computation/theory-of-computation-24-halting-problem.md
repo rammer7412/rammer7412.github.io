@@ -11,7 +11,7 @@ seriesOrder: 24
 featured: false
 draft: false
 ---
-**Halting Problem**은 Program과 Input이 주어졌을 때 그 Program이 언젠가 종료하는지 판정하는 문제이다. 개별 Program을 분석해 종료를 증명할 수는 있지만, 모든 Program과 Input에 대해 항상 정확한 답을 내는 Algorithm은 존재하지 않는다.
+<strong>Halting Problem</strong>은 Program과 Input이 주어졌을 때 그 Program이 언젠가 종료하는지 판정하는 문제이다. 개별 Program을 분석해 종료를 증명할 수는 있지만, 모든 Program과 Input에 대해 항상 정확한 답을 내는 Algorithm은 존재하지 않는다.
 
 ## Language 정의
 

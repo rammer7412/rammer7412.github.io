@@ -11,7 +11,7 @@ seriesOrder: 15
 featured: false
 draft: false
 ---
-CFG와 String <span class="math-inline" data-tex-b64="dw=="></span>가 주어졌을 때 <span class="math-inline" data-tex-b64="d1xpbiBMKEcp"></span>인지 판정하는 문제를 Membership Problem이라고 한다. **CYK Algorithm**은 Grammar가 Chomsky Normal Form일 때 Dynamic Programming으로 이 문제를 해결한다.
+CFG와 String <span class="math-inline" data-tex-b64="dw=="></span>가 주어졌을 때 <span class="math-inline" data-tex-b64="d1xpbiBMKEcp"></span>인지 판정하는 문제를 Membership Problem이라고 한다. <strong>CYK Algorithm</strong>은 Grammar가 Chomsky Normal Form일 때 Dynamic Programming으로 이 문제를 해결한다.
 
 ## 기본 아이디어
 

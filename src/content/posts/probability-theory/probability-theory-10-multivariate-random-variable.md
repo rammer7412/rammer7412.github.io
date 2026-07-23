@@ -1,5 +1,5 @@
 ---
-title: "10. 다변량 Random Variable과 Joint Distribution"
+title: "10. Multivariate Random Variable과 Joint Distribution"
 description: "둘 이상의 Random Variable을 함께 다루는 Joint Distribution, Marginal Distribution, 조건부 Distribution과 독립성을 정리한다."
 date: "2025-08-12"
 category: "확률 이론"

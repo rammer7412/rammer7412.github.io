@@ -42,7 +42,7 @@ Grammar
 
 역방향 변환은 더 복잡하다. PDA가 State <span class="math-inline" data-tex-b64="cA=="></span>에서 Stack Symbol <span class="math-inline" data-tex-b64="QQ=="></span>를 제거하여 State <span class="math-inline" data-tex-b64="cQ=="></span>로 갈 수 있는 모든 Input을 생성하는 Variable을 만든다.
 
-<div class="math-display" data-tex-b64="W3BBcQ=="></div>]
+<div class="math-display" data-tex-b64="W3BBcV0="></div>
 
 라는 Variable은 “State <span class="math-inline" data-tex-b64="cA=="></span>에서 시작해 Stack Top <span class="math-inline" data-tex-b64="QQ=="></span>를 제거하고 State <span class="math-inline" data-tex-b64="cQ=="></span>에 도달하게 하는 String”을 나타낸다.
 

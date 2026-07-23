@@ -99,7 +99,7 @@ vector들을 matrix의 column으로 모으면 Span과 Linear Independence를 Gau
 
 이다. row reduction 후 pivot column의 개수는 Column Space의 Dimension, 즉 matrix의 rank와 같다.
 
-단, Basis를 원래 column vector에서 고를 때는 reduced matrix의 column이 아니라 **original matrix에서 pivot position에 대응하는 column**을 선택해야 한다.
+단, Basis를 원래 column vector에서 고를 때는 reduced matrix의 column이 아니라 <strong>original matrix에서 pivot position에 대응하는 column</strong>을 선택해야 한다.
 
 ## 정리
 

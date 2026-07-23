@@ -11,7 +11,7 @@ seriesOrder: 9
 featured: false
 draft: false
 ---
-**Regular Grammar**는 Production Rule의 형태를 제한하여 Finite Automaton과 같은 Language Class를 생성하는 Grammar이다. 일반적으로 Right-linear Grammar 또는 Left-linear Grammar를 사용한다.
+<strong>Regular Grammar</strong>는 Production Rule의 형태를 제한하여 Finite Automaton과 같은 Language Class를 생성하는 Grammar이다. 일반적으로 Right-linear Grammar 또는 Left-linear Grammar를 사용한다.
 
 ## Right-linear Grammar
 

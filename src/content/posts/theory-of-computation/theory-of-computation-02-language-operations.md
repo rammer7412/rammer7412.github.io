@@ -11,7 +11,7 @@ seriesOrder: 2
 featured: false
 draft: false
 ---
-**Formal Language**는 특정 Alphabet 위의 String을 원소로 가지는 집합이다. 자연어에서는 문장의 의미가 중요하지만, Formal Language에서는 문자열이 정해진 규칙을 만족하여 집합에 속하는지가 핵심이다.
+<strong>Formal Language</strong>는 특정 Alphabet 위의 String을 원소로 가지는 집합이다. 자연어에서는 문장의 의미가 중요하지만, Formal Language에서는 문자열이 정해진 규칙을 만족하여 집합에 속하는지가 핵심이다.
 
 ## <span class="math-inline" data-tex-b64="XFNpZ21hXio="></span>와 <span class="math-inline" data-tex-b64="XFNpZ21hXis="></span>
 

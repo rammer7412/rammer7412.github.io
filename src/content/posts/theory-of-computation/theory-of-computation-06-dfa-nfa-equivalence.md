@@ -11,7 +11,7 @@ seriesOrder: 6
 featured: false
 draft: false
 ---
-NFA는 한 순간에 여러 State에 있을 수 있고 DFA는 정확히 하나의 State에 있어야 한다. 두 모델의 동등성을 보이려면 NFA의 **현재 가능한 State 전체**를 DFA의 하나의 State로 표현하면 된다. 이 방법을 Subset Construction 또는 Powerset Construction이라고 한다.
+NFA는 한 순간에 여러 State에 있을 수 있고 DFA는 정확히 하나의 State에 있어야 한다. 두 모델의 동등성을 보이려면 NFA의 <strong>현재 가능한 State 전체</strong>를 DFA의 하나의 State로 표현하면 된다. 이 방법을 Subset Construction 또는 Powerset Construction이라고 한다.
 
 ## 핵심 아이디어
 

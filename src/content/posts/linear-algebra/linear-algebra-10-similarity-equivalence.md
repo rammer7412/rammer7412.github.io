@@ -21,7 +21,7 @@ draft: false
 
 <div class="math-display" data-tex-b64="QVxzaW0gQg=="></div>
 
-Similarity는 단순히 두 행렬이 같은 Eigenvalue를 가진다는 뜻보다 강하다. 두 행렬이 **동일한 Linear Transformation을 서로 다른 좌표계에서 나타낸 것**이라는 의미이다.
+Similarity는 단순히 두 행렬이 같은 Eigenvalue를 가진다는 뜻보다 강하다. 두 행렬이 <strong>동일한 Linear Transformation을 서로 다른 좌표계에서 나타낸 것</strong>이라는 의미이다.
 
 ## Basis Change에서 Similarity가 나오는 과정
 
