@@ -19,6 +19,8 @@ export async function getStaticPaths() {
 }
 
 const { course, lectures } = Astro.props;
+const lectureSlug = (id: string) => id.split('/').pop() ?? id;
+
 const dateFormatter = new Intl.DateTimeFormat('ko-KR', {
   year: 'numeric',
   month: '2-digit',
@@ -59,7 +61,7 @@ const dateFormatter = new Intl.DateTimeFormat('ko-KR', {
       ) : (
         <div class="lecture-grid">
           {lectures.map((lecture) => (
-            <a class="lecture-card" href={withBase(`/lectures/${course.id}/${lecture.id}/`)}>
+            <a class="lecture-card" href={withBase(`/lectures/${course.id}/${lectureSlug(lecture.id)}/`)}>
               <div class:list={['lecture-cover', `lecture-theme-${lecture.data.theme}`]}>
                 <div class="lecture-cover-topline">
                   <span>RAMMER LAB · LECTURES</span>

@@ -68,7 +68,7 @@ npm run build
 
 ## Writing a post
 
-`src/content/posts`에 Markdown 파일을 추가합니다.
+`src/content/posts/<topic-slug>/`에 주제별 Markdown 파일을 추가합니다. 단독 글은 `src/content/posts/` 바로 아래에 둘 수 있습니다.
 
 ```yaml
 title: "글 제목"
@@ -92,6 +92,12 @@ draft: false
 - `cryptography-math`
 - `research-cases`
 - `project`
+- `math`
+- `linear-algebra`
+- `probability-theory`
+- `theory-of-computation`
+- `operating-systems`
+- `artificial-intelligence`
 
 ### format values
 
@@ -202,6 +208,8 @@ src/content/posts/
 │   └── linear-algebra-*.md
 ├── probability-theory/
 │   └── probability-theory-*.md
+├── theory-of-computation/
+│   └── theory-of-computation-*.md
 └── other standalone posts
 ```
 
@@ -213,3 +221,18 @@ seriesOrder: 20
 ```
 
 `SeriesNavigation.astro` automatically determines the total number of public posts and the previous/next links. Adding a new post no longer requires editing the existing Markdown files. See `src/content/templates/study-series.md` for a complete example.
+
+
+## Lecture content folders
+
+Lecture metadata is grouped by course while public URLs keep the basename of each Markdown file.
+
+```text
+src/content/lectures/
+├── basic-python/
+│   └── basic-python-*.md
+└── c-language/
+    └── c-language-*.md
+```
+
+Add a new course under `src/content/courses/`, then create a matching `src/content/lectures/<course-slug>/` directory. The lecture page derives its public slug from the Markdown basename, so moving existing files into course folders does not change `/lectures/<course>/<lecture>/` URLs.

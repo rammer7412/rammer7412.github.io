@@ -10,13 +10,15 @@ export async function getStaticPaths() {
     .sort((a, b) => a.data.courseSlug.localeCompare(b.data.courseSlug) || a.data.lectureNumber - b.data.lectureNumber);
   const courses = (await getCollection('courses')).filter((course) => !course.data.draft);
 
+  const lectureSlug = (id: string) => id.split('/').pop() ?? id;
+
   return lectures.map((lecture) => {
     const courseLectures = lectures.filter((item) => item.data.courseSlug === lecture.data.courseSlug);
     const index = courseLectures.findIndex((item) => item.id === lecture.id);
     const course = courses.find((item) => item.id === lecture.data.courseSlug);
 
     return {
-      params: { course: lecture.data.courseSlug, slug: lecture.id },
+      params: { course: lecture.data.courseSlug, slug: lectureSlug(lecture.id) },
       props: {
         lecture,
         course,
@@ -28,13 +30,14 @@ export async function getStaticPaths() {
 }
 
 const { lecture, course, previous, next } = Astro.props;
+const lectureSlug = (id: string) => id.split('/').pop() ?? id;
 const { Content } = await render(lecture);
 const formattedDate = new Intl.DateTimeFormat('ko-KR', {
   year: 'numeric',
   month: 'long',
   day: 'numeric'
 }).format(new Date(lecture.data.date));
-const fileName = lecture.data.fileName ?? `${lecture.id}.pdf`;
+const fileName = lecture.data.fileName ?? `${lectureSlug(lecture.id)}.pdf`;
 const courseTitle = course?.data.title ?? lecture.data.course;
 ---
 
@@ -92,13 +95,13 @@ const courseTitle = course?.data.title ?? lecture.data.course;
     {(previous || next) && (
       <nav class="container lecture-pagination" aria-label="강의자료 이동">
         {previous ? (
-          <a href={withBase(`/lectures/${lecture.data.courseSlug}/${previous.id}/`)}>
+          <a href={withBase(`/lectures/${lecture.data.courseSlug}/${lectureSlug(previous.id)}/`)}>
             <span>← PREVIOUS</span>
             <strong>{previous.data.title}</strong>
           </a>
         ) : <span></span>}
         {next ? (
-          <a href={withBase(`/lectures/${lecture.data.courseSlug}/${next.id}/`)}>
+          <a href={withBase(`/lectures/${lecture.data.courseSlug}/${lectureSlug(next.id)}/`)}>
             <span>NEXT →</span>
             <strong>{next.data.title}</strong>
           </a>

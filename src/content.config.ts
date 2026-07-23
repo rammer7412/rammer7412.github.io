@@ -21,6 +21,7 @@ const posts = defineCollection({
       'math',
       'linear-algebra',
       'probability-theory',
+      'theory-of-computation',
       'operating-systems',
       'artificial-intelligence'
     ]),

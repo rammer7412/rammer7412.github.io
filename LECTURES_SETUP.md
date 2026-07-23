@@ -41,9 +41,9 @@ default
 
 ## 2. 과정에 강의자료 추가
 
-`src/content/lectures/`에 강의자료 파일을 만듭니다.
+`src/content/lectures/<course-slug>/`에 강의자료 파일을 만듭니다.
 
-예: `src/content/lectures/basic-python-02.md`
+예: `src/content/lectures/basic-python/basic-python-02.md`
 
 ```yaml
 ---
@@ -137,4 +137,19 @@ C Language 과정은 `c-language` 테마를 사용합니다. Basic Python의 원
 https://pub-abc6036fee00411eae15969b5cc3ed3b.r2.dev/lectures/c-language/CLanguage_lecture_N.pdf
 ```
 
-새 C Language 자료를 추가할 때는 `src/content/lectures/c-language-13.md`와 같은 파일을 만들고 `theme: "c-language"`를 사용합니다.
+새 C Language 자료를 추가할 때는 `src/content/lectures/c-language/c-language-13.md`와 같은 파일을 만들고 `theme: "c-language"`를 사용합니다.
+
+
+## 현재 Markdown 구조
+
+```text
+src/content/lectures/
+├── basic-python/
+│   ├── basic-python-01.md
+│   └── ... basic-python-10.md
+└── c-language/
+    ├── c-language-01.md
+    └── ... c-language-12.md
+```
+
+하위 디렉터리는 저장소 안에서만 파일을 구분하기 위한 구조입니다. 공개 URL은 파일명 기준으로 유지됩니다.
