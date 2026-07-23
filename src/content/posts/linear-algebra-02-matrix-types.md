@@ -1,10 +1,10 @@
 ---
-title: "선형대수학 2: 자주 사용하는 행렬의 종류"
+title: "2. 자주 사용하는 행렬의 종류"
 description: "정사각 행렬, 단위 행렬, 대각 행렬, 전치 행렬과 삼각 행렬의 정의와 성질을 정리한다."
 date: "2025-06-29"
 category: "선형대수학"
 tags: ["linear-algebra", "matrix", "transpose", "triangular-matrix"]
-domain: "math"
+domain: "linear-algebra"
 format: "study-note"
 featured: false
 draft: false
@@ -16,152 +16,168 @@ draft: false
 
 행과 열의 개수가 같은 행렬을 정사각 행렬이라고 한다. $n\times n$ 정사각 행렬은 다음 형태이다.
 
-$$
+<div class="math-display">
+\[
 A=
 \begin{bmatrix}
-a_{11}&a_{12}&\cdots&a_{1n}\\\\
-a_{21}&a_{22}&\cdots&a_{2n}\\\\
-\vdots&\vdots&\ddots&\vdots\\\\
+a_{11}&a_{12}&\cdots&a_{1n}\\
+a_{21}&a_{22}&\cdots&a_{2n}\\
+\vdots&\vdots&\ddots&\vdots\\
 a_{n1}&a_{n2}&\cdots&a_{nn}
 \end{bmatrix}
-$$
-
+\]
+</div>
 행렬식, 고유값, 대각화처럼 뒤에서 다루는 많은 개념은 정사각 행렬을 대상으로 정의된다.
 
 예를 들어
 
-$$
+<div class="math-display">
+\[
 A=
 \begin{bmatrix}
-2&1&0\\\\
--1&3&4\\\\
+2&1&0\\
+-1&3&4\\
 0&5&-2
 \end{bmatrix}
-$$
-
+\]
+</div>
 는 $3\times3$ 정사각 행렬이다.
 
 ## 단위 행렬(Identity Matrix)
 
 단위 행렬은 주대각선 원소가 모두 $1$이고 나머지 원소가 $0$인 정사각 행렬이다. $n\times n$ 단위 행렬을 $I_n$으로 나타낸다.
 
-$$
+<div class="math-display">
+\[
 I_n=
 \begin{bmatrix}
-1&0&\cdots&0\\\\
-0&1&\cdots&0\\\\
-\vdots&\vdots&\ddots&\vdots\\\\
+1&0&\cdots&0\\
+0&1&\cdots&0\\
+\vdots&\vdots&\ddots&\vdots\\
 0&0&\cdots&1
 \end{bmatrix}
-$$
-
+\]
+</div>
 행렬 곱셈에서 수의 $1$과 같은 역할을 한다.
 
-$$
+<div class="math-display">
+\[
 AI_n=I_nA=A
-$$
-
+\]
+</div>
 ## 대각 행렬(Diagonal Matrix)
 
 주대각선 이외의 모든 원소가 $0$인 정사각 행렬을 대각 행렬이라고 한다.
 
-$$
+<div class="math-display">
+\[
 D=
 \begin{bmatrix}
-d_1&0&\cdots&0\\\\
-0&d_2&\cdots&0\\\\
-\vdots&\vdots&\ddots&\vdots\\\\
+d_1&0&\cdots&0\\
+0&d_2&\cdots&0\\
+\vdots&\vdots&\ddots&\vdots\\
 0&0&\cdots&d_n
 \end{bmatrix}
 =\operatorname{diag}(d_1,d_2,\ldots,d_n)
-$$
-
+\]
+</div>
 대각 성분에는 $0$도 올 수 있다. 단위 행렬은 모든 대각 성분이 $1$인 대각 행렬이다.
 
 대각 행렬의 연산은 성분별 계산으로 단순화된다.
 
-$$
+<div class="math-display">
+\[
 \operatorname{diag}(a_1,\ldots,a_n)
 \operatorname{diag}(b_1,\ldots,b_n)
 =
 \operatorname{diag}(a_1b_1,\ldots,a_nb_n)
-$$
-
+\]
+</div>
 또한
 
-$$
+<div class="math-display">
+\[
 D^k=\operatorname{diag}(d_1^k,\ldots,d_n^k)
-$$
-
+\]
+</div>
 이다.
 
 ## 전치 행렬(Transpose)
 
 행렬의 행과 열을 맞바꾼 행렬을 전치 행렬이라고 한다. $A=[a_{ij}]$일 때
 
-$$
+<div class="math-display">
+\[
 (A^T)_{ij}=a_{ji}
-$$
-
+\]
+</div>
 로 정의한다.
 
 예를 들어
 
-$$
+<div class="math-display">
+\[
 A=
 \begin{bmatrix}
-1&2&3\\\\
+1&2&3\\
 4&5&6
 \end{bmatrix}
-$$
-
+\]
+</div>
 이면
 
-$$
+<div class="math-display">
+\[
 A^T=
 \begin{bmatrix}
-1&4\\\\
-2&5\\\\
+1&4\\
+2&5\\
 3&6
 \end{bmatrix}
-$$
-
+\]
+</div>
 이다.
 
 전치 연산에서 자주 사용하는 성질은 다음과 같다.
 
-$$
+<div class="math-display">
+\[
 (A^T)^T=A
-$$
-
-$$
+\]
+</div>
+<div class="math-display">
+\[
 (A+B)^T=A^T+B^T
-$$
-
-$$
+\]
+</div>
+<div class="math-display">
+\[
 (cA)^T=cA^T
-$$
-
-$$
+\]
+</div>
+<div class="math-display">
+\[
 (AB)^T=B^TA^T
-$$
-
+\]
+</div>
 마지막 식에서 곱의 순서가 뒤집힌다는 점이 중요하다.
 
 ### 대칭 행렬과 반대칭 행렬
 
 정사각 행렬 $A$가
 
-$$
+<div class="math-display">
+\[
 A^T=A
-$$
-
+\]
+</div>
 를 만족하면 대칭 행렬(symmetric matrix)이라고 한다. 반대로
 
-$$
+<div class="math-display">
+\[
 A^T=-A
-$$
-
+\]
+</div>
 이면 반대칭 행렬(skew-symmetric matrix)이라고 한다. 실수 반대칭 행렬의 주대각선 원소는 모두 $0$이다.
 
 ## 삼각 행렬(Triangular Matrix)
@@ -170,36 +186,39 @@ $$
 
 상삼각 행렬은 주대각선 아래가 모두 $0$이다.
 
-$$
+<div class="math-display">
+\[
 U=
 \begin{bmatrix}
-u_{11}&u_{12}&\cdots&u_{1n}\\\\
-0&u_{22}&\cdots&u_{2n}\\\\
-\vdots&\ddots&\ddots&\vdots\\\\
+u_{11}&u_{12}&\cdots&u_{1n}\\
+0&u_{22}&\cdots&u_{2n}\\
+\vdots&\ddots&\ddots&\vdots\\
 0&\cdots&0&u_{nn}
 \end{bmatrix}
-$$
-
+\]
+</div>
 하삼각 행렬은 주대각선 위가 모두 $0$이다.
 
-$$
+<div class="math-display">
+\[
 L=
 \begin{bmatrix}
-l_{11}&0&\cdots&0\\\\
-l_{21}&l_{22}&\cdots&0\\\\
-\vdots&\ddots&\ddots&\vdots\\\\
+l_{11}&0&\cdots&0\\
+l_{21}&l_{22}&\cdots&0\\
+\vdots&\ddots&\ddots&\vdots\\
 l_{n1}&\cdots&l_{n,n-1}&l_{nn}
 \end{bmatrix}
-$$
-
+\]
+</div>
 같은 종류의 삼각 행렬끼리 곱하면 다시 같은 종류의 삼각 행렬이 된다. 대각 행렬은 상삼각 행렬이면서 동시에 하삼각 행렬이다.
 
 삼각 행렬은 가우스 소거법과 역대입에서 자연스럽게 등장한다. 행렬식도 주대각선 원소의 곱으로 바로 계산할 수 있다.
 
-$$
+<div class="math-display">
+\[
 \det(U)=u_{11}u_{22}\cdots u_{nn}
-$$
-
+\]
+</div>
 ## 정리
 
 행렬의 형태를 알아보는 일은 단순한 이름 암기가 아니다.
@@ -213,15 +232,16 @@ $$
 
 1. 다음 행렬이 정사각, 대각, 상삼각, 하삼각 행렬 중 어디에 해당하는지 분류한다.
 
-$$
+<div class="math-display">
+\[
 A=
 \begin{bmatrix}
-2&0&0\\\\
-0&-1&0\\\\
+2&0&0\\
+0&-1&0\\
 0&0&4
 \end{bmatrix}
-$$
-
+\]
+</div>
 2. $(AB)^T=B^TA^T$에서 곱의 순서가 바뀌는 이유를 원소 단위로 확인한다.
 3. 임의의 실수 정사각 행렬 $A$를 대칭 행렬 $B$와 반대칭 행렬 $C$의 합 $A=B+C$로 나타낸다.
 
@@ -236,27 +256,30 @@ $A$는 $3\times3$ 정사각 행렬이며, 주대각선 이외의 원소가 모�
 
 $(AB)_{ij}=\sum_k a_{ik}b_{kj}$이므로
 
-$$
+<div class="math-display">
+\[
 ((AB)^T)_{ij}=(AB)_{ji}=\sum_k a_{jk}b_{ki}
-$$
-
+\]
+</div>
 이다. 한편
 
-$$
+<div class="math-display">
+\[
 (B^TA^T)_{ij}=\sum_k (B^T)_{ik}(A^T)_{kj}
 =\sum_k b_{ki}a_{jk}
-$$
-
+\]
+</div>
 이고 스칼라 곱은 교환 가능하므로 두 식이 같다.
 
 ### 3번
 
-$$
+<div class="math-display">
+\[
 B=\frac{A+A^T}{2},
 \qquad
 C=\frac{A-A^T}{2}
-$$
-
+\]
+</div>
 로 두면 $B^T=B$, $C^T=-C$이고 $B+C=A$가 된다.
 
 </details>

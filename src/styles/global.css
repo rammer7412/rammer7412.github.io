@@ -1495,7 +1495,7 @@ html[data-theme='dark'] .moon-icon {
   max-width: 900px;
   margin: 22px 0 20px;
   color: var(--heading);
-  font-size: clamp(38px, 4.8vw, 58px);
+  font-size: clamp(34px, 4.1vw, 50px);
   line-height: 1.12;
   letter-spacing: -0.055em;
 }
@@ -1658,6 +1658,19 @@ html[data-theme='dark'] .article-content :not(pre) > code {
 
 .article-content mjx-container[display='true'] > mjx-math {
   min-width: max-content;
+}
+
+.article-content .math-display {
+  max-width: 100%;
+  margin: 30px 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  text-align: center;
+  scrollbar-color: var(--border-strong) transparent;
+}
+
+.article-content .math-display > mjx-container[display='true'] {
+  margin: 0 !important;
 }
 
 .article-content table {
@@ -2185,7 +2198,7 @@ html[data-theme='dark'] .article-content :not(pre) > code {
   }
 
   .article-header h1 {
-    font-size: clamp(34px, 10vw, 48px);
+    font-size: clamp(30px, 8.8vw, 42px);
   }
 
   .article-layout {

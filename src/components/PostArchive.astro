@@ -62,12 +62,16 @@ const formats = formatFilters ?? [...new Set(posts.map((post) => normalizeFormat
     {posts.map((post) => {
       const domain = normalizeDomain(post.frontmatter);
       const format = normalizeFormat(post.frontmatter);
+      const domainLabel = domainMeta[domain]?.label ?? 'Writing';
+      const taxonomyLabel = domainLabel === post.frontmatter.category
+        ? post.frontmatter.category
+        : `${domainLabel} · ${post.frontmatter.category}`;
       const searchText = `${post.frontmatter.title} ${post.frontmatter.description} ${post.frontmatter.category} ${(post.frontmatter.tags ?? []).join(' ')}`.toLowerCase();
       return (
         <article class="archive-card" data-post-card data-domain={domain} data-format={format} data-tags={(post.frontmatter.tags ?? []).join(',').toLowerCase()} data-search={searchText}>
           <a href={withBase(`/posts/${post.slug}/`)}>
             <div class="archive-card-meta">
-              <span>{domainMeta[domain]?.label ?? 'Writing'} · {post.frontmatter.category}</span>
+              <span>{taxonomyLabel}</span>
               <span>{formatMeta[format] ?? format}</span>
               <time datetime={post.frontmatter.date}>{post.frontmatter.date}</time>
             </div>
