@@ -8,6 +8,7 @@ type: "note"
 domain: "security-forensics"
 format: "study-note"
 featured: true
+draft: true
 ---
 
 ## 한 줄 요약

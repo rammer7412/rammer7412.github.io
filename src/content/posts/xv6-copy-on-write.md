@@ -8,6 +8,7 @@ type: "lab"
 domain: "systems-development"
 format: "lab"
 featured: true
+draft: true
 ---
 
 ## 한 줄 요약

@@ -17,7 +17,10 @@ const posts = defineCollection({
       'systems-development',
       'cryptography-math',
       'research-cases',
-      'project'
+      'project',
+      'math',
+      'operating-systems',
+      'artificial-intelligence'
     ]),
     format: z.enum([
       'study-note',
@@ -57,7 +60,7 @@ const courses = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    theme: z.enum(['python', 'security', 'forensics', 'privacy', 'default']).default('default'),
+    theme: z.enum(['python', 'c-language', 'security', 'forensics', 'privacy', 'default']).default('default'),
     order: z.number().int().nonnegative().default(0),
     draft: z.boolean().default(false)
   })
@@ -73,7 +76,7 @@ const lectures = defineCollection({
     courseSlug: z.string(),
     lectureNumber: z.number().int().positive(),
     pdfUrl: z.string().url(),
-    theme: z.enum(['python', 'security', 'forensics', 'privacy', 'default']).default('default'),
+    theme: z.enum(['python', 'c-language', 'security', 'forensics', 'privacy', 'default']).default('default'),
     fileName: z.string().optional(),
     topics: z.array(z.string()).default([]),
     draft: z.boolean().default(false)

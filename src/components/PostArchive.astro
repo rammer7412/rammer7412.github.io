@@ -9,6 +9,8 @@ interface Props {
   showFormatFilters?: boolean;
   emptyTitle?: string;
   emptyDescription?: string;
+  domainFilters?: string[];
+  formatFilters?: string[];
 }
 
 const {
@@ -16,11 +18,13 @@ const {
   showDomainFilters = true,
   showFormatFilters = true,
   emptyTitle = '아직 공개된 글이 없습니다.',
-  emptyDescription = '공부하고 분석한 내용을 차례로 채워갈 예정입니다.'
+  emptyDescription = '공부하고 분석한 내용을 차례로 채워갈 예정입니다.',
+  domainFilters,
+  formatFilters
 } = Astro.props;
 
-const domains = [...new Set(posts.map((post) => normalizeDomain(post.frontmatter)))];
-const formats = [...new Set(posts.map((post) => normalizeFormat(post.frontmatter)))];
+const domains = domainFilters ?? [...new Set(posts.map((post) => normalizeDomain(post.frontmatter)))];
+const formats = formatFilters ?? [...new Set(posts.map((post) => normalizeFormat(post.frontmatter)))];
 ---
 <div class="archive-shell" data-archive>
   <div class="archive-tools">
@@ -34,7 +38,7 @@ const formats = [...new Set(posts.map((post) => normalizeFormat(post.frontmatter
     <span class="archive-count"><strong data-visible-count>{posts.length}</strong>개의 글</span>
   </div>
 
-  {showDomainFilters && domains.length > 1 && (
+  {showDomainFilters && domains.length > 0 && (
     <div class="filter-group" aria-label="주제 필터">
       <strong>주제</strong>
       <button class="filter-chip active" type="button" data-filter-kind="domain" data-filter-value="all">전체</button>
@@ -44,7 +48,7 @@ const formats = [...new Set(posts.map((post) => normalizeFormat(post.frontmatter
     </div>
   )}
 
-  {showFormatFilters && formats.length > 1 && (
+  {showFormatFilters && formats.length > 0 && (
     <div class="filter-group" aria-label="글 형식 필터">
       <strong>형식</strong>
       <button class="filter-chip active" type="button" data-filter-kind="format" data-filter-value="all">전체</button>
@@ -79,7 +83,7 @@ const formats = [...new Set(posts.map((post) => normalizeFormat(post.frontmatter
     })}
   </div>
 
-  <div class="empty-state" data-empty-state hidden>
+  <div class="empty-state" data-empty-state hidden={posts.length > 0}>
     <span>EMPTY</span>
     <h2>{emptyTitle}</h2>
     <p>{emptyDescription}</p>

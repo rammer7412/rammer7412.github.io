@@ -8,6 +8,7 @@ type: "note"
 domain: "systems-development"
 format: "study-note"
 featured: false
+draft: true
 ---
 
 ## 결론

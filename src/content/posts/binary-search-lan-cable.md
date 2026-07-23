@@ -8,6 +8,7 @@ type: "problem"
 domain: "systems-development"
 format: "problem-solving"
 featured: false
+draft: true
 ---
 
 ## 문제 감각

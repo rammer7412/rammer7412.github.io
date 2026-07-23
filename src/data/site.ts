@@ -17,6 +17,9 @@ export const navigation = [
 ];
 
 export const domainMeta: Record<string, { label: string; short: string; href: string }> = {
+  math: { label: '수학', short: 'Math', href: '/writing/?domain=math' },
+  'operating-systems': { label: '운영체제', short: 'OS', href: '/writing/?domain=operating-systems' },
+  'artificial-intelligence': { label: '인공지능', short: 'AI', href: '/writing/?domain=artificial-intelligence' },
   'privacy-governance': { label: '개인정보보호·거버넌스', short: 'Privacy', href: '/writing/?domain=privacy-governance' },
   'privacy-engineering': { label: '프라이버시 엔지니어링', short: 'Engineering', href: '/writing/?domain=privacy-engineering' },
   'security-forensics': { label: '보안·포렌식', short: 'Security', href: '/writing/?domain=security-forensics' },

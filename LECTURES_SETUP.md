@@ -30,6 +30,7 @@ draft: false
 
 ```text
 python
+c-language
 security
 forensics
 privacy
@@ -71,7 +72,7 @@ draft: false
 courseSlug: basic-python
 ```
 
-강의자료가 추가되면 해당 과정 페이지에 차시 순으로 자동 정렬되며, 데스크톱에서는 한 줄에 3개씩 표시됩니다. 현재 Basic Python은 1강부터 10강까지 등록되어 있습니다.
+강의자료가 추가되면 해당 과정 페이지에 차시 순으로 자동 정렬되며, 데스크톱에서는 한 줄에 3개씩 표시됩니다. 현재 Basic Python은 1강부터 10강, C Language는 1강부터 12강까지 등록되어 있습니다.
 
 ## 3. R2 CORS 정책
 
@@ -117,3 +118,23 @@ http://localhost:4321/lectures/
 http://localhost:4321/lectures/basic-python/
 http://localhost:4321/lectures/basic-python/basic-python-01/
 ```
+
+
+## C Language 과정
+
+C Language 과정은 `c-language` 테마를 사용합니다. Basic Python의 원형 장식과 구분되도록 코드 그리드, 큰 `C` 워터마크, `#include <stdio.h>`, 중괄호 장식이 자동 표지에 적용됩니다.
+
+```text
+/lectures/c-language/
+/lectures/c-language/c-language-01/
+...
+/lectures/c-language/c-language-12/
+```
+
+현재 R2 경로는 다음 규칙을 사용합니다.
+
+```text
+https://pub-abc6036fee00411eae15969b5cc3ed3b.r2.dev/lectures/c-language/CLanguage_lecture_N.pdf
+```
+
+새 C Language 자료를 추가할 때는 `src/content/lectures/c-language-13.md`와 같은 파일을 만들고 `theme: "c-language"`를 사용합니다.

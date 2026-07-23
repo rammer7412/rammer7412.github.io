@@ -2647,6 +2647,33 @@ body.journal-modal-open {
   border-top: 1px solid var(--border-strong);
 }
 
+.home-writing-empty {
+  padding: 46px 4px 50px;
+  border-block: 1px solid var(--border-strong);
+}
+
+.home-writing-empty > span {
+  color: var(--accent);
+  font-family: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.home-writing-empty h2 {
+  margin: 13px 0 8px;
+  color: var(--heading);
+  font-size: clamp(23px, 3vw, 31px);
+  letter-spacing: -0.04em;
+}
+
+.home-writing-empty p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
 .home-writing-row {
   display: grid;
   grid-template-columns: 112px minmax(0, 1fr) 28px;
@@ -3081,6 +3108,67 @@ body.journal-modal-open {
 .lecture-theme-python {
   --lecture-accent: #245c8a;
   --lecture-secondary: #ffd15a;
+}
+
+.lecture-theme-c-language {
+  --lecture-accent: #153f68;
+  --lecture-secondary: #8bc8f0;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(140deg, #10263f 0%, #174f7d 58%, #0d2946 100%);
+  background-size: 28px 28px, 28px 28px, auto;
+}
+
+.lecture-theme-c-language::before {
+  content: 'C';
+  top: 22px;
+  right: 14px;
+  width: auto;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  color: rgba(255, 255, 255, 0.09);
+  font-family: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 178px;
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.12em;
+}
+
+.lecture-theme-c-language::after {
+  content: '{  }';
+  right: 22px;
+  bottom: 10px;
+  left: auto;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: none;
+  color: color-mix(in srgb, var(--lecture-secondary) 40%, transparent);
+  filter: none;
+  font-family: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 54px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.lecture-theme-c-language .lecture-cover-topline strong {
+  border-radius: 8px;
+  background: rgba(4, 18, 31, 0.28);
+}
+
+.lecture-theme-c-language .lecture-cover-main::before {
+  content: '#include <stdio.h>';
+  display: block;
+  margin-bottom: 15px;
+  color: color-mix(in srgb, var(--lecture-secondary) 82%, #fff);
+  font-family: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  opacity: 0.92;
 }
 
 .lecture-theme-security {

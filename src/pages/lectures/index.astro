@@ -63,7 +63,7 @@ const courseCards = courses.map((course) => {
                 </div>
                 <div class="lecture-cover-bottomline">
                   <span>{materialCount} MATERIAL{materialCount === 1 ? '' : 'S'}</span>
-                  <span>OPEN COURSE</span>
+                  <span>{materialCount > 0 ? 'OPEN COURSE' : 'PREPARING'}</span>
                 </div>
               </div>
               <div class="lecture-card-body course-card-body">
@@ -74,7 +74,7 @@ const courseCards = courses.map((course) => {
                 <h3>{course.data.title}</h3>
                 <p>{course.data.description}</p>
                 <div class="lecture-card-footer course-card-footer">
-                  <strong>강의 들어가기 →</strong>
+                  <strong>{materialCount > 0 ? '강의 들어가기 →' : '자료 준비 중 →'}</strong>
                 </div>
               </div>
             </a>

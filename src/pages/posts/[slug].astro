@@ -6,13 +6,19 @@ import { withBase } from '@/utils/paths';
 
 export async function getStaticPaths() {
   const modules = import.meta.glob('../../content/posts/*.md');
-  return Promise.all(Object.entries(modules).map(async ([path, load]) => {
+  const paths = [];
+
+  for (const [path, load] of Object.entries(modules)) {
     const mod: any = await load();
-    return {
+    if (mod.frontmatter?.draft) continue;
+
+    paths.push({
       params: { slug: path.split('/').pop()?.replace('.md', '') },
       props: { post: mod }
-    };
-  }));
+    });
+  }
+
+  return paths;
 }
 
 const { post } = Astro.props as any;

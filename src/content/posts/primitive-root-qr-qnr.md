@@ -8,6 +8,7 @@ type: "note"
 domain: "cryptography-math"
 format: "study-note"
 featured: true
+draft: true
 ---
 
 ## 핵심 명제
