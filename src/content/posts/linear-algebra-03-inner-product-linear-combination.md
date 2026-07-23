@@ -168,7 +168,6 @@ linearly independent인 vector들로 어떤 vector를 표현할 수 있다면 �
 
 이라는 nontrivial relation이 존재한다. 따라서 세 vector는 linearly dependent이다.
 
-
 ---
 
-**Linear Algebra 정리 시리즈** · 3/9 · [← 이전: 자주 사용하는 Matrix의 종류](/posts/linear-algebra-02-matrix-types/) · [다음: Gaussian Elimination과 Linear System의 해 →](/posts/linear-algebra-04-gaussian-elimination/)
+**Linear Algebra 정리 시리즈** · 3/19 · [← 이전: Matrix의 종류와 기본 연산](/posts/linear-algebra-02-matrix-types/) · [다음: Gaussian Elimination과 연립방정식 →](/posts/linear-algebra-04-gaussian-elimination/)

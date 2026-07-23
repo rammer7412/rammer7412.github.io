@@ -181,7 +181,6 @@ row reduction하면
 
 을 얻는다.
 
-
 ---
 
-**Linear Algebra 정리 시리즈** · 4/9 · [← 이전: Inner Product, Norm과 Linear Combination](/posts/linear-algebra-03-inner-product-linear-combination/) · [다음: Span, Basis와 Dimension →](/posts/linear-algebra-05-span-basis-dimension/)
+**Linear Algebra 정리 시리즈** · 4/19 · [← 이전: Inner Product와 Linear Combination](/posts/linear-algebra-03-inner-product-linear-combination/) · [다음: Span, Basis와 Dimension →](/posts/linear-algebra-05-span-basis-dimension/)

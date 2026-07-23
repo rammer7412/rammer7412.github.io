@@ -155,7 +155,6 @@ Triangular Matrix는 Gaussian Elimination과 back substitution에서 자연스�
 
 로 두면 <span class="math-inline" data-tex-b64="Ql5UPUI="></span>, <span class="math-inline" data-tex-b64="Q15UPS1D"></span>이고 <span class="math-inline" data-tex-b64="QitDPUE="></span>가 된다.
 
-
 ---
 
-**Linear Algebra 정리 시리즈** · 2/9 · [← 이전: Vector Space와 Linear Map](/posts/linear-algebra-01-vector-spaces/) · [다음: Inner Product, Norm과 Linear Combination →](/posts/linear-algebra-03-inner-product-linear-combination/)
+**Linear Algebra 정리 시리즈** · 2/19 · [← 이전: Vector Space, Subspace와 Linear Transformation](/posts/linear-algebra-01-vector-spaces/) · [다음: Inner Product와 Linear Combination →](/posts/linear-algebra-03-inner-product-linear-combination/)

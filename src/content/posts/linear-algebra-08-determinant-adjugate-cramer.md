@@ -276,4 +276,4 @@ Cramer's Rule은 이론적으로 중요하지만, 큰 행렬에서는 여러 Det
 
 ---
 
-**Linear Algebra 정리 시리즈** · 8/9 · [← 이전: Rank, Nullity와 기본 부분공간](/posts/linear-algebra-07-rank-nullity/) · [다음: Eigenvalue, Eigenvector와 Diagonalization →](/posts/linear-algebra-09-eigenvalue-diagonalization/)
+**Linear Algebra 정리 시리즈** · 8/19 · [← 이전: Rank, Nullity와 기본 부분공간](/posts/linear-algebra-07-rank-nullity/) · [다음: Eigenvalue, Eigenvector와 Diagonalization →](/posts/linear-algebra-09-eigenvalue-diagonalization/)

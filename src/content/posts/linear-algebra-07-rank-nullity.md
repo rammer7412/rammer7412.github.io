@@ -221,4 +221,4 @@ Null Space의 Basis vector가 세 개이므로 Nullity는 3이다. column 수가
 
 ---
 
-**Linear Algebra 정리 시리즈** · 7/9 · [← 이전: LU Decomposition과 연립방정식 풀이](/posts/linear-algebra-06-lu-decomposition/) · [다음: Determinant, Adjugate Matrix와 Cramer's Rule →](/posts/linear-algebra-08-determinant-adjugate-cramer/)
+**Linear Algebra 정리 시리즈** · 7/19 · [← 이전: LU Decomposition과 연립방정식 풀이](/posts/linear-algebra-06-lu-decomposition/) · [다음: Determinant, Adjugate Matrix와 Cramer's Rule →](/posts/linear-algebra-08-determinant-adjugate-cramer/)

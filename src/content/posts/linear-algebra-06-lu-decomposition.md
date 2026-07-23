@@ -178,4 +178,4 @@ Permutation Matrix는 Identity Matrix의 행을 재배열한 행렬이다. 각 �
 
 ---
 
-**Linear Algebra 정리 시리즈** · 6/9 · [← 이전: Span, Basis와 Dimension](/posts/linear-algebra-05-span-basis-dimension/) · [다음: Rank, Nullity와 기본 부분공간 →](/posts/linear-algebra-07-rank-nullity/)
+**Linear Algebra 정리 시리즈** · 6/19 · [← 이전: Span, Basis와 Dimension](/posts/linear-algebra-05-span-basis-dimension/) · [다음: Rank, Nullity와 기본 부분공간 →](/posts/linear-algebra-07-rank-nullity/)

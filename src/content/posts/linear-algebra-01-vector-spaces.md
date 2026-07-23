@@ -156,7 +156,6 @@ Linear Map이 아니다. 예를 들어 <span class="math-inline" data-tex-b64="X
 
 이다. additivity가 성립하지 않는다.
 
-
 ---
 
-**Linear Algebra 정리 시리즈** · 1/9 · [다음: 자주 사용하는 Matrix의 종류 →](/posts/linear-algebra-02-matrix-types/)
+**Linear Algebra 정리 시리즈** · 1/19 · [다음: Matrix의 종류와 기본 연산 →](/posts/linear-algebra-02-matrix-types/)

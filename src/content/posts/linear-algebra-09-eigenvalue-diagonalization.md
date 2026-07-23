@@ -357,4 +357,4 @@ Eigenvector와 Eigenvalue는
 
 ---
 
-**Linear Algebra 정리 시리즈** · 9/9 · [← 이전: Determinant, Adjugate Matrix와 Cramer's Rule](/posts/linear-algebra-08-determinant-adjugate-cramer/)
+**Linear Algebra 정리 시리즈** · 9/19 · [← 이전: Determinant, Adjugate Matrix와 Cramer's Rule](/posts/linear-algebra-08-determinant-adjugate-cramer/) · [다음: Similarity와 Equivalence Relation →](/posts/linear-algebra-10-similarity-equivalence/)
