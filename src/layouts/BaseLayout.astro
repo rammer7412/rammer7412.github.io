@@ -78,6 +78,15 @@ const imageURL = new URL(withBase(image), Astro.site ?? Astro.url.origin);
         },
         options: {
           skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        },
+        startup: {
+          ready: () => {
+            document.querySelectorAll('.math-inline[data-tex]').forEach((element) => {
+              const tex = element.getAttribute('data-tex') ?? '';
+              element.textContent = `\\(${tex}\\)`;
+            });
+            MathJax.startup.defaultReady();
+          }
         }
       };
     </script>

@@ -1,6 +1,6 @@
 ---
-title: "2. Kolmogorov Axioms"
-description: "Probability Measure를 정의하는 세 가지 Kolmogorov Axiom과 이들로부터 따라오는 기본 성질을 정리한다."
+title: "2. Kolmogorov 공리"
+description: "확률측도를 정의하는 세 가지 Kolmogorov 공리와 그로부터 유도되는 기본 성질을 정리한다."
 date: "2025-04-29"
 category: "확률 이론"
 tags: ["probability-theory", "kolmogorov-axioms", "probability-measure", "proof"]
@@ -10,23 +10,31 @@ featured: false
 draft: false
 ---
 
-Probability는 직관만으로 다루기보다 몇 가지 공리에서 출발해 성질을 유도하는 편이 안전하다. Kolmogorov Axioms는 Probability Measure가 반드시 만족해야 하는 최소 조건이다.
+확률은 직관적인 의미를 가지지만, 계산 규칙을 일관되게 사용하려면 출발점이 필요하다. Kolmogorov 공리는 확률측도 <span class="math-inline" data-tex="\mathbb{P}"></span>가 반드시 만족해야 하는 최소 조건이다. 나머지 확률 공식 대부분은 이 세 공리에서 유도된다.
 
-## Kolmogorov Axioms
+## 세 가지 공리
 
-Sample space <span class="math-inline">\(\Omega\)</span> 위의 event <span class="math-inline">\(A\)</span>에 probability measure <span class="math-inline">\(\mathbb{P}\)</span>를 정의한다고 하자.
-
-### 1. Nonnegativity
+표본공간을 <span class="math-inline" data-tex="\Omega"></span>, 사건족을 <span class="math-inline" data-tex="\mathcal{F}"></span>라고 하자. 확률측도는 다음과 같은 함수이다.
 
 <div class="math-display">
 \[
-\mathbb{P}(A)\ge0
+\mathbb{P}:\mathcal{F}\to[0,1]
 \]
 </div>
 
-모든 event의 probability는 음수가 아니다.
+### 1. 음이 아닌 값
 
-### 2. Normalization
+모든 사건 <span class="math-inline" data-tex="A"></span>에 대해 확률은 음수가 아니다.
+
+<div class="math-display">
+\[
+\mathbb{P}(A)\ge 0
+\]
+</div>
+
+### 2. 전체 확률은 1
+
+가능한 모든 결과를 포함하는 표본공간의 확률은 1이다.
 
 <div class="math-display">
 \[
@@ -34,11 +42,9 @@ Sample space <span class="math-inline">\(\Omega\)</span> 위의 event <span clas
 \]
 </div>
 
-모든 가능한 outcome을 포함하는 sample space의 probability는 1이다.
+### 3. 가산가법성
 
-### 3. Countable Additivity
-
-Pairwise disjoint한 event sequence <span class="math-inline">\(A_1,A_2,\ldots\)</span>에 대해
+서로 겹치지 않는 사건 <span class="math-inline" data-tex="A_1,A_2,\ldots"></span>에 대해, 합집합의 확률은 각 확률의 합과 같다.
 
 <div class="math-display">
 \[
@@ -48,11 +54,28 @@ Pairwise disjoint한 event sequence <span class="math-inline">\(A_1,A_2,\ldots\)
 \]
 </div>
 
-가 성립한다. Disjoint condition이 없으면 overlap이 중복 계산되므로 이 식을 그대로 사용할 수 없다.
+여기서 사건들이 서로 겹치지 않는다는 조건은
 
-## Empty Event의 Probability
+<div class="math-display">
+\[
+A_i\cap A_j=\varnothing
+\qquad(i\ne j)
+\]
+</div>
 
-<span class="math-inline">\(\Omega\)</span>와 <span class="math-inline">\(\varnothing\)</span>은 disjoint이고 <span class="math-inline">\(\Omega\cup\varnothing=\Omega\)</span>이다. Countable additivity를 적용하면
+를 뜻한다. 이 조건이 없으면 같은 결과가 여러 번 계산될 수 있다.
+
+## 공집합의 확률
+
+<span class="math-inline" data-tex="\Omega"></span>와 <span class="math-inline" data-tex="\varnothing"></span>은 서로 겹치지 않고, 둘의 합집합은 다시 <span class="math-inline" data-tex="\Omega"></span>이다.
+
+<div class="math-display">
+\[
+\Omega\cup\varnothing=\Omega
+\]
+</div>
+
+가산가법성을 적용하면
 
 <div class="math-display">
 \[
@@ -70,11 +93,11 @@ Pairwise disjoint한 event sequence <span class="math-inline">\(A_1,A_2,\ldots\)
 \]
 </div>
 
-이다.
+을 얻는다.
 
-## Complement Rule
+## 여사건 공식
 
-<span class="math-inline">\(A\)</span>와 <span class="math-inline">\(A^c\)</span>는 disjoint이며 union은 sample space이다.
+사건 <span class="math-inline" data-tex="A"></span>와 여사건 <span class="math-inline" data-tex="A^c"></span>는 서로 겹치지 않고 합치면 표본공간 전체가 된다.
 
 <div class="math-display">
 \[
@@ -88,27 +111,15 @@ A\cap A^c=\varnothing
 
 <div class="math-display">
 \[
-1
-=
-\mathbb{P}(\Omega)
-=
-\mathbb{P}(A)+\mathbb{P}(A^c)
-\]
-</div>
-
-이고
-
-<div class="math-display">
-\[
 \mathbb{P}(A^c)=1-\mathbb{P}(A)
 \]
 </div>
 
-를 얻는다.
+이다.
 
-## Monotonicity
+## 단조성
 
-<span class="math-inline">\(A\subseteq B\)</span>이면 <span class="math-inline">\(B\)</span>를 disjoint union으로 분해할 수 있다.
+<span class="math-inline" data-tex="A\subseteq B"></span>라면 <span class="math-inline" data-tex="B"></span>는 다음과 같이 겹치지 않는 두 부분으로 나뉜다.
 
 <div class="math-display">
 \[
@@ -116,67 +127,71 @@ B=A\cup(B\setminus A)
 \]
 </div>
 
-따라서
+그러므로
 
 <div class="math-display">
 \[
 \mathbb{P}(B)
 =
 \mathbb{P}(A)+\mathbb{P}(B\setminus A)
-\ge
-\mathbb{P}(A)
+\ge \mathbb{P}(A)
 \]
 </div>
 
-이다. 즉, event가 커질수록 probability는 감소하지 않는다.
+이다. 즉, 더 큰 사건의 확률은 더 작은 사건의 확률보다 작을 수 없다.
 
-## Difference Rule
+## 차집합과 합집합
 
-<span class="math-inline">\(A\cap B\)</span>와 <span class="math-inline">\(A^c\cap B\)</span>는 disjoint이고 두 event의 union은 <span class="math-inline">\(B\)</span>이다.
-
-<div class="math-display">
-\[
-B=(A\cap B)\cup(A^c\cap B)
-\]
-</div>
-
-따라서
+<span class="math-inline" data-tex="A\subseteq B"></span>인 경우에는
 
 <div class="math-display">
 \[
-\mathbb{P}(A^c\cap B)
+\mathbb{P}(B\setminus A)
 =
-\mathbb{P}(B)-\mathbb{P}(A\cap B)
+\mathbb{P}(B)-\mathbb{P}(A)
 \]
 </div>
 
-이다.
-
-## Union Bound
-
-Inclusion–Exclusion과 nonnegativity로부터
+이다. 일반적인 두 사건에 대해서는 포함배제 원리를 사용한다.
 
 <div class="math-display">
 \[
 \mathbb{P}(A\cup B)
 =
 \mathbb{P}(A)+\mathbb{P}(B)-\mathbb{P}(A\cap B)
+\]
+</div>
+
+교집합의 확률은 음이 아니므로 다음 상계도 얻는다.
+
+<div class="math-display">
+\[
+\mathbb{P}(A\cup B)
 \le
 \mathbb{P}(A)+\mathbb{P}(B)
 \]
 </div>
 
-를 얻는다. 이를 Boole's inequality라고 한다.
+이를 union bound 또는 Boole 부등식이라고 한다. 많은 사건에 대해서도 같은 방식으로 확장된다.
+
+<div class="math-display">
+\[
+\mathbb{P}\!\left(\bigcup_{i=1}^{n}A_i\right)
+\le
+\sum_{i=1}^{n}\mathbb{P}(A_i)
+\]
+</div>
 
 ## 정리
 
-Kolmogorov Axioms는 nonnegativity, normalization, countable additivity의 세 조건이다. Empty event, complement, monotonicity, difference rule과 union bound는 별도의 가정이 아니라 이 공리들에서 유도된다.
+Kolmogorov 공리는 음이 아닌 값, 전체 확률 1, 가산가법성의 세 조건이다. 공집합의 확률, 여사건 공식, 단조성, 포함배제 원리와 union bound는 별도의 가정이 아니라 이 공리에서 유도되는 결과이다.
 
 ## 연습 문제
 
-1. Inclusion–Exclusion formula를 Kolmogorov Axioms만으로 증명한다.
-2. <span class="math-inline">\(A_1,\ldots,A_n\)</span>에 대해 <span class="math-inline">\(\mathbb{P}(\bigcup_i A_i)\le\sum_i\mathbb{P}(A_i)\)</span>를 induction으로 보인다.
+1. Kolmogorov 공리만 이용해 포함배제 원리를 증명한다.
+2. <span class="math-inline" data-tex="A_1,\ldots,A_n"></span>에 대한 union bound를 수학적 귀납법으로 증명한다.
+3. <span class="math-inline" data-tex="A\subseteq B"></span>일 때 <span class="math-inline" data-tex="\mathbb{P}(B\setminus A)=\mathbb{P}(B)-\mathbb{P}(A)"></span>임을 보인다.
 
 ---
 
-**확률 이론 정리 시리즈** · 2/11 · [← 이전: 1. Probability Space와 기초 개념](/posts/probability-theory-01-foundations/) · [다음: 3. Random Variable과 CDF →](/posts/probability-theory-03-random-variable-cdf/)
+**확률 이론 정리 시리즈** · 2/11 · [← 이전: 1. Probability Space와 사건](/posts/probability-theory-01-foundations/) · [다음: 3. Random Variable과 CDF →](/posts/probability-theory-03-random-variable-cdf/)

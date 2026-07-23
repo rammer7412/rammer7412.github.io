@@ -1,6 +1,6 @@
 ---
-title: "7. 대표적인 Continuous Distribution"
-description: "Continuous Uniform, Normal, Exponential, Gamma, Beta Distribution의 PDF와 주요 moment를 정리한다."
+title: "7. 주요 연속 Distribution"
+description: "Uniform, Normal, Exponential, Gamma, Beta Distribution의 형태와 매개변수, 사용 맥락을 정리한다."
 date: "2025-07-03"
 category: "확률 이론"
 tags: ["probability-theory", "continuous-distribution", "normal", "exponential", "gamma", "beta"]
@@ -10,18 +10,25 @@ featured: false
 draft: false
 ---
 
-Continuous Distribution은 PDF 아래의 area로 probability를 표현한다. 각 distribution은 support와 shape parameter가 다르며, normalization constant에 Gamma Function이나 Beta Function이 자주 등장한다.
+연속 Distribution은 구간 위에 PDF를 정의하고 적분으로 확률을 계산한다. 각 Distribution은 단순히 식이 다른 것이 아니라, 값이 생성되는 상황과 지지집합의 형태가 다르다.
 
-## Continuous Uniform Distribution
+## Uniform Distribution
 
-<span class="math-inline">\(X\sim\operatorname{Unif}(a,b)\)</span>이면 interval 안에서 density가 일정하다.
+구간 <span class="math-inline" data-tex="[a,b]"></span> 안의 모든 위치가 같은 밀도를 가질 때 사용한다.
 
 <div class="math-display">
 \[
-f_X(x)=
+X\sim\operatorname{Unif}(a,b)
+\]
+</div>
+
+<div class="math-display">
+\[
+f_X(x)
+=
 \begin{cases}
 \dfrac{1}{b-a},&a\le x\le b,\\
-0,&\text{otherwise}.
+0,&\text{그 밖의 경우}.
 \end{cases}
 \]
 </div>
@@ -36,7 +43,13 @@ f_X(x)=
 
 ## Normal Distribution
 
-<span class="math-inline">\(X\sim\mathcal{N}(\mu,\sigma^2)\)</span>의 PDF는
+Normal Distribution은 평균 주변에 값이 집중되고 양쪽 꼬리가 대칭인 종 모양의 Distribution이다.
+
+<div class="math-display">
+\[
+X\sim\mathcal{N}(\mu,\sigma^2)
+\]
+</div>
 
 <div class="math-display">
 \[
@@ -47,7 +60,7 @@ f_X(x)
 \]
 </div>
 
-이다.
+<span class="math-inline" data-tex="\mu"></span>는 중심 위치이고 <span class="math-inline" data-tex="\sigma"></span>는 퍼짐의 크기이다.
 
 <div class="math-display">
 \[
@@ -57,52 +70,48 @@ f_X(x)
 \]
 </div>
 
-Standardization을 적용하면
+표준화하면 평균 0, Variance 1인 표준정규분포로 바뀐다.
 
 <div class="math-display">
 \[
-Z=\frac{X-\mu}{\sigma}\sim\mathcal{N}(0,1)
+Z=\frac{X-\mu}{\sigma}
+\sim\mathcal{N}(0,1)
+\]
+</div>
+
+정규화 상수의 근거가 되는 Gaussian integral은
+
+<div class="math-display">
+\[
+\int_{-\infty}^{\infty}e^{-x^2/2}\,dx=\sqrt{2\pi}
 \]
 </div>
 
 이다.
 
-### Gaussian Integral
-
-Standard Normal PDF의 area가 1임을 보이기 위해
-
-<div class="math-display">
-\[
-I=\int_{-\infty}^{\infty}e^{-x^2/2}\,dx
-\]
-</div>
-
-라 두고 square를 취한다. Polar coordinate로 변환하면
-
-<div class="math-display">
-\[
-\begin{aligned}
-I^2
-&=\iint_{\mathbb{R}^2}e^{-(x^2+y^2)/2}\,dx\,dy\\
-&=\int_0^{2\pi}\int_0^{\infty}e^{-r^2/2}r\,dr\,d\theta\\
-&=2\pi.
-\end{aligned}
-\]
-</div>
-
-따라서 <span class="math-inline">\(I=\sqrt{2\pi}\)</span>이다.
-
 ## Exponential Distribution
 
-Waiting time을 모델링하는 대표적인 distribution이다.
+사건이 일정한 비율로 발생하는 Poisson process에서 다음 사건까지 기다리는 시간을 나타낸다.
 
 <div class="math-display">
 \[
-f_X(x)=
-\begin{cases}
-\lambda e^{-\lambda x},&x\ge0,\\
-0,&x<0.
-\end{cases}
+X\sim\operatorname{Exponential}(\lambda)
+\]
+</div>
+
+<div class="math-display">
+\[
+f_X(x)
+=
+\lambda e^{-\lambda x},
+\qquad x\ge0
+\]
+</div>
+
+<div class="math-display">
+\[
+F_X(x)=1-e^{-\lambda x},
+\qquad x\ge0
 \]
 </div>
 
@@ -114,7 +123,7 @@ f_X(x)=
 \]
 </div>
 
-Exponential Distribution도 memoryless property를 갖는다.
+Exponential Distribution도 기억 없음 성질을 가진다.
 
 <div class="math-display">
 \[
@@ -124,43 +133,57 @@ Exponential Distribution도 memoryless property를 갖는다.
 
 ## Gamma Distribution
 
-Shape parameter <span class="math-inline">\(\alpha\)</span>와 rate parameter <span class="math-inline">\(\beta\)</span>를 사용하는 parameterization에서는
+Poisson process에서 <span class="math-inline" data-tex="\alpha"></span>번째 사건이 일어날 때까지의 대기시간을 일반화한 Distribution이다.
+
+<div class="math-display">
+\[
+X\sim\operatorname{Gamma}(\alpha,\lambda)
+\]
+</div>
+
+여기서는 <span class="math-inline" data-tex="\lambda"></span>를 rate 매개변수로 사용한다.
 
 <div class="math-display">
 \[
 f_X(x)
 =
-\frac{\beta^{\alpha}}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x},
+\frac{\lambda^{\alpha}}{\Gamma(\alpha)}
+ x^{\alpha-1}e^{-\lambda x},
 \qquad x>0
 \]
 </div>
 
-이다.
-
 <div class="math-display">
 \[
-\mathbb{E}[X]=\frac{\alpha}{\beta},
+\mathbb{E}[X]=\frac{\alpha}{\lambda},
 \qquad
-\operatorname{Var}(X)=\frac{\alpha}{\beta^2}
+\operatorname{Var}(X)=\frac{\alpha}{\lambda^2}
 \]
 </div>
 
-<span class="math-inline">\(\alpha=1\)</span>이면 Exponential Distribution이 된다. 일부 교재는 scale parameter를 사용하므로 second parameter의 의미를 확인해야 한다.
+<span class="math-inline" data-tex="\alpha=1"></span>이면 Exponential Distribution이 된다.
 
 ## Beta Distribution
 
-Support가 <span class="math-inline">\((0,1)\)</span>인 probability나 proportion을 모델링할 때 자주 사용한다.
+0과 1 사이의 비율이나 확률을 모델링할 때 자주 사용한다.
+
+<div class="math-display">
+\[
+X\sim\operatorname{Beta}(\alpha,\beta)
+\]
+</div>
 
 <div class="math-display">
 \[
 f_X(x)
 =
-\frac{1}{B(\alpha,\beta)}x^{\alpha-1}(1-x)^{\beta-1},
+\frac{1}{B(\alpha,\beta)}
+ x^{\alpha-1}(1-x)^{\beta-1},
 \qquad 0<x<1
 \]
 </div>
 
-Beta Function은 Gamma Function과 다음 관계를 갖는다.
+Beta Function은 다음과 같다.
 
 <div class="math-display">
 \[
@@ -188,19 +211,18 @@ B(\alpha,\beta)
 
 ## Distribution 선택 기준
 
-- Bounded interval에서 균등한 값: Continuous Uniform
-- 여러 작은 영향의 합이나 measurement error: Normal
-- 첫 event까지의 waiting time: Exponential
-- 여러 waiting time의 합: Gamma
-- 0과 1 사이의 proportion: Beta
+- 유한 구간에서 일정한 밀도: Uniform
+- 대칭적인 측정 오차나 여러 작은 효과의 합: Normal
+- 다음 사건까지의 대기시간: Exponential
+- 여러 번째 사건까지의 대기시간: Gamma
+- 0과 1 사이의 비율: Beta
 
 ## 연습 문제
 
-1. Continuous Uniform Distribution의 Variance를 직접 계산한다.
-2. Gaussian integral을 따라가며 Standard Normal PDF의 normalization을 확인한다.
-3. <span class="math-inline">\(X\sim\mathcal{N}(0,1)\)</span>일 때 odd moment가 0임을 symmetry로 보인다.
-4. Beta Distribution의 <span class="math-inline">\(r\)</span>차 raw moment를 Gamma Function으로 표현한다.
+1. <span class="math-inline" data-tex="X\sim\operatorname{Unif}(0,1)"></span>일 때 <span class="math-inline" data-tex="\mathbb{P}(X^2&lt;1/4)"></span>를 구한다.
+2. <span class="math-inline" data-tex="X\sim\operatorname{Exponential}(\lambda)"></span>의 기억 없음 성질을 증명한다.
+3. Gamma Distribution에서 <span class="math-inline" data-tex="\alpha=1"></span>을 대입해 Exponential PDF를 얻는다.
 
 ---
 
-**확률 이론 정리 시리즈** · 7/11 · [← 이전: 6. 대표적인 Discrete Distribution](/posts/probability-theory-06-discrete-distributions/) · [다음: 8. Moment와 Moment Generating Function →](/posts/probability-theory-08-moment-generating-function/)
+**확률 이론 정리 시리즈** · 7/11 · [← 이전: 6. 주요 이산 Distribution](/posts/probability-theory-06-discrete-distributions/) · [다음: 8. Moment와 MGF →](/posts/probability-theory-08-moment-generating-function/)

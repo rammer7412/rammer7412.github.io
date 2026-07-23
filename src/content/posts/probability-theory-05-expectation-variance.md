@@ -1,6 +1,6 @@
 ---
-title: "5. Expectation, Variance와 Standard Deviation"
-description: "Expectation의 정의와 linearity, Variance와 Standard Deviation의 의미와 계산 공식을 정리한다."
+title: "5. Expectation과 Variance"
+description: "Distribution의 중심과 퍼짐을 나타내는 Expectation, Variance, Standard Deviation의 정의와 성질을 정리한다."
 date: "2025-06-21"
 category: "확률 이론"
 tags: ["probability-theory", "expectation", "variance", "standard-deviation"]
@@ -10,125 +10,168 @@ featured: false
 draft: false
 ---
 
-Distribution 전체를 하나의 숫자로 요약할 때 가장 먼저 사용하는 값이 Expectation과 Variance이다. Expectation은 중심 위치를, Variance는 그 중심에서 얼마나 퍼져 있는지를 나타낸다.
+Distribution 전체의 특징을 몇 개의 수치로 요약할 때 가장 먼저 사용하는 값이 Expectation과 Variance이다. Expectation은 확률질량의 균형점에 해당하고, Variance는 값들이 그 중심에서 얼마나 퍼져 있는지를 나타낸다.
 
 ## Expectation
 
-Random Variable <span class="math-inline">\(X\)</span>의 함수 <span class="math-inline">\(g(X)\)</span>에 대한 Expectation은 discrete와 continuous case에서 각각 다음과 같다.
+Expectation은 가능한 값에 그 값이 나타날 확률을 가중치로 곱해 평균을 낸 값이다. 이산형과 연속형에서 각각 다음과 같이 정의한다.
+
+<div class="math-display">
+\[
+\mathbb{E}[X]
+=
+\sum_x x\,p_X(x)
+\]
+</div>
+
+<div class="math-display">
+\[
+\mathbb{E}[X]
+=
+\int_{-\infty}^{\infty}x\,f_X(x)\,dx
+\]
+</div>
+
+함수 <span class="math-inline" data-tex="g(X)"></span>의 Expectation은 Distribution을 먼저 구하지 않고도 다음처럼 계산할 수 있다.
 
 <div class="math-display">
 \[
 \mathbb{E}[g(X)]
 =
 \begin{cases}
-\displaystyle\sum_x g(x)p_X(x),&X\text{ is discrete},\\[6pt]
-\displaystyle\int_{-\infty}^{\infty}g(x)f_X(x)\,dx,&X\text{ is continuous}.
+\displaystyle\sum_x g(x)p_X(x),&X\text{가 이산형},\\[6pt]
+\displaystyle\int_{-\infty}^{\infty}g(x)f_X(x)\,dx,&X\text{가 연속형}.
 \end{cases}
 \]
 </div>
 
-<span class="math-inline">\(g(X)=X\)</span>를 대입하면 mean <span class="math-inline">\(\mathbb{E}[X]\)</span>를 얻는다. Absolute expectation이 finite하지 않으면 expectation이 존재하지 않을 수 있다.
+이를 LOTUS(Law of the Unconscious Statistician)라고 부른다.
+
+## Expectation의 선형성
+
+상수 <span class="math-inline" data-tex="a,b"></span>와 Random Variable <span class="math-inline" data-tex="X,Y"></span>에 대해
 
 <div class="math-display">
 \[
-\mathbb{E}[|g(X)|]<\infty
-\]
-</div>
-
-는 expectation의 존재를 확인할 때 사용하는 충분히 안전한 조건이다.
-
-## Linearity of Expectation
-
-Expectation은 linear operator이다.
-
-<div class="math-display">
-\[
-\mathbb{E}[aX+bY+c]
+\mathbb{E}[aX+bY]
 =
-a\mathbb{E}[X]+b\mathbb{E}[Y]+c
+a\mathbb{E}[X]+b\mathbb{E}[Y]
 \]
 </div>
 
-이 성질에는 independence가 필요하지 않다. 예를 들어 continuous case에서는 integral의 linearity로 바로 확인할 수 있다.
+가 성립한다. 이 성질에는 <span class="math-inline" data-tex="X"></span>와 <span class="math-inline" data-tex="Y"></span>의 독립성이 필요하지 않다.
+
+특히 지시함수 <span class="math-inline" data-tex="\mathbf{1}_A"></span>를 사용하면 사건의 확률을 Expectation으로 표현할 수 있다.
 
 <div class="math-display">
 \[
-\mathbb{E}[a g_1(X)+b g_2(X)]
+\mathbf{1}_A(\omega)
 =
-a\mathbb{E}[g_1(X)]+b\mathbb{E}[g_2(X)]
+\begin{cases}
+1,&\omega\in A,\\
+0,&\omega\notin A,
+\end{cases}
 \]
 </div>
+
+<div class="math-display">
+\[
+\mathbb{E}[\mathbf{1}_A]=\mathbb{P}(A)
+\]
+</div>
+
+이 성질은 개수의 평균을 계산할 때 유용하다.
 
 ## Variance
 
-Mean을 <span class="math-inline">\(\mu=\mathbb{E}[X]\)</span>라 할 때 Variance는
+Variance는 <span class="math-inline" data-tex="X"></span>가 평균에서 벗어난 정도의 제곱을 평균 낸 값이다.
 
 <div class="math-display">
 \[
 \operatorname{Var}(X)
 =
-\mathbb{E}[(X-\mu)^2]
+\mathbb{E}\!\left[(X-\mathbb{E}[X])^2\right]
 \]
 </div>
 
-로 정의된다. Square를 사용하므로 mean에서 멀리 떨어진 값에 더 큰 penalty를 준다.
-
-계산에서는 다음 equivalent formula가 편리하다.
+계산할 때는 다음 형태가 더 편리하다.
 
 <div class="math-display">
 \[
 \operatorname{Var}(X)
 =
-\mathbb{E}[X^2]-\{\mathbb{E}[X]\}^2
+\mathbb{E}[X^2]-\mathbb{E}[X]^2
 \]
 </div>
 
-증명은 square를 전개하고 expectation의 linearity를 적용하면 된다.
-
-<div class="math-display">
-\[
-\begin{aligned}
-\mathbb{E}[(X-\mu)^2]
-&=\mathbb{E}[X^2-2\mu X+\mu^2]\\
-&=\mathbb{E}[X^2]-2\mu\mathbb{E}[X]+\mu^2\\
-&=\mathbb{E}[X^2]-\mu^2.
-\end{aligned}
-\]
-</div>
-
-## Affine Transformation
-
-상수 <span class="math-inline">\(a,b\)</span>에 대해
-
-<div class="math-display">
-\[
-\operatorname{Var}(aX+b)=a^2\operatorname{Var}(X)
-\]
-</div>
-
-이다. Shift <span class="math-inline">\(b\)</span>는 spread를 바꾸지 않고, scaling <span class="math-inline">\(a\)</span>는 deviation을 <span class="math-inline">\(|a|\)</span>배하므로 Variance는 <span class="math-inline">\(a^2\)</span>배가 된다.
+제곱을 사용하므로 평균보다 큰 편차와 작은 편차가 서로 상쇄되지 않는다. 다만 단위도 원래 단위의 제곱이 된다.
 
 ## Standard Deviation
 
-Standard Deviation은 Variance의 square root이다.
+Standard Deviation은 Variance의 제곱근이다.
 
 <div class="math-display">
 \[
-\sigma_X=\sqrt{\operatorname{Var}(X)}
+\operatorname{SD}(X)
+=
+\sqrt{\operatorname{Var}(X)}
 \]
 </div>
 
-Variance는 원래 단위의 square를 사용하지만 Standard Deviation은 <span class="math-inline">\(X\)</span>와 같은 단위를 갖는다.
+원래 자료와 같은 단위를 가지므로 퍼짐의 크기를 해석하기 쉽다.
+
+## 선형 변환의 영향
+
+<span class="math-inline" data-tex="Y=aX+b"></span>라고 하자. 그러면
+
+<div class="math-display">
+\[
+\mathbb{E}[Y]=a\mathbb{E}[X]+b
+\]
+</div>
+
+이고
+
+<div class="math-display">
+\[
+\operatorname{Var}(Y)=a^2\operatorname{Var}(X)
+\]
+</div>
+
+이다. 상수 <span class="math-inline" data-tex="b"></span>는 Distribution의 위치만 이동시키므로 Variance를 바꾸지 않는다. 반면 <span class="math-inline" data-tex="a"></span>는 값의 간격을 <span class="math-inline" data-tex="|a|"></span>배로 바꾸므로 Variance를 <span class="math-inline" data-tex="a^2"></span>배로 바꾼다.
+
+## 독립인 합의 Variance
+
+두 Random Variable이 독립이면
+
+<div class="math-display">
+\[
+\operatorname{Var}(X+Y)
+=
+\operatorname{Var}(X)+\operatorname{Var}(Y)
+\]
+</div>
+
+이다. 일반적인 경우에는 공분산 항이 추가된다.
+
+<div class="math-display">
+\[
+\operatorname{Var}(X+Y)
+=
+\operatorname{Var}(X)+\operatorname{Var}(Y)+2\operatorname{Cov}(X,Y)
+\]
+</div>
 
 ## 정리
 
-Expectation은 weighted average이며 linearity를 만족한다. Variance는 mean으로부터의 squared deviation의 expectation이고, Standard Deviation은 이를 원래 단위로 되돌린 값이다.
+Expectation은 Distribution의 중심을, Variance와 Standard Deviation은 퍼짐을 나타낸다. Expectation은 항상 선형이지만, Variance의 합 공식은 공분산 또는 독립성 조건을 함께 확인해야 한다.
 
 ## 연습 문제
 
-1. <span class="math-inline">\(\operatorname{Var}(aX+b)=a^2\operatorname{Var}(X)\)</span>를 정의에서 증명한다.
-2. <span class="math-inline">\(\mu=\mathbb{E}[X]\)</span>, <span class="math-inline">\(\sigma^2=\operatorname{Var}(X)\)</span>일 때 <span class="math-inline">\(\mathbb{E}[X(X-1)]=\mu^2+\sigma^2-\mu\)</span>를 보인다.
+1. 공정한 주사위 눈 <span class="math-inline" data-tex="X"></span>의 Expectation과 Variance를 구한다.
+2. <span class="math-inline" data-tex="Y=3X-2"></span>일 때 <span class="math-inline" data-tex="\mathbb{E}[Y]"></span>와 <span class="math-inline" data-tex="\operatorname{Var}(Y)"></span>를 <span class="math-inline" data-tex="X"></span>의 값으로 표현한다.
+3. 지시함수의 Expectation이 사건의 확률과 같음을 정의에서 증명한다.
 
 ---
 
-**확률 이론 정리 시리즈** · 5/11 · [← 이전: 4. Discrete·Continuous Random Variable과 PMF·PDF](/posts/probability-theory-04-discrete-continuous-pmf-pdf/) · [다음: 6. 대표적인 Discrete Distribution →](/posts/probability-theory-06-discrete-distributions/)
+**확률 이론 정리 시리즈** · 5/11 · [← 이전: 4. 이산·연속 Random Variable과 PMF·PDF](/posts/probability-theory-04-discrete-continuous-pmf-pdf/) · [다음: 6. 주요 이산 Distribution →](/posts/probability-theory-06-discrete-distributions/)

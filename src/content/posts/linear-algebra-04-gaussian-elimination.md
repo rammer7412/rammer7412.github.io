@@ -45,7 +45,7 @@ x+y+z=8
 Gaussian Elimination에서는 다음 세 가지 Elementary Row Operation을 사용한다.
 
 1. 두 row를 interchange한다.
-2. 한 row에 <span class="math-inline">\(0\)</span>이 아닌 constant를 곱한다.
+2. 한 row에 <span class="math-inline" data-tex="0"></span>이 아닌 constant를 곱한다.
 3. 한 row에 다른 row의 scalar multiple을 더한다.
 
 이 operation들은 Linear System의 solution set을 바꾸지 않는다.
@@ -55,7 +55,7 @@ Gaussian Elimination에서는 다음 세 가지 Elementary Row Operation을 사�
 matrix가 다음 조건을 만족하면 Row Echelon Form이라고 한다.
 
 1. nonzero row의 leading entry는 위 row의 pivot보다 오른쪽에 있다.
-2. 각 pivot 아래의 entry는 모두 <span class="math-inline">\(0\)</span>이다.
+2. 각 pivot 아래의 entry는 모두 <span class="math-inline" data-tex="0"></span>이다.
 3. zero row는 아래쪽에 놓인다.
 
 예를 들어
@@ -212,7 +212,7 @@ x+y+z=2\\
 \]
 </div>
 
-가 된다. <span class="math-inline">\(y=s\)</span>, <span class="math-inline">\(z=t\)</span>를 free variable로 두면
+가 된다. <span class="math-inline" data-tex="y=s"></span>, <span class="math-inline" data-tex="z=t"></span>를 free variable로 두면
 
 <div class="math-display">
 \[
@@ -241,7 +241,7 @@ x=2-s-t
 | --- | --- | --- |
 | Unique Solution | Consistent | 모든 variable column에 pivot이 존재 |
 | Infinitely Many Solutions | Consistent | free variable이 존재하고 contradiction은 없음 |
-| No Solution | Inconsistent | <span class="math-inline">\(0=c\)</span> 꼴의 contradiction row가 존재 |
+| No Solution | Inconsistent | <span class="math-inline" data-tex="0=c"></span> 꼴의 contradiction row가 존재 |
 
 Gaussian Elimination은 solution을 계산하는 방법이면서 동시에 Linear System의 structure를 분석하는 방법이다.
 
@@ -285,7 +285,7 @@ x+2y+3z=4\\
 
 ### 3
 
-다음 <span class="math-inline">\(A\mathbf{x}=\mathbf{b}\)</span>에서 <span class="math-inline">\(\mathbf{x}\)</span>를 구한다.
+다음 <span class="math-inline" data-tex="A\mathbf{x}=\mathbf{b}"></span>에서 <span class="math-inline" data-tex="\mathbf{x}"></span>를 구한다.
 
 <div class="math-display">
 \[
@@ -320,7 +320,7 @@ row reduction 후 solution은
 
 ### 2번
 
-Coefficient Matrix와 Augmented Matrix의 rank가 모두 <span class="math-inline">\(2\)</span>이고 variable은 <span class="math-inline">\(3\)</span>개이므로 consistent하며 Infinitely Many Solutions를 가진다. <span class="math-inline">\(z=t\)</span>로 두면
+Coefficient Matrix와 Augmented Matrix의 rank가 모두 <span class="math-inline" data-tex="2"></span>이고 variable은 <span class="math-inline" data-tex="3"></span>개이므로 consistent하며 Infinitely Many Solutions를 가진다. <span class="math-inline" data-tex="z=t"></span>로 두면
 
 <div class="math-display">
 \[

@@ -1,24 +1,32 @@
 ---
-title: "1. Probability Space와 기초 개념"
-description: "Probability Space를 구성하는 outcome, sample space, event와 함께 Set Operation, Binomial Theorem, Gamma Function을 정리한다."
+title: "1. Probability Space와 사건"
+description: "확률을 정의하기 위한 Probability Space의 세 요소와 사건의 집합 연산, 포함배제 원리를 정리한다."
 date: "2025-04-28"
 category: "확률 이론"
-tags: ["probability-theory", "probability-space", "set-theory", "binomial-theorem", "gamma-function"]
+tags: ["probability-theory", "probability-space", "sample-space", "event", "set-operation"]
 domain: "probability-theory"
 format: "study-note"
 featured: false
 draft: false
 ---
 
-Probability Theory를 공부할 때 가장 먼저 정리해야 하는 것은 확률값 자체가 아니라 확률을 정의하는 공간이다. Outcome, sample space, event의 관계를 명확히 잡아두면 이후 Random Variable과 Distribution의 정의가 자연스럽게 이어진다.
+확률 이론은 ‘어떤 일이 일어날 가능성’을 수치로 표현하는 학문이지만, 확률값을 계산하기 전에 먼저 **무엇을 결과로 보고 어떤 사건에 확률을 부여할지** 정해야 한다. 이를 하나의 수학적 구조로 묶은 것이 Probability Space이다.
 
-참고한 교재는 Casella와 Berger의 *Statistical Inference*이다. 이 시리즈는 기본적인 Calculus와 Linear Algebra를 전제로 한다.
+## Probability Space의 구성
 
-## Probability Space
+Probability Space는 다음 세 요소로 이루어진다.
 
-Experiment를 한 번 수행했을 때 나오는 개별 결과를 **outcome**이라 한다. 모든 가능한 outcome의 집합은 **sample space**이며 보통 <span class="math-inline">\(\Omega\)</span>로 나타낸다. Sample space의 부분집합을 **event**라 한다.
+<div class="math-display">
+\[
+(\Omega,\mathcal{F},\mathbb{P})
+\]
+</div>
 
-동전을 한 번 던지는 experiment에서는
+- <span class="math-inline" data-tex="\Omega"></span>는 가능한 모든 결과를 모은 **표본공간(sample space)**이다.
+- <span class="math-inline" data-tex="\mathcal{F}"></span>는 확률을 부여할 사건들을 모은 **사건족(event space)**이다.
+- <span class="math-inline" data-tex="\mathbb{P}"></span>는 각 사건에 0과 1 사이의 값을 부여하는 **확률측도(probability measure)**이다.
+
+표본공간의 원소 하나를 결과(outcome)라고 한다. 사건(event)은 결과 하나 또는 여러 결과를 묶은 집합이다. 예를 들어 동전을 한 번 던질 때
 
 <div class="math-display">
 \[
@@ -26,30 +34,30 @@ Experiment를 한 번 수행했을 때 나오는 개별 결과를 **outcome**이
 \]
 </div>
 
-이다. 앞면이 나오는 event를 <span class="math-inline">\(A\)</span>라 하면 <span class="math-inline">\(A=\{H\}\)</span>이고, event의 probability는 <span class="math-inline">\(\mathbb{P}(A)\)</span>로 표시한다.
+이며, 앞면이 나오는 사건을 <span class="math-inline" data-tex="A"></span>라고 두면 <span class="math-inline" data-tex="A=\{H\}"></span>이다. “앞면 또는 뒷면이 나온다”는 사건은 표본공간 전체인 <span class="math-inline" data-tex="\Omega"></span>와 같다.
 
-Event는 단순히 하나의 outcome일 수도 있고 여러 outcome을 묶은 집합일 수도 있다. 따라서 Probability Theory에서 Set Theory가 기본 언어가 된다.
+유한하거나 셀 수 있는 표본공간에서는 흔히 <span class="math-inline" data-tex="\mathcal{F}=2^{\Omega}"></span>, 즉 모든 부분집합을 사건으로 사용한다. 연속적인 표본공간에서는 모든 부분집합에 일관된 확률을 부여할 수 없기 때문에, 보렐 집합과 같은 적절한 사건족을 사용한다.
 
-## Set Operation
+## 사건의 집합 연산
 
-두 event <span class="math-inline">\(A\)</span>와 <span class="math-inline">\(B\)</span>에 대해 자주 사용하는 operation은 다음과 같다.
+사건은 집합이므로 집합 연산으로 결합할 수 있다.
 
-- **Union**: <span class="math-inline">\(A\cup B\)</span>
-- **Intersection**: <span class="math-inline">\(A\cap B\)</span>
-- **Complement**: <span class="math-inline">\(A^c\)</span>
-- **Difference**: <span class="math-inline">\(A\setminus B\)</span>
+- <span class="math-inline" data-tex="A\cup B"></span>: <span class="math-inline" data-tex="A"></span> 또는 <span class="math-inline" data-tex="B"></span>가 일어나는 사건
+- <span class="math-inline" data-tex="A\cap B"></span>: <span class="math-inline" data-tex="A"></span>와 <span class="math-inline" data-tex="B"></span>가 동시에 일어나는 사건
+- <span class="math-inline" data-tex="A^c"></span>: <span class="math-inline" data-tex="A"></span>가 일어나지 않는 사건
+- <span class="math-inline" data-tex="A\setminus B"></span>: <span class="math-inline" data-tex="A"></span>는 일어나지만 <span class="math-inline" data-tex="B"></span>는 일어나지 않는 사건
 
-포함 관계는 다음과 같이 적는다.
+포함 관계 <span class="math-inline" data-tex="A\subseteq B"></span>는 <span class="math-inline" data-tex="A"></span>가 일어나면 반드시 <span class="math-inline" data-tex="B"></span>도 일어난다는 뜻이다.
 
 <div class="math-display">
 \[
 A\subseteq B
 \quad\Longleftrightarrow\quad
-x\in A\Rightarrow x\in B
+\omega\in A\Rightarrow\omega\in B
 \]
 </div>
 
-Set operation은 commutativity, associativity, distributivity를 만족한다. De Morgan's law도 반복해서 사용된다.
+De Morgan 법칙은 여집합이 포함된 사건을 바꿔 쓸 때 자주 사용한다.
 
 <div class="math-display">
 \[
@@ -59,11 +67,21 @@ Set operation은 commutativity, associativity, distributivity를 만족한다. D
 \]
 </div>
 
-## Disjoint Event와 Inclusion–Exclusion
+## 서로 배반인 사건
 
-<span class="math-inline">\(A\cap B=\varnothing\)</span>이면 두 event는 **disjoint** 또는 **mutually exclusive**라고 한다. 여러 event <span class="math-inline">\(A_1,A_2,\ldots\)</span>가 서로 다른 모든 <span class="math-inline">\(i,j\)</span>에 대해 <span class="math-inline">\(A_i\cap A_j=\varnothing\)</span>을 만족하면 **pairwise disjoint**이다.
+두 사건이 동시에 일어날 수 없으면 **서로 배반(mutually exclusive)**이라고 한다.
 
-두 event의 union probability는 overlap을 한 번 빼서 계산한다.
+<div class="math-display">
+\[
+A\cap B=\varnothing
+\]
+</div>
+
+서로 배반이라는 말과 독립이라는 말은 다르다. 서로 배반인 사건은 동시에 발생할 수 없다는 뜻이고, 독립은 한 사건의 발생이 다른 사건의 확률을 바꾸지 않는다는 뜻이다. 확률이 0이 아닌 두 사건이 서로 배반이면 일반적으로 독립이 아니다.
+
+## 포함배제 원리
+
+<span class="math-inline" data-tex="A"></span>와 <span class="math-inline" data-tex="B"></span>의 확률을 단순히 더하면 교집합이 두 번 포함된다. 이 중복을 한 번 빼는 공식이 포함배제 원리이다.
 
 <div class="math-display">
 \[
@@ -73,22 +91,31 @@ Set operation은 commutativity, associativity, distributivity를 만족한다. D
 \]
 </div>
 
-Disjoint event에서는 intersection probability가 0이므로 단순한 합이 된다.
+서로 배반인 경우에는 <span class="math-inline" data-tex="\mathbb{P}(A\cap B)=0"></span>이므로
 
-## Binomial Theorem
+<div class="math-display">
+\[
+\mathbb{P}(A\cup B)=\mathbb{P}(A)+\mathbb{P}(B)
+\]
+</div>
 
-Binomial Distribution과 여러 expectation 계산에서 Binomial Theorem이 자주 등장한다.
+가 된다.
+
+## 이후에 자주 사용하는 두 도구
+
+확률분포의 식을 전개하거나 정규화할 때 이항정리와 Gamma Function이 자주 등장한다.
+
+이항정리는 다음과 같다.
 
 <div class="math-display">
 \[
 (a+b)^n
 =
-\sum_{k=0}^{n}\binom{n}{k}a^k b^{n-k},
-\qquad n\in\mathbb{Z}_{\ge0}
+\sum_{k=0}^{n}\binom{n}{k}a^k b^{n-k}
 \]
 </div>
 
-특히 <span class="math-inline">\(a=p\)</span>, <span class="math-inline">\(b=1-p\)</span>를 대입하면 probability mass의 합이 1이 되는 성질을 확인할 수 있다.
+특히 <span class="math-inline" data-tex="a=p"></span>, <span class="math-inline" data-tex="b=1-p"></span>를 대입하면 Binomial Distribution의 PMF 합이 1임을 바로 확인할 수 있다.
 
 <div class="math-display">
 \[
@@ -96,20 +123,18 @@ Binomial Distribution과 여러 expectation 계산에서 Binomial Theorem이 자
 \]
 </div>
 
-## Gamma Function
-
-Gamma Function은 factorial을 실수와 복소수 영역으로 확장한 함수이다. Probability Distribution의 normalization constant와 integral 계산에서 자주 사용된다.
+Gamma Function은 factorial을 양의 실수 영역으로 확장한 함수이다.
 
 <div class="math-display">
 \[
 \Gamma(\alpha)
 =
-\int_0^{\infty} t^{\alpha-1}e^{-t}\,dt,
+\int_0^{\infty}t^{\alpha-1}e^{-t}\,dt,
 \qquad \alpha>0
 \]
 </div>
 
-Integration by parts를 적용하면 recurrence relation을 얻는다.
+부분적분을 적용하면 다음 점화식을 얻는다.
 
 <div class="math-display">
 \[
@@ -117,32 +142,18 @@ Integration by parts를 적용하면 recurrence relation을 얻는다.
 \]
 </div>
 
-따라서 자연수 <span class="math-inline">\(n\)</span>에 대해
-
-<div class="math-display">
-\[
-\Gamma(n+1)=n!
-\]
-</div>
-
-이고, Gaussian integral과 연결되는 중요한 값은 다음과 같다.
-
-<div class="math-display">
-\[
-\Gamma\!\left(\frac12\right)=\sqrt{\pi}
-\]
-</div>
+따라서 자연수 <span class="math-inline" data-tex="n"></span>에 대해 <span class="math-inline" data-tex="\Gamma(n+1)=n!"></span>이며, <span class="math-inline" data-tex="\Gamma(1/2)=\sqrt{\pi}"></span>이다.
 
 ## 정리
 
-Probability Space는 outcome을 모은 sample space와 그 부분집합인 event로 구성된다. Event의 operation은 Set Theory로 표현되며, Inclusion–Exclusion은 overlap을 보정하는 기본 원리이다. Binomial Theorem과 Gamma Function은 이후 Distribution의 normalization과 moment 계산을 위한 도구가 된다.
+Probability Space는 표본공간, 사건족, 확률측도의 세 요소로 구성된다. 사건은 집합으로 다루며, 합집합·교집합·여집합을 이용해 복합 사건을 표현한다. 포함배제 원리는 사건 사이의 중복을 보정하는 기본 공식이다.
 
 ## 연습 문제
 
-1. 주사위를 한 번 던지는 experiment의 sample space와 “짝수가 나온다”라는 event를 집합으로 표현한다.
-2. Integration by parts로 <span class="math-inline">\(\Gamma(\alpha+1)=\alpha\Gamma(\alpha)\)</span>를 증명한다.
-3. Recurrence relation을 이용해 <span class="math-inline">\(\Gamma(n+1)=n!\)</span>을 보인다.
+1. 주사위를 한 번 던질 때 표본공간과 “짝수가 나온다”라는 사건을 집합으로 표현한다.
+2. 두 사건이 서로 배반인 경우와 독립인 경우의 차이를 예시로 설명한다.
+3. 부분적분을 이용해 <span class="math-inline" data-tex="\Gamma(\alpha+1)=\alpha\Gamma(\alpha)"></span>를 증명한다.
 
 ---
 
-**확률 이론 정리 시리즈** · 1/11 · [다음: 2. Kolmogorov Axioms →](/posts/probability-theory-02-kolmogorov-axioms/)
+**확률 이론 정리 시리즈** · 1/11 · [다음: 2. Kolmogorov 공리 →](/posts/probability-theory-02-kolmogorov-axioms/)
