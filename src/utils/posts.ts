@@ -12,6 +12,8 @@ export interface PostFrontmatter {
   draft?: boolean;
   image?: string;
   status?: 'planned' | 'in-progress' | 'completed' | 'paused';
+  series?: string;
+  seriesOrder?: number;
 }
 
 export interface PostSummary {
@@ -19,14 +21,14 @@ export interface PostSummary {
   frontmatter: PostFrontmatter;
 }
 
-const modules = import.meta.glob('../content/posts/*.md', { eager: true });
+const modules = import.meta.glob('../content/posts/**/*.md', { eager: true });
 
 export function getAllPosts(): PostSummary[] {
   return Object.entries(modules)
     .map(([path, module]) => {
       const mod = module as { frontmatter: PostFrontmatter };
       return {
-        slug: path.split('/').pop()?.replace('.md', '') ?? '',
+        slug: path.split('/').pop()?.replace(/\.md$/, '') ?? '',
         frontmatter: mod.frontmatter
       };
     })

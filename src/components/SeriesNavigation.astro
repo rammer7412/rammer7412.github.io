@@ -1,0 +1,142 @@
+---
+import { getAllPosts } from '@/utils/posts';
+import { withBase } from '@/utils/paths';
+
+interface Props {
+  slug: string;
+  series?: string;
+  order?: number;
+  category?: string;
+}
+
+const { slug, series, order, category } = Astro.props;
+
+const seriesLabels: Record<string, string> = {
+  'linear-algebra': 'Linear Algebra 정리 시리즈',
+  'probability-theory': '확률 이론 정리 시리즈'
+};
+
+const seriesPosts = series
+  ? getAllPosts()
+      .filter((post) => post.frontmatter.series === series)
+      .sort((a, b) => {
+        const orderA = a.frontmatter.seriesOrder ?? Number.MAX_SAFE_INTEGER;
+        const orderB = b.frontmatter.seriesOrder ?? Number.MAX_SAFE_INTEGER;
+        return orderA - orderB || +new Date(a.frontmatter.date) - +new Date(b.frontmatter.date);
+      })
+  : [];
+
+const currentIndex = seriesPosts.findIndex((post) => post.slug === slug);
+const currentPost = currentIndex >= 0 ? seriesPosts[currentIndex] : undefined;
+const previousPost = currentIndex > 0 ? seriesPosts[currentIndex - 1] : undefined;
+const nextPost = currentIndex >= 0 && currentIndex < seriesPosts.length - 1
+  ? seriesPosts[currentIndex + 1]
+  : undefined;
+const currentNumber = currentPost?.frontmatter.seriesOrder ?? order ?? currentIndex + 1;
+const seriesLabel = series ? (seriesLabels[series] ?? `${category ?? '글'} 정리 시리즈`) : '';
+const cleanTitle = (title: string) => title.replace(/^\d+\.\s*/, '');
+---
+{series && currentPost && (
+  <nav class="series-navigation" aria-label={`${seriesLabel} 이동`}>
+    <div class="series-summary">
+      <strong>{seriesLabel}</strong>
+      <span>{currentNumber}/{seriesPosts.length}</span>
+    </div>
+    <div class="series-links">
+      {previousPost ? (
+        <a class="series-link series-link-previous" href={withBase(`/posts/${previousPost.slug}/`)}>
+          <small>이전 글</small>
+          <span>← {cleanTitle(previousPost.frontmatter.title)}</span>
+        </a>
+      ) : <span class="series-link-placeholder" aria-hidden="true"></span>}
+      {nextPost ? (
+        <a class="series-link series-link-next" href={withBase(`/posts/${nextPost.slug}/`)}>
+          <small>다음 글</small>
+          <span>{cleanTitle(nextPost.frontmatter.title)} →</span>
+        </a>
+      ) : <span class="series-link-placeholder" aria-hidden="true"></span>}
+    </div>
+  </nav>
+)}
+
+<style>
+  .series-navigation {
+    margin-top: 72px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+
+  .series-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .series-summary strong {
+    color: var(--heading);
+    font-size: 15px;
+  }
+
+  .series-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 18px;
+  }
+
+  .series-link {
+    display: flex;
+    min-height: 98px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    padding: 18px 20px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    color: var(--heading);
+    text-decoration: none;
+    transition: border-color 160ms ease, transform 160ms ease;
+  }
+
+  .series-link:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .series-link small {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .series-link span {
+    line-height: 1.55;
+  }
+
+  .series-link-next {
+    text-align: right;
+  }
+
+  @media (max-width: 720px) {
+    .series-navigation {
+      margin-top: 52px;
+    }
+
+    .series-links {
+      grid-template-columns: 1fr;
+    }
+
+    .series-link-placeholder {
+      display: none;
+    }
+
+    .series-link-next {
+      text-align: left;
+    }
+  }
+</style>

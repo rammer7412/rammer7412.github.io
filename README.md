@@ -191,3 +191,25 @@ adsenseClient: 'ca-pub-8463924430150624'
 ## Lectures
 
 강의자료 추가와 Cloudflare R2 연결 방법은 [`LECTURES_SETUP.md`](./LECTURES_SETUP.md)를 참고하세요.
+
+## Writing series and content folders
+
+Related study notes are grouped by directory:
+
+```text
+src/content/posts/
+├── linear-algebra/
+│   └── linear-algebra-*.md
+├── probability-theory/
+│   └── probability-theory-*.md
+└── other standalone posts
+```
+
+A series post only needs shared metadata and its order:
+
+```yaml
+series: "linear-algebra"
+seriesOrder: 20
+```
+
+`SeriesNavigation.astro` automatically determines the total number of public posts and the previous/next links. Adding a new post no longer requires editing the existing Markdown files. See `src/content/templates/study-series.md` for a complete example.

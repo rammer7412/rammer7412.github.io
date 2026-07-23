@@ -1,11 +1,12 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import SeriesNavigation from '@/components/SeriesNavigation.astro';
 import { domainMeta, formatMeta } from '@/data/site';
 import { normalizeDomain, normalizeFormat } from '@/utils/posts';
 import { withBase } from '@/utils/paths';
 
 export async function getStaticPaths() {
-  const modules = import.meta.glob('../../content/posts/*.md');
+  const modules = import.meta.glob('../../content/posts/**/*.md');
   const paths = [];
 
   for (const [path, load] of Object.entries(modules)) {
@@ -14,14 +15,14 @@ export async function getStaticPaths() {
 
     paths.push({
       params: { slug: path.split('/').pop()?.replace('.md', '') },
-      props: { post: mod }
+      props: { post: mod, slug: path.split('/').pop()?.replace(/\.md$/, '') }
     });
   }
 
   return paths;
 }
 
-const { post } = Astro.props as any;
+const { post, slug } = Astro.props as any;
 const { frontmatter } = post;
 const Content = post.default;
 const domain = normalizeDomain(frontmatter);
@@ -67,6 +68,12 @@ const sameTaxonomy = domainLabel === frontmatter.category;
           </aside>
         )}
         <div class="article-content"><Content /></div>
+        <SeriesNavigation
+          slug={slug}
+          series={frontmatter.series}
+          order={frontmatter.seriesOrder}
+          category={frontmatter.category}
+        />
       </main>
 
       <aside class="article-sidebar">

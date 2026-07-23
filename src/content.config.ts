@@ -38,7 +38,9 @@ const posts = defineCollection({
     featured: z.boolean().default(false),
     draft: z.boolean().default(false),
     image: z.string().optional(),
-    status: z.enum(['planned', 'in-progress', 'completed', 'paused']).optional()
+    status: z.enum(['planned', 'in-progress', 'completed', 'paused']).optional(),
+    series: z.string().optional(),
+    seriesOrder: z.number().int().positive().optional()
   })
 });
 
