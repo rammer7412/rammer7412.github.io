@@ -171,4 +171,4 @@ linearly independent인 vector들로 어떤 vector를 표현할 수 있다면 �
 
 ---
 
-**Linear Algebra 정리 시리즈** · 3/5 · [← 이전: 자주 사용하는 Matrix의 종류](/posts/linear-algebra-02-matrix-types/) · [다음: Gaussian Elimination과 Linear System의 해 →](/posts/linear-algebra-04-gaussian-elimination/)
+**Linear Algebra 정리 시리즈** · 3/9 · [← 이전: 자주 사용하는 Matrix의 종류](/posts/linear-algebra-02-matrix-types/) · [다음: Gaussian Elimination과 Linear System의 해 →](/posts/linear-algebra-04-gaussian-elimination/)

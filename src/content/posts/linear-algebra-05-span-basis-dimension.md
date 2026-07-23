@@ -156,4 +156,4 @@ vector들을 matrix의 column으로 모으면 Span과 Linear Independence를 Gau
 
 ---
 
-**Linear Algebra 정리 시리즈** · 5/5 · [← 이전: Gaussian Elimination과 Linear System의 해](/posts/linear-algebra-04-gaussian-elimination/)
+**Linear Algebra 정리 시리즈** · 5/9 · [← 이전: Gaussian Elimination과 Linear System의 해](/posts/linear-algebra-04-gaussian-elimination/) · [다음: LU Decomposition과 연립방정식 풀이 →](/posts/linear-algebra-06-lu-decomposition/)

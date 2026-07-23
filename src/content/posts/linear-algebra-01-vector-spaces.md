@@ -159,4 +159,4 @@ Linear Map이 아니다. 예를 들어 <span class="math-inline" data-tex-b64="X
 
 ---
 
-**Linear Algebra 정리 시리즈** · 1/5 · [다음: 자주 사용하는 Matrix의 종류 →](/posts/linear-algebra-02-matrix-types/)
+**Linear Algebra 정리 시리즈** · 1/9 · [다음: 자주 사용하는 Matrix의 종류 →](/posts/linear-algebra-02-matrix-types/)

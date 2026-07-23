@@ -158,4 +158,4 @@ Triangular Matrix는 Gaussian Elimination과 back substitution에서 자연스�
 
 ---
 
-**Linear Algebra 정리 시리즈** · 2/5 · [← 이전: Vector Space와 Linear Map](/posts/linear-algebra-01-vector-spaces/) · [다음: Inner Product, Norm과 Linear Combination →](/posts/linear-algebra-03-inner-product-linear-combination/)
+**Linear Algebra 정리 시리즈** · 2/9 · [← 이전: Vector Space와 Linear Map](/posts/linear-algebra-01-vector-spaces/) · [다음: Inner Product, Norm과 Linear Combination →](/posts/linear-algebra-03-inner-product-linear-combination/)
