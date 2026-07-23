@@ -20,8 +20,8 @@ draft: false
 
 $$
 \begin{cases}
-x+2y+z=6\\
-2x+3y+3z=14\\
+x+2y+z=6\\\\
+2x+3y+3z=14\\\\
 x+y+z=8
 \end{cases}
 $$
@@ -31,8 +31,8 @@ $$
 $$
 \left[
 \begin{array}{ccc|c}
-1&2&1&6\\
-2&3&3&14\\
+1&2&1&6\\\\
+2&3&3&14\\\\
 1&1&1&8
 \end{array}
 \right]
@@ -58,8 +58,8 @@ $$
 
 $$
 \begin{bmatrix}
-1&2&-1&3\\
-0&1&5&-2\\
+1&2&-1&3\\\\
+0&1&5&-2\\\\
 0&0&4&7
 \end{bmatrix}
 $$
@@ -81,8 +81,8 @@ $$
 $$
 \left[
 \begin{array}{ccc|c}
-1&2&1&6\\
-0&-1&1&2\\
+1&2&1&6\\\\
+0&-1&1&2\\\\
 0&-1&0&2
 \end{array}
 \right]
@@ -99,8 +99,8 @@ $$
 $$
 \left[
 \begin{array}{ccc|c}
-1&2&1&6\\
-0&-1&1&2\\
+1&2&1&6\\\\
+0&-1&1&2\\\\
 0&0&-1&0
 \end{array}
 \right]
@@ -141,8 +141,8 @@ $$
 
 $$
 \begin{cases}
-x+y+z=1\\
-2x+2y+2z=2\\
+x+y+z=1\\\\
+2x+2y+2z=2\\\\
 x+y+z=3
 \end{cases}
 $$
@@ -152,8 +152,8 @@ $$
 $$
 \left[
 \begin{array}{ccc|c}
-1&1&1&1\\
-0&0&0&0\\
+1&1&1&1\\\\
+0&0&0&0\\\\
 0&0&0&2
 \end{array}
 \right]
@@ -167,7 +167,7 @@ $$
 
 $$
 \begin{cases}
-x+y+z=2\\
+x+y+z=2\\\\
 2x+2y+2z=4
 \end{cases}
 $$
@@ -177,7 +177,7 @@ $$
 $$
 \left[
 \begin{array}{ccc|c}
-1&1&1&2\\
+1&1&1&2\\\\
 0&0&0&0
 \end{array}
 \right]
@@ -192,9 +192,9 @@ $$
 이므로 해 집합은
 
 $$
-\begin{bmatrix}x\\y\\z\end{bmatrix}
+\begin{bmatrix}x\\\\y\\\\z\end{bmatrix}
 =
-\begin{bmatrix}2-s-t\\s\\t\end{bmatrix},
+\begin{bmatrix}2-s-t\\\\s\\\\t\end{bmatrix},
 \qquad s,t\in\mathbb{R}
 $$
 
@@ -228,8 +228,8 @@ $$
 
 $$
 \begin{cases}
-x+y+z=6\\
-2x+3y+z=14\\
+x+y+z=6\\\\
+2x+3y+z=14\\\\
 x+2y+3z=14
 \end{cases}
 $$
@@ -240,8 +240,8 @@ $$
 
 $$
 \begin{cases}
-x+2y+3z=4\\
-5x+6y+7z=8\\
+x+2y+3z=4\\\\
+5x+6y+7z=8\\\\
 9x+10y+11z=12
 \end{cases}
 $$
@@ -253,14 +253,14 @@ $$
 $$
 A=
 \begin{bmatrix}
-1&2&3\\
-4&5&6\\
+1&2&3\\\\
+4&5&6\\\\
 7&8&10
 \end{bmatrix},
 \qquad
 \mathbf{b}=
 \begin{bmatrix}
-6\\15\\25
+6\\\\15\\\\25
 \end{bmatrix}
 $$
 
@@ -295,7 +295,7 @@ $$
 $$
 \mathbf{x}=
 \begin{bmatrix}
-1\\1\\1
+1\\\\1\\\\1
 \end{bmatrix}
 $$
 

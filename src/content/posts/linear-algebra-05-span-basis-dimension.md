@@ -33,10 +33,10 @@ Span은 항상 부분공간이다. 영벡터는 모든 계수를 $0$으로 두�
 
 $$
 \mathbf{e}_1=
-\begin{bmatrix}1\\0\end{bmatrix},
+\begin{bmatrix}1\\\\0\end{bmatrix},
 \qquad
 \mathbf{e}_2=
-\begin{bmatrix}0\\1\end{bmatrix}
+\begin{bmatrix}0\\\\1\end{bmatrix}
 $$
 
 를 생각하면
@@ -44,7 +44,7 @@ $$
 $$
 c_1\mathbf{e}_1+c_2\mathbf{e}_2
 =
-\begin{bmatrix}c_1\\c_2\end{bmatrix}
+\begin{bmatrix}c_1\\\\c_2\end{bmatrix}
 $$
 
 이므로
@@ -76,8 +76,8 @@ $\mathbb{R}^2$의 표준기저는
 
 $$
 \left\{
-\begin{bmatrix}1\\0\end{bmatrix},
-\begin{bmatrix}0\\1\end{bmatrix}
+\begin{bmatrix}1\\\\0\end{bmatrix},
+\begin{bmatrix}0\\\\1\end{bmatrix}
 \right\}
 $$
 
@@ -85,8 +85,8 @@ $$
 
 $$
 \left\{
-\begin{bmatrix}2\\0\end{bmatrix},
-\begin{bmatrix}1\\-1\end{bmatrix}
+\begin{bmatrix}2\\\\0\end{bmatrix},
+\begin{bmatrix}1\\\\-1\end{bmatrix}
 \right\}
 $$
 
@@ -108,17 +108,17 @@ $$
 
 $$
 W=\operatorname{span}\left\{
-\begin{bmatrix}1\\2\\3\end{bmatrix},
-\begin{bmatrix}2\\4\\6\end{bmatrix}
+\begin{bmatrix}1\\\\2\\\\3\end{bmatrix},
+\begin{bmatrix}2\\\\4\\\\6\end{bmatrix}
 \right\}
 $$
 
 에서 두 번째 벡터는 첫 번째 벡터의 두 배이다.
 
 $$
-\begin{bmatrix}2\\4\\6\end{bmatrix}
+\begin{bmatrix}2\\\\4\\\\6\end{bmatrix}
 =2
-\begin{bmatrix}1\\2\\3\end{bmatrix}
+\begin{bmatrix}1\\\\2\\\\3\end{bmatrix}
 $$
 
 따라서 두 번째 벡터를 제거해도 Span이 변하지 않는다. $W$의 기저는 하나의 벡터만으로 구성할 수 있으므로
@@ -136,8 +136,8 @@ $$
 $$
 A=
 \begin{bmatrix}
-|&|&&|\\
-\mathbf{v}_1&\mathbf{v}_2&\cdots&\mathbf{v}_k\\
+|&|&&|\\\\
+\mathbf{v}_1&\mathbf{v}_2&\cdots&\mathbf{v}_k\\\\
 |&|&&|
 \end{bmatrix}
 $$
@@ -169,13 +169,13 @@ $$
 
 $$
 \mathbf{v}_1=
-\begin{bmatrix}1\\0\\-1\end{bmatrix},
+\begin{bmatrix}1\\\\0\\\\-1\end{bmatrix},
 \qquad
 \mathbf{v}_2=
-\begin{bmatrix}-2\\1\\1\end{bmatrix},
+\begin{bmatrix}-2\\\\1\\\\1\end{bmatrix},
 \qquad
 \mathbf{v}_3=
-\begin{bmatrix}0\\0\\-1\end{bmatrix}
+\begin{bmatrix}0\\\\0\\\\-1\end{bmatrix}
 $$
 
 $$
@@ -198,8 +198,8 @@ $$
 $$
 A=
 \begin{bmatrix}
-1&-2&0\\
-0&1&0\\
+1&-2&0\\\\
+0&1&0\\\\
 -1&1&-1
 \end{bmatrix}
 $$

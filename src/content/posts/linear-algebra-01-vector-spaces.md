@@ -138,7 +138,7 @@ $$
 $$
 A=
 \begin{bmatrix}
-1&2\\
+1&2\\\\
 0&-1
 \end{bmatrix}
 $$
@@ -148,7 +148,7 @@ $$
 $$
 \mathbf{x}=
 \begin{bmatrix}
-x_1\\x_2
+x_1\\\\x_2
 \end{bmatrix}
 $$
 
@@ -157,15 +157,15 @@ $$
 $$
 T(\mathbf{x})=
 \begin{bmatrix}
-1&2\\
+1&2\\\\
 0&-1
 \end{bmatrix}
 \begin{bmatrix}
-x_1\\x_2
+x_1\\\\x_2
 \end{bmatrix}
 =
 \begin{bmatrix}
-x_1+2x_2\\-x_2
+x_1+2x_2\\\\-x_2
 \end{bmatrix}
 $$
 
