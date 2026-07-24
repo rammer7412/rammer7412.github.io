@@ -1,7 +1,7 @@
 ---
 title: "4. Sets와 Functions"
 description: "집합의 표기와 연산, Partition, Power Set, Cartesian Product를 살펴보고 함수의 Injection, Surjection, Bijection을 정리한다."
-date: "2026-07-24"
+date: "2026-01-08"
 category: "이산수학"
 tags: ["discrete-mathematics", "set", "function", "bijection", "power-set"]
 domain: "discrete-mathematics"

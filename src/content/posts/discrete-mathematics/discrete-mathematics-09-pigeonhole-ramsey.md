@@ -1,7 +1,7 @@
 ---
 title: "9. Pigeonhole Principle과 Ramsey Theory"
 description: "Pigeonhole Principle과 일반화를 다양한 존재성 문제에 적용하고 Graph Coloring 관점에서 Ramsey Number를 이해한다."
-date: "2026-07-24"
+date: "2026-01-16"
 category: "이산수학"
 tags: ["discrete-mathematics", "pigeonhole-principle", "ramsey-theory", "ramsey-number", "existence-proof"]
 domain: "discrete-mathematics"

@@ -1,7 +1,7 @@
 ---
 title: "3. Induction, Well-Ordering, and Invariants"
 description: "수학적 귀납법과 강한 귀납법, Well-Ordering Principle을 정리하고 Invariant와 Parity로 불가능성을 증명한다."
-date: "2026-07-24"
+date: "2026-01-07"
 category: "이산수학"
 tags: ["discrete-mathematics", "induction", "strong-induction", "well-ordering", "invariant"]
 domain: "discrete-mathematics"

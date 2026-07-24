@@ -1,7 +1,7 @@
 ---
 title: "1. Propositional Logic과 Predicate Logic"
 description: "명제, 논리 연산자, 진리표, 논리적 동치와 조건명제를 살펴보고 Predicate와 Quantifier로 표현 범위를 확장한다."
-date: "2026-07-24"
+date: "2026-01-04"
 category: "이산수학"
 tags: ["discrete-mathematics", "propositional-logic", "predicate-logic", "truth-table", "quantifier"]
 domain: "discrete-mathematics"

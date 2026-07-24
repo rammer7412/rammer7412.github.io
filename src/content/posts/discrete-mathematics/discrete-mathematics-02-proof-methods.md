@@ -1,7 +1,7 @@
 ---
 title: "2. Argument와 Basic Methods of Proof"
 description: "유효한 논증과 기본 추론 규칙을 정리하고 Direct, Contrapositive, Contradiction, Cases 증명법을 예제로 익힌다."
-date: "2026-07-24"
+date: "2026-01-05"
 category: "이산수학"
 tags: ["discrete-mathematics", "argument", "proof", "contrapositive", "contradiction"]
 domain: "discrete-mathematics"

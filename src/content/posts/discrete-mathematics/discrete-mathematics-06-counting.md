@@ -1,7 +1,7 @@
 ---
 title: "6. Counting, Permutations, and Combinations"
 description: "Sum Rule과 Product Rule에서 출발해 순열, 조합, 중복 배치와 보완 계수법을 다양한 예제로 정리한다."
-date: "2026-07-24"
+date: "2026-01-11"
 category: "이산수학"
 tags: ["discrete-mathematics", "counting", "permutation", "combination", "stars-and-bars"]
 domain: "discrete-mathematics"

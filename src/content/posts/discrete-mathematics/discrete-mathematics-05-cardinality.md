@@ -1,7 +1,7 @@
 ---
 title: "5. Cardinality, Countability, and Diagonal Arguments"
 description: "Bijection으로 무한집합의 크기를 비교하고 Countable Set, Cantor의 대각선 논법과 Power Set 정리를 살펴본다."
-date: "2026-07-24"
+date: "2026-01-09"
 category: "이산수학"
 tags: ["discrete-mathematics", "cardinality", "countable", "uncountable", "cantor"]
 domain: "discrete-mathematics"

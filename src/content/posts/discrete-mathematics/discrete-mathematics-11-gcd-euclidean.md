@@ -1,7 +1,7 @@
 ---
 title: "11. GCD와 Euclidean Algorithm"
 description: "물통 문제를 통해 GCD와 정수 선형결합의 의미를 이해하고 Euclidean Algorithm과 역추적으로 해를 구한다."
-date: "2026-07-24"
+date: "2026-01-19"
 category: "이산수학"
 tags: ["discrete-mathematics", "gcd", "euclidean-algorithm", "bezout-identity", "water-jug"]
 domain: "discrete-mathematics"

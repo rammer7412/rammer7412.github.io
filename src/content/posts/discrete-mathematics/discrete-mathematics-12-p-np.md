@@ -1,7 +1,7 @@
 ---
 title: "12. P, NP, and Polynomial-Time Reduction"
 description: "Decision Problem과 다항시간을 바탕으로 P와 NP를 구분하고 Polynomial-Time Reduction, NP-Complete, NP-Hard의 의미를 정리한다."
-date: "2026-07-24"
+date: "2026-01-20"
 category: "이산수학"
 tags: ["discrete-mathematics", "complexity-theory", "p", "np", "reduction"]
 domain: "discrete-mathematics"

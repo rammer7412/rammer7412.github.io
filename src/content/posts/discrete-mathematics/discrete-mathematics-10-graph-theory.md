@@ -1,7 +1,7 @@
 ---
 title: "10. Graph Theory"
 description: "Graph의 Vertex와 Edge, Degree, Path, Euler Path를 정리하고 Adjacency Matrix의 거듭제곱이 Walk의 수를 세는 이유를 설명한다."
-date: "2026-07-24"
+date: "2026-01-17"
 category: "이산수학"
 tags: ["discrete-mathematics", "graph-theory", "euler-path", "degree", "adjacency-matrix"]
 domain: "discrete-mathematics"

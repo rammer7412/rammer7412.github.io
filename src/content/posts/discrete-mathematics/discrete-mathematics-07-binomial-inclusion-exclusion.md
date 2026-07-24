@@ -1,7 +1,7 @@
 ---
 title: "7. Binomial Theorem과 Inclusion–Exclusion"
 description: "이항정리와 Pascal 항등식을 조합론적으로 이해하고 Inclusion–Exclusion를 Derangement 문제에 적용한다."
-date: "2026-07-24"
+date: "2026-01-13"
 category: "이산수학"
 tags: ["discrete-mathematics", "binomial-theorem", "pascal-identity", "inclusion-exclusion", "derangement"]
 domain: "discrete-mathematics"

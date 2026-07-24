@@ -1,7 +1,7 @@
 ---
 title: "8. Recurrence Relations와 Catalan Numbers"
 description: "Fibonacci형 점화식과 타일링 문제를 살펴보고 괄호, 격자 경로, Catalan Number 사이의 대응을 정리한다."
-date: "2026-07-24"
+date: "2026-01-14"
 category: "이산수학"
 tags: ["discrete-mathematics", "recurrence", "fibonacci", "catalan-number", "lattice-path"]
 domain: "discrete-mathematics"
