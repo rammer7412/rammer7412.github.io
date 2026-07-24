@@ -1,6 +1,6 @@
 ---
 title: "10. Deleted Data, Volume Shadow Copy, and System Logs"
-description: "Recycle Bin의 $I·$R 구조, Volume Shadow Copy와 설치·장치·PowerShell 로그를 정리한다."
+description: "Recycle Bin의 Metadata·Content 파일 구조, Volume Shadow Copy와 설치·장치·PowerShell 로그를 정리한다."
 date: "2026-03-05"
 category: "디지털포렌식"
 tags: ["digital-forensics", "recycle-bin", "volume-shadow-copy", "windows-logs", "deleted-data"]
@@ -31,11 +31,11 @@ D:\$RECYCLE.BIN\S-1-5-21-...\
 
 SID Directory를 통해 어느 계정의 Recycle Bin Entry인지 연결할 수 있다. 동일 사용자가 여러 Volume에서 삭제하면 각 Volume에 별도 구조가 생긴다.
 
-## $I 파일과 $R 파일
+## <span class="tex2jax_ignore">$I</span> 파일과 <span class="tex2jax_ignore">$R</span> 파일
 
 삭제 항목은 보통 같은 식별 문자열을 가진 두 파일로 관리된다.
 
-### $I File
+### <span class="tex2jax_ignore">$I</span> File
 
 Metadata를 저장한다.
 
@@ -46,7 +46,7 @@ Metadata를 저장한다.
 
 삭제 시각은 FILETIME 계열로 저장될 수 있다. Path는 Unicode로 저장되며 Version에 따라 길이 Field가 다르다.
 
-### $R File
+### <span class="tex2jax_ignore">$R</span> File
 
 실제 삭제된 File 또는 Directory Content를 담는다. Directory가 삭제되면 <code>$R</code> Directory 안에 원래 하위 구조가 남을 수 있다.
 

@@ -77,7 +77,8 @@ const imageURL = new URL(withBase(image), Astro.site ?? Astro.url.origin);
           processEnvironments: true
         },
         options: {
-          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+          ignoreHtmlClass: 'tex2jax_ignore'
         },
         startup: {
           ready: () => {

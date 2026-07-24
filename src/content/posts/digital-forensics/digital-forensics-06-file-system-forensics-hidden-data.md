@@ -1,6 +1,6 @@
 ---
 title: "6. File System Forensics와 Hidden Data"
-description: "MACB·MACE Timestamp, NTFS $LogFile·$UsnJrnl, Slack과 ADS를 이용한 파일시스템 분석을 정리한다."
+description: "MACB·MACE Timestamp, NTFS Transaction·Change Journal, Slack과 ADS를 이용한 파일시스템 분석을 정리한다."
 date: "2026-02-27"
 category: "디지털포렌식"
 tags: ["digital-forensics", "timestamp-analysis", "usnjrnl", "ntfs-ads", "hidden-data"]
@@ -72,7 +72,7 @@ Timeline은 여러 Artifact를 공통 Time Zone과 형식으로 정규화하여 
 
 모든 Timestamp를 한 열로 섞으면 각각의 의미가 사라진다. “Modified”, “Execution”, “Logon”, “Download Start”처럼 Event Type을 명확히 구분한다.
 
-## NTFS $LogFile
+## NTFS <span class="tex2jax_ignore">$LogFile</span>
 
 <code>$LogFile</code>은 NTFS의 Transaction Log이다. 시스템 장애가 발생했을 때 File System Metadata를 일관된 상태로 복구하기 위해 Redo/Undo 정보를 기록한다.
 
@@ -85,7 +85,7 @@ Timeline은 여러 Artifact를 공통 Time Zone과 형식으로 정규화하여 
 
 <code>$LogFile</code>은 순환 구조이며 오래된 Record가 덮어써진다. 사용자 행위 전체를 영구 보존하는 Audit Log가 아니다. Parser가 Transaction을 어떤 File과 연결하는지 검증해야 한다.
 
-## NTFS $UsnJrnl
+## NTFS <span class="tex2jax_ignore">$UsnJrnl</span>
 
 <code>$UsnJrnl</code>은 Volume의 File·Directory 변경을 추적하는 Change Journal이다. Backup, Indexing, Anti-virus가 변경된 객체를 빠르게 찾는 데 사용한다.
 
@@ -104,7 +104,7 @@ Timeline은 여러 Artifact를 공통 Time Zone과 형식으로 정규화하여 
 
 한 File Operation이 여러 Reason Record를 만들 수 있다. 예를 들어 파일 생성 후 내용 작성, Close가 각각 기록될 수 있다. 하나의 <code>FILE_DELETE</code> Record만 보고 전체 삭제 경로를 재구성하지 않고, 같은 File Reference와 Parent, 인접 USN을 묶어 본다.
 
-## $LogFile과 $UsnJrnl 비교
+## <span class="tex2jax_ignore">$LogFile</span>과 <span class="tex2jax_ignore">$UsnJrnl</span> 비교
 
 | 항목 | <code>$LogFile</code> | <code>$UsnJrnl</code> |
 |---|---|---|
