@@ -23,6 +23,7 @@ const posts = defineCollection({
       'probability-theory',
       'discrete-mathematics',
       'number-theory',
+      'digital-forensics',
       'theory-of-computation',
       'operating-systems',
       'artificial-intelligence'

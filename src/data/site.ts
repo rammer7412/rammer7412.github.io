@@ -21,6 +21,7 @@ export const domainMeta: Record<string, { label: string; short: string; href: st
   'probability-theory': { label: '확률 이론', short: '확률 이론', href: '/writing/?domain=probability-theory' },
   'discrete-mathematics': { label: '이산수학', short: '이산수학', href: '/writing/?domain=discrete-mathematics' },
   'number-theory': { label: '정수론', short: '정수론', href: '/writing/?domain=number-theory' },
+  'digital-forensics': { label: '디지털포렌식', short: '디지털포렌식', href: '/writing/?domain=digital-forensics' },
   'theory-of-computation': { label: '계산이론', short: '계산이론', href: '/writing/?domain=theory-of-computation' },
   math: { label: '수학', short: 'Math', href: '/writing/?domain=math' },
   'operating-systems': { label: '운영체제', short: 'OS', href: '/writing/?domain=operating-systems' },
