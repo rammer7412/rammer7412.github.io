@@ -2,9 +2,9 @@
 title: "1. k-익명성, l-다양성, t-근접성"
 description: "재식별 위험을 줄이기 위한 k-익명성, l-다양성, t-근접성의 개념과 차이, 한계와 적용 방법을 예제로 정리한다."
 date: "2026-08-08"
-category: "프라이버시 엔지니어링"
+category: "개인정보보호"
 tags: ["data-privacy", "de-identification", "k-anonymity", "l-diversity", "t-closeness"]
-domain: "privacy-engineering"
+domain: "data-privacy"
 format: "study-note"
 series: "data-privacy"
 seriesOrder: 1

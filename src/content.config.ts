@@ -12,7 +12,7 @@ const posts = defineCollection({
     tags: z.array(z.string()).default([]),
     domain: z.enum([
       'privacy-governance',
-      'privacy-engineering',
+      'data-privacy',
       'security-forensics',
       'systems-development',
       'cryptography-math',

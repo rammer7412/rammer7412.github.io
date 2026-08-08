@@ -3,7 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import PostArchive from '@/components/PostArchive.astro';
 import { getAllPosts, normalizeDomain } from '@/utils/posts';
 
-const posts = getAllPosts().filter((post) => ['privacy-governance', 'privacy-engineering'].includes(normalizeDomain(post.frontmatter)));
+const posts = getAllPosts().filter((post) => ['privacy-governance', 'data-privacy'].includes(normalizeDomain(post.frontmatter)));
 ---
 <BaseLayout title="개인정보보호" description="개인정보보호 원칙, 거버넌스와 프라이버시 엔지니어링을 기술 구현과 연결해 정리합니다.">
   <section class="page-hero">

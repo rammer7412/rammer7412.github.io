@@ -27,7 +27,7 @@ export const domainMeta: Record<string, { label: string; short: string; href: st
   'operating-systems': { label: '운영체제', short: 'OS', href: '/writing/?domain=operating-systems' },
   'artificial-intelligence': { label: '인공지능', short: 'AI', href: '/writing/?domain=artificial-intelligence' },
   'privacy-governance': { label: '개인정보보호·거버넌스', short: 'Privacy', href: '/writing/?domain=privacy-governance' },
-  'privacy-engineering': { label: '프라이버시 엔지니어링', short: 'Engineering', href: '/writing/?domain=privacy-engineering' },
+  'data-privacy': { label: '개인정보보호', short: 'data-privacy', href: '/writing/?domain=data-privacy' },
   'security-forensics': { label: '보안·포렌식', short: 'Security', href: '/writing/?domain=security-forensics' },
   'systems-development': { label: '시스템·개발', short: 'Systems', href: '/writing/?domain=systems-development' },
   'cryptography-math': { label: '암호·수학', short: 'Crypto', href: '/writing/?domain=cryptography-math' },
@@ -55,10 +55,10 @@ export const categories = [
     topics: ['생명주기', '법·정책', '관리체계']
   },
   {
-    title: '프라이버시 엔지니어링',
-    label: 'ENGINEERING',
+    title: '개인정보보호',
+    label: 'data-privacy',
     description: '최소 수집, 동의 설계, 데이터 흐름, 접근통제와 보호조치를 기술적으로 탐구합니다.',
-    href: '/writing/?domain=privacy-engineering',
+    href: '/writing/?domain=data-privacy',
     topics: ['Privacy by Design', '데이터 흐름', '보호조치']
   },
   {
